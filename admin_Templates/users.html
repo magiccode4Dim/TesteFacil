@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Users {% endblock %}</h1>
+        <table border="1">
+            <tr>
+                <!--Print all table atributes-->
+                {% for a in atributs %}
+                    <th>{{a}}</th>
+                {% endfor %}
+            </tr>
+            {% for u in allusers %}
+                <tr>
+                    <td>{{u["userName"]}}</td>
+                    <td>{{u["fullname"]}}</td>
+                    <td>{{u["turma"]}}</td>
+                    <td>{{u["classe"]}}</td>
+                    {% if u["isAproved"] == 1  %}
+                        <td>SIM</td>
+                    {% else %}
+                            <td><a href="/users/verify/{{u['userName']}}">Verificar</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

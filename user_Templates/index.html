@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Dados</h1>
+    <form action='/submeter' method='POST'>
+        <div class='message'>
+            <p>Data:{{dadosProva['Data']}}</p>
+            <p>Escola:{{dadosProva['Escola']}}</p>
+            <p>Professor:{{dadosProva['Professor']}}</p>
+            <p>Prova de:{{dadosProva['Titulo']}}</p>
+            <h3>UserName : {{user['userName']}}</h3>
+            <h3>fullname : {{user['fullname']}}</h3>
+            <h3>Turma : {{user['turma']}}</h3>
+            <h3>Classe : {{user['classe']}}</h3>
+            Tempo Actual : <h2 id='rel' ></h2>
+            Hora do Fim : <h2 id='fim' >{{dadosProva['fim']}}</h2>
+            <h2 style="color: Red;" >Atenção!! Verifique o se a sua prova esta correctamente preenchida porque, depois da submissão não há mais volta</h2>
+        </div>
+        <h1>{% block title %} Perguntas {% endblock %}</h1>
+        {% for message in messages %}
+            <div class='message'>
+                <h3>{{ message['id']}}.{{ message['title']}}</h3>
+                <p>Cotação : {{message['cotacao']}}</p>     
+                <!--<p>{{ message['questions'] }}</p>-->
+                {% set questions =  message['questions']   %}
+                
+             <!--<select name="q{{ message['id']}}" style="font-size: 3em; color:rgb(0, 0, 0); text-align: center;"  >-->
+                    {% for q in questions %}    
+                            <!--<option value="{{q['id']}}">{{q['ques']}}</option>-->
+                            <input type="radio" id="{{q['id']}}" name="q{{ message['id']}}" value="{{q['id']}}"><label for="{{q['id']}}">{{q['ques']}}</label><br>
+                    {% endfor %}
+                <!--</select>-->
+
+                
+
+            </div>
+        {% endfor %}
+        <input type="hidden" name="tokenProva" value={{tokenProva}}>
+        <input type='submit' value="Entregar Prova" style="font-size: 5em; color:rgb(0, 0, 0)">
+    </form>
+
+{% endblock %}

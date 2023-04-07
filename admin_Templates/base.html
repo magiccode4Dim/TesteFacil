@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - MultiplaEscolhaOnline</title>
+    <style>
+        .message {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f3f3f3
+        }
+        nav a {
+            color: #415cd6;
+            font-size: 2em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body onload='meuRelogio()'>
+    <nav>
+        <a href="{{ url_for('index') }}">Administração</a>
+        <a href="{{ url_for('users') }}">Utilizadores</a>
+        <a href="{{ url_for('students') }}">Estudantes</a>
+        <a href="{{ url_for('prova') }}">Prova</a>
+        <a href="{{ url_for('index') }}">criateAdmin</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+    
+    <script>
+        //Funcao para Exibir Relogio
+        function meuRelogio() {
+            setInterval (function() {
+                var hora = new Date().toLocaleTimeString();
+                document.getElementById('rel').innerHTML = hora;
+              }, 1000);
+        }    
+    </script>
+</body>
+</html>

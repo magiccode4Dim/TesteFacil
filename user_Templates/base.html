@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - Escola Secundaria Nwamatibjana</title>
+    <style>
+        .message {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f3f3f3a2
+        }
+        nav a {
+            color: #000000;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+        body{
+            background-image: url("{{url_for('static',filename='images/filo9.jpg')}}");
+            background-size: cover;
+        }
+        form{
+            font-size: 2em;
+        }
+        input{
+            font-size: 2em;
+        }
+        a{
+            color: #000000;
+            font-size: 3em; 
+            font-weight: bolder;
+        }
+        label{
+            font-size: 1em; 
+        }
+
+        select{
+            font-size: 3em; 
+            padding-right: 100px; 
+        }
+
+
+    </style>
+</head>
+<body onload='meuRelogio()'>
+    <nav>
+        <a href="{{ url_for('index') }}">Escola Secundaria Nwamatibjana</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+    
+    <a href="{{ url_for('sobre') }}" style="text-align: center;">Sobre o Sistema</a>
+    <script>
+        function meuRelogio() {
+            setInterval (function() {
+                var hora = new Date().toLocaleTimeString();
+                document.getElementById('rel').innerHTML = hora;
+              }, 1000);
+        }    
+    </script>
+</body>
+</html>

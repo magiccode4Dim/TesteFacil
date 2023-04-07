@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN GESTÃO - MultiplaEscolhaOnline</title>
+   
+</head>
+<body >
+    <h1>{% block title %} MultiplaEscolhaOnline - ADMIN {% endblock %}</h1>
+    <form action='/autenticar' method = 'POST'>
+        <p>UserName : <input name='username' type='text'/></p>
+        <p>Senha : <input name='pass' type='password'/></p>
+        <p><input type='submit'/></p>
+    </form>
+</body>
+</html>

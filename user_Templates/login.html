@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+    <img src="{{url_for('static',filename='gifs/hello.gif')}}">
+</center>
+    <h1>{% block title %} Login {% endblock %}</h1>
+    <form action='/autenticar' method = 'POST'>
+        <p>UserName : <input name='username' type='text'/></p>
+        <p>Senha : <input name='pass' type='password'/></p>
+        <p><input type='submit'/></p>
+    </form>
+    <p> Não tem uma conta?<a href="/createaccount">Clica aqui para Cadastrar</a></p>
+{% endblock %}

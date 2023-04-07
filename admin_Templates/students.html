@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Alunos {% endblock %}</h1>
+    <table border="1">
+        <tr>
+            <!--Print all table atributes-->
+            {% for a in atributs %}
+                <th>{{a}}</th>
+            {% endfor %}
+        </tr>
+        {% for u in allusers %}
+            <tr>
+                <td>{{u["numeroEst"]}}</td>
+                <td>{{u["userName"]}}</td>
+                <td>{{u["fullname"]}}</td>
+                <td>{{u["turma"]}}</td>
+                <td>{{u["classe"]}}</td>
+                {% if u["userName"] in  uActive  %}
+                    <td>SIM</td>
+                {% else %}
+                    <td>NÃO</td> 
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

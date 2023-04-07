@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Ver Prova {% endblock %}</h1>
+    {% for message in messages %}
+            <div class='message'>
+                <h3>{{ message['id']}}.{{ message['title']}}</h3>
+                <p>Cotação : {{message['cotacao']}}</p>     
+                <!--<p>{{ message['questions'] }}</p>-->
+                {% set questions =  message['questions']   %}
+       
+                    {% for q in questions %}    
+                            <p>Opção: {{q['ques']}}</p>
+                       
+                    {% endfor %}
+                
+            </div>
+        {% endfor %}
+{% endblock %}

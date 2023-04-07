@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Criar Prova {% endblock %}</h1>
+    <form action="/prova/editor" method="POST">
+        <p>Quantos Perguntas a Prova tem?:<input type="text" name="maxquest" /></p>
+        <p>Qual é o Número Máximo de Opções:<input type="text" name="maxper" /></p>
+        <input type="submit" />
+    </form>
+    <!--Aqui 'e onde ira aparecer o editor
+    <div>
+        <iframe width="500" height="500" src="/prova/editor">
+        </iframe>
+    </div>-->
+{% endblock %}
