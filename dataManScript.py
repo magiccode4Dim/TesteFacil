@@ -4,7 +4,11 @@ from datetime import datetime
 import time
 import random
 from util import validation
+import os
+import secrets
+import hashlib
 
+#=========================== METODOS DA VERSAO 1
 #Obtem os ficheiros de configuracao de todas as provas
 def getAllDadosProva():
     t = json_Save.getJSON('data/tokenList.json')
@@ -24,8 +28,6 @@ def getNotaAluno(numero,token):
             return n["Nota"]
     return None
 
-
-
 #guarda o token
 def saveToken(token):
     t = json_Save.getJSON('data/tokenList.json')
@@ -34,8 +36,11 @@ def saveToken(token):
 
 
 #Gera numeros de estudantes aleatorios
-def tokenNumberRandom():
-    t = json_Save.getJSON('data/tokenList.json')
+def tokenNumberRandom(file, lista =  None):
+    if lista == None:
+        t = json_Save.getJSON(file)
+    else:
+        t =  lista
     if len(t)==0:
         return random.randint(1,1000000) 
     while True:
@@ -44,9 +49,6 @@ def tokenNumberRandom():
             continue
         else:
             return newNumber   
-
-
-
 
 #Pega todas os ficheiros de configuracao das provas disponiveis para um usuario
 def getAvaliableTesteForUser(userName):
@@ -233,7 +235,7 @@ def inserirAlunos(turma = None,classe = None, numeroBool = False, n = 1, randonC
             break
     json_Save.saveJSON('data/alunos.json',alunos)  
 #create new user
-def createNewUser(userName,fullname,turma,classe,password):
+def createNewUser(userName,fullname,turma,classe,password, isAdmin = 0):
     try:
         users = json_Save.getJSON('data/users.json')
     except FileNotFoundError as e:
@@ -246,54 +248,100 @@ def createNewUser(userName,fullname,turma,classe,password):
                 'password':password,
                 'isAproved':0
             }
+    if(isAdmin==1):
+        newUser["isAdmin"]=1
+        newUser["permissions"]="CRUD"
     users.append(newUser)
     json_Save.saveJSON('data/users.json',users)
-  
+
+#=========================== METODOS DA VERSAO 2
+#gera novos tokens teacher
+def generateTokenTeacher(numbers =  1, typeT = "Normal"):
+    try:
+        tokensTeacher = json_Save.getJSON('./data/Users/Teacher/tokensTeacher.json')
+    except FileNotFoundError as e:
+        tokensTeacher = list()
+    i =  0
+    listToken = list()
+    for t  in tokensTeacher:
+        listToken.append(t["token"])        
+    while i<numbers:
+        newToken = str(tokenNumberRandom('None', lista = listToken))+str(secrets.token_hex(16))
+        dictToken = {
+             "userName":"--",
+             "token":newToken,
+             "type": typeT
+         }
+        tokensTeacher.append(dictToken)
+        i+=1
+    json_Save.saveJSON('./data/Users/Teacher/tokensTeacher.json',tokensTeacher)
+
+#verifica se o token que o professor esta usar para abrir a conta 'e valido ou nao
+def tokenTeacherIsValid(token):
+    try:
+        tokensTeacher = json_Save.getJSON('./data/Users/Teacher/tokensTeacher.json')
+    except FileNotFoundError as e:
+        return False
+    for t in tokensTeacher:
+        if(t["userName"]=="--" and t["token"]== token):
+            return True
+    return False
+
+#Salvar professor
+def saveTeacher(teacher):
+    try:
+        teachers = json_Save.getJSON('./data/Users/Teacher/teachers.json')
+    except FileNotFoundError as e:
+        teachers = list()
+    teachers.append(teacher)
+    json_Save.saveJSON('./data/Users/Teacher/teachers.json',teachers)
+
+#Usar o Token para um determinado professor
+def useTokenForTeacher(userName,token):
+    tokensTeacher = json_Save.getJSON('./data/Users/Teacher/tokensTeacher.json')
+    for t in tokensTeacher:
+        if(t["userName"]=="--" and t["token"]== token):
+            tokensTeacher.remove(t)
+            dictToken = {
+             "userName":userName,
+             "token":token
+             }
+            tokensTeacher.append(dictToken)
+            json_Save.saveJSON('./data/Users/Teacher/tokensTeacher.json',tokensTeacher)
+            break
+#Actualiza o Token do professor (Para casos de upgrade de conta)     
+def updateToken(userName,newToken):
+    tokensTeacher = json_Save.getJSON('./data/Users/Teacher/tokensTeacher.json')
+    for t in tokensTeacher:
+        if(t["userName"]==userName):
+            tokensTeacher.remove(t)
+            t["token"] = newToken
+            tokensTeacher.append(t)
+            json_Save.saveJSON('./data/Users/Teacher/tokensTeacher.json',tokensTeacher)
+            break
+#Cria uma nova conta Teacher
+def createTeacher(userName, email, senha, nome, token):
+    if tokenTeacherIsValid(token) == False:
+        return "Invalid Token"
+    if validation.userNameExists(userName):
+        return "UserName Alread Exist"
+    result = hashlib.md5(senha.encode())
+    teacher = {
+            "userName":userName,
+            "email":email,
+            "fullName": nome 
+        }
+    createNewUser(userName,nome,"--","--",str(result.hexdigest()),isAdmin=1)
+    saveTeacher(teacher)
+    os.makedirs("./data/Users/Teacher/"+userName+"/alunos")
+    os.makedirs("./data/Users/Teacher/"+userName+"/download")
+    os.makedirs("./data/Users/Teacher/"+userName+"/provas")
+    os.makedirs("./data/Users/Teacher/"+userName+"/turmas")
+    #Usar o token
+    useTokenForTeacher(userName,token)
+    return "Sucess"
+
     
 if __name__ == "__main__":
-    print("1. Inserir Alunos")
-    print("2. Save To Excel")
-    print("3. Controlar Tempo")
-    print("4. Parar Teste")
-    print("5. Inserir dados prova")
-    print("6. Verificar utilizador")
-    res =  int(input(">> "))
-    if(res == 1):
-        n = -1
-        turma = None
-        classe = None
-        numeroBool = False
-        try:
-            turma = input("(default) Turma >> ")
-        except KeyboardInterrupt as e:
-            pass
-        try:
-            classe = int(input("(default) Classe >> "))
-        except KeyboardInterrupt as e:
-            pass
-        try:
-            n = int(input("(default) N >> "))
-        except KeyboardInterrupt as e:
-            pass
-        if n!=-1:
-            numeroBool = True
-        inserirAlunos(turma = turma,classe = classe, numeroBool = numeroBool, n = n)
-    if(res == 2):
-        fileName = input(">File Name : ")
-        token = input(">Token : ")
-        saveDataFrameExcel(fileName+".xlsx",token)   
-    if( res == 3):
-        token = input(">Token : ")
-        timmer(token)
-    if( res == 4):
-        token = input(">Token : ")
-        stopp(token)
-    if(res == 5):
-        print("Nao programado ainda ")
-    if(res == 6):
-        userName = input(">User Name : ")
-        number = int(input(">Numero : "))
-        validateUserToAluno(userName,number)
-            
-            
-            
+    #print(createTeacher("Nany","na@gmail.com","nany","Narciso Cadeado","159693424ed5f4ea5905b098e8703253d1bdbf"))
+    updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")

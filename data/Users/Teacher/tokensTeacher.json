@@ -1,7 +1,22 @@
 [
     {
-        "userName":"pascoal",
-        "token":"1233sdsfdsfsfewfewP"
+        "userName": "pascoal",
+        "token": "1233sdsfdsfsfewfewP",
+        "type": "Normal"
+    },
+    {
+        "userName": "--",
+        "token": "3930697a67c119686f8b5066f2b64f54f4040f",
+        "type": "Normal"
+    },
+    {
+        "userName": "--",
+        "token": "2878039095de06ccbe235be4ea6a5c02b9223",
+        "type": "Normal"
+    },
+    {
+        "userName": "Nany",
+        "token": "3930697a67c119686f8b5066f2b64f54f4040f",
+        "type": "Normal"
     }
-
 ]

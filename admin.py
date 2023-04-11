@@ -244,7 +244,7 @@ def createTeste():
         newtest.append(per)
         per=dict()
             #gera um novo token
-    t = tokenNumberRandom()
+    t = tokenNumberRandom('data/tokenList.json')
             #Criacao do ficheiro de configuracao
     dadosProva = dict()
     dadosProva["token"] = t

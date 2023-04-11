@@ -1,0 +1,12 @@
+[
+    {
+        "userName": "Nany",
+        "fullname": "Narciso Cadeado",
+        "turma": "--",
+        "classe": "--",
+        "password": "c45a9c8df5a3d40488aa1ccaaae9f33d",
+        "isAproved": 0,
+        "isAdmin": 1,
+        "permissions": "CRUD"
+    }
+]
