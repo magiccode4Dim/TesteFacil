@@ -256,7 +256,7 @@ def createNewUser(userName,fullname,turma,classe,password, isAdmin = 0):
 
 #=========================== METODOS DA VERSAO 2
 #gera novos tokens teacher
-def generateTokenTeacher(numbers =  1, typeT = "Normal"):
+def generateTokenTeacher(numbers =  1, typeT = "Normal", validade = "unlimited"):
     try:
         tokensTeacher = json_Save.getJSON('./data/Users/Teacher/tokensTeacher.json')
     except FileNotFoundError as e:
@@ -270,7 +270,8 @@ def generateTokenTeacher(numbers =  1, typeT = "Normal"):
         dictToken = {
              "userName":"--",
              "token":newToken,
-             "type": typeT
+             "type": typeT,
+             "validade":validade
          }
         tokensTeacher.append(dictToken)
         i+=1
@@ -340,8 +341,28 @@ def createTeacher(userName, email, senha, nome, token):
     #Usar o token
     useTokenForTeacher(userName,token)
     return "Sucess"
-
+#Criar Turma
+def criarTurma(userNameProfessor,nome,descricao):
+    newTurma = {
+        "nome":nome,
+        "descricao": descricao,
+        "alunos":[]
+    }
+    json_Save.saveJSON("./data/Users/Teacher/"+userNameProfessor+"/turmas/"+nome.replace(" ","_")+".json",newTurma)
+#adicionar alunos a turmas
+def addAlunoToTurma(userNameAluno, userNameProfessor,nome):
+    try:
+        turma = json_Save.getJSON("./data/Users/Teacher/"+userNameProfessor+"/turmas/"+nome.replace(" ","_")+".json")
+        turmaArray = turma["alunos"]
+    except FileNotFoundError as e:
+        return "Turma Not found"
+    if userNameAluno not in turmaArray:
+        turmaArray.append(userNameAluno)
+        turma["alunos"] =  turmaArray
+        json_Save.saveJSON("./data/Users/Teacher/"+userNameProfessor+"/turmas/"+nome.replace(" ","_")+".json",turma)
     
 if __name__ == "__main__":
     #print(createTeacher("Nany","na@gmail.com","nany","Narciso Cadeado","159693424ed5f4ea5905b098e8703253d1bdbf"))
-    updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")
+    #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")
+    #criarTurma("Nany","B1 12","Turma dos Malucos")
+    addAlunoToTurma("paxA","Nany","B1 12")
