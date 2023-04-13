@@ -1,11 +1,14 @@
 #PAINEL DE CONTROLE DE ADMINISTRADOR
 from flask import Flask,request,render_template, url_for, redirect, make_response,send_file
 from util import json_Save, bussness,validation,sessionsSystem
-from dataManScript import validateUserToAluno,estudantNumberRandom, tokenNumberRandom,saveToken,getAllDadosProva,stopp,saveDataFrameExcel,iniciarTeste,getUserByUserName
+from dataManScript import validateUserToAluno,estudantNumberRandom, tokenNumberRandom,saveToken,getAllDadosProva,stopp,saveDataFrameExcel,iniciarTeste,getUserByUserName,getTokenTeacher
 import os
 import random
+import time
+
 app = Flask(__name__, template_folder="admin_Templates")
 
+#ok
 @app.route("/",methods=['GET']) 
 def index():
     #Deve verificar se a pessoa esta logada e tudo mais
@@ -17,10 +20,11 @@ def index():
             #verifica se a pessoa 'e admin
             if(validation.isAdmin(getUserByUserName(s))==False):
                 return redirect(url_for('login'))
-            provasConf = getAllDadosProva()
+            provasConf = getAllDadosProva(s)
             return render_template("dashboardAdmin.html", provas = provasConf)
     return redirect(url_for('login'))
 #Ver prova
+#ok
 @app.route("/ver/<token>",methods=['GET']) 
 def verProva(token):
     cookie = request.cookies.get('SessionID')
@@ -32,13 +36,14 @@ def verProva(token):
                 return redirect(url_for('login'))
             #Deve verificar se a pessoa esta logada e tudo mais
             try:
-                p = json_Save.getJSON('provas/'+token+"/prova.json")
+                p = json_Save.getJSON('./data/Users/Teacher/'+s+'/provas/'+token+"/prova.json")
             except Exception as e:
                 return redirect(url_for('index'))
             return render_template("verProva.html", messages= p)
     return redirect(url_for('login'))
 
 #Terminar prova
+#ok
 @app.route("/terminar/<token>",methods=['GET']) 
 def terminarProva(token):
     cookie = request.cookies.get('SessionID')
@@ -50,12 +55,13 @@ def terminarProva(token):
                 return redirect(url_for('login'))
             #Deve verificar se a pessoa esta logada e tudo mais
             try:
-                stopp(token)
+                stopp(token,s)
             except Exception as e:
                 pass
             return redirect(url_for('index'))
     return redirect(url_for('login')) 
 #Retormar Prova
+#ok
 @app.route("/retomar/<token>",methods=['GET']) 
 def retomarProva(token):
     cookie = request.cookies.get('SessionID')
@@ -67,14 +73,15 @@ def retomarProva(token):
                 return redirect(url_for('login')) 
             #Deve verificar se a pessoa esta logada e tudo mais
             try:
-                iniciarTeste(token)
+                iniciarTeste(token,s)
             except Exception as e:
                 pass
             return redirect(url_for('index'))
     return redirect(url_for('login')) 
 
 #Baixar os Resultados Excel
-#Enviando ficheiros para a vitima
+#Enviando ficheiros
+#ok 
 @app.route('/download/<token>')
 def downloadFile(token):
     cookie = request.cookies.get('SessionID')
@@ -85,8 +92,8 @@ def downloadFile(token):
             if(validation.isAdmin(getUserByUserName(s))==False):
                 return redirect(url_for('login')) 
             try:
-                saveDataFrameExcel(str(token)+".xlsx",token)
-                return send_file("download/"+str(token)+".xlsx", as_attachment=True)
+                saveDataFrameExcel(str(token)+".xlsx",token,s)
+                return send_file('./data/Users/Teacher/'+s+'/download/'+str(token)+".xlsx", as_attachment=True)
             except Exception as e:
                 return redirect(url_for('index'))
     return redirect(url_for('login')) 
@@ -103,6 +110,7 @@ def login():
             sessionsSystem.removeSession(s)
     return render_template('login.html')
 #post Login
+#ok
 @app.route("/autenticar",methods=['GET','POST']) 
 def autenticar():
     if(request.method=='GET'):
@@ -122,7 +130,7 @@ def autenticar():
             #cria uma nova sessao
             cookie = str(request.form.get("username").__hash__())+str(random.random())
             sessionsSystem.addSession(request.form.get("username"),cookie)
-            provasConf = getAllDadosProva()
+            provasConf = getAllDadosProva(request.form.get("username"))
             resposta = make_response(render_template("dashboardAdmin.html",provas = provasConf))
             resposta.set_cookie("SessionID",cookie)
             return resposta
@@ -139,10 +147,11 @@ def users():
             if(validation.isAdmin(getUserByUserName(s))==False):
                 return redirect(url_for('login')) 
             #Deve verificar se a pessoa esta logada e tudo mais
-            allUsers =  json_Save.getJSON('data/users.json')
+            allUsers =  json_Save.getJSON('./data/Users/Teacher/'+s+'/alunos/users.json')
             atributs = ["userName","fullname","turma","classe","Verificado"]
             return render_template("users.html",allusers =  allUsers, atributs=atributs)
-    return redirect(url_for('login')) 
+    return redirect(url_for('login'))
+#ok 
 @app.route("/users/verify/<username>",methods=['GET']) 
 def verificar(username):
     #Deve verificar se a pessoa esta logada e tudo mais
@@ -156,12 +165,13 @@ def verificar(username):
             if(validation.isAdmin(getUserByUserName(s))==False):
                 return redirect(url_for('login'))
             try:
-                validateUserToAluno(username,estudantNumberRandom())
+                validateUserToAluno(username,estudantNumberRandom(s),s)
             except Exception as e:
                 return redirect(url_for('users'))
             return redirect(url_for('users'))
     return redirect(url_for('login')) 
 #Studentes
+#ok
 @app.route("/students",methods=['GET']) 
 def students():
     cookie = request.cookies.get('SessionID')
@@ -172,11 +182,12 @@ def students():
             if(validation.isAdmin(getUserByUserName(s))==False):
                 return redirect(url_for('login'))
             #Deve verificar se a pessoa esta logada e tudo mais
-            allUsers =  json_Save.getJSON('data/alunos.json')
+            allUsers =  json_Save.getJSON('./data/Users/Teacher/'+s+'/alunos/alunos.json')
             atributs = ["numeroEst","userName","fullname","turma","classe","Activo"]
-            return render_template("students.html",allusers =  allUsers, atributs=atributs, uActive = sessionsSystem.getActiveSessionsUsers())
+            return render_template("students.html",allusers =  allUsers, atributs=atributs)
     return redirect(url_for('login'))
 #criacao e manipulacao de provas
+#sem alteracoes
 @app.route("/prova",methods=['GET']) 
 def prova():
     cookie = request.cookies.get('SessionID')
@@ -189,6 +200,7 @@ def prova():
             #Deve verificar se a pessoa esta logada e tudo mais
             return render_template('createTest.html')
     return redirect(url_for('login'))
+#ok
 @app.route("/prova/create",methods=['GET','POST']) 
 def createTeste():
     if(request.method=='GET'):
@@ -220,7 +232,7 @@ def createTeste():
     for quest in range(maxquest):
         quest=quest+1
         per['id'] = quest
-        per['title'] = request.form.get('per'+str(quest))
+        per['title'] = request.form.get('per'+str(quest)).replace('"',"'")
         if(per['title'] == None):
                     #'e porque foi feita alguma alteracao nos parametros hiddenn e a pessoa aumentou entao cancela
             return redirect(url_for('prova'))
@@ -229,11 +241,11 @@ def createTeste():
         for op in range(maxper):
             op=op+1
             opcao["id"] = op
-            opcao["ques"]=request.form.get('per'+str(quest)+'_'+str(op))
+            opcao["ques"]=request.form.get('per'+str(quest)+'_'+str(op)).replace('"',"'")
             questions.append(opcao)
             opcao = dict()
         per["questions"] =  questions
-        print(per["questions"])
+        #print(per["questions"])
         try:
             per["cotacao"] = int(request.form.get('cota'+str(quest)))
             per["correcta"] = int(request.form.get('per'+str(quest)+'_corr'))
@@ -244,7 +256,7 @@ def createTeste():
         newtest.append(per)
         per=dict()
             #gera um novo token
-    t = tokenNumberRandom('data/tokenList.json')
+    t = str(tokenNumberRandom('data/Users/Teacher/'+s+'/provas/tokenList.json', acres=getTokenTeacher(s)))
             #Criacao do ficheiro de configuracao
     dadosProva = dict()
     dadosProva["token"] = t
@@ -257,19 +269,20 @@ def createTeste():
     dadosProva['user_requis']=user_requis
                     
             #cria um pasta em 'provas' com o nome daquele token
-    os.makedirs('./provas/'+str(t))
-    json_Save.saveJSON('./provas/'+str(t)+"/prova.json",newtest)
+    os.makedirs('./data/Users/Teacher/'+s+'/provas/'+str(t))
+    #time.sleep(2)
+    json_Save.saveJSON('./data/Users/Teacher/'+s+"/provas/"+str(t)+"/prova.json",newtest)
             
             #cria o ficheiro de configuracao
-    json_Save.saveJSON('./provas/'+str(t)+"/dadosProva.json",dadosProva)
+    json_Save.saveJSON('./data/Users/Teacher/'+s+'/provas/'+str(t)+"/dadosProva.json",dadosProva)
             #salva o token
-    json_Save.saveJSON('./provas/'+str(t)+"/notas.json",list())
-    saveToken(t)
+    json_Save.saveJSON('./data/Users/Teacher/'+s+'/provas/'+str(t)+"/notas.json",list())
+    saveToken(t,s)
                   
     return redirect(url_for('index'))
     
              
-
+#sem alteracoes
 @app.route("/prova/editor",methods=['GET','POST']) 
 def createEditor():
     cookie = request.cookies.get('SessionID')

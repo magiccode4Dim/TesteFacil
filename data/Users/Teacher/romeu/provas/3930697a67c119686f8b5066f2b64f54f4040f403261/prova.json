@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "title": "Quem 'e Zanny",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Pintor"
+            },
+            {
+                "id": 2,
+                "ques": "Escultor"
+            }
+        ],
+        "cotacao": 5,
+        "correcta": 1
+    },
+    {
+        "id": 2,
+        "title": "Farmacia",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "121"
+            },
+            {
+                "id": 2,
+                "ques": "20"
+            }
+        ],
+        "cotacao": 5,
+        "correcta": 1
+    }
+]

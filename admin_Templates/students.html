@@ -16,11 +16,7 @@
                 <td>{{u["fullname"]}}</td>
                 <td>{{u["turma"]}}</td>
                 <td>{{u["classe"]}}</td>
-                {% if u["userName"] in  uActive  %}
-                    <td>SIM</td>
-                {% else %}
-                    <td>NÃO</td> 
-                {% endif %}
+                
             </tr>
         {% endfor %}
     </table>

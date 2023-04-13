@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "Quem foi Malangatana",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Pintor"
+            },
+            {
+                "id": 2,
+                "ques": "Escultor"
+            },
+            {
+                "id": 3,
+                "ques": "Filos\u00f3sofo"
+            }
+        ],
+        "cotacao": 5,
+        "correcta": 1
+    }
+]

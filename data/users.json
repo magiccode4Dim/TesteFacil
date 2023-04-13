@@ -8,5 +8,25 @@
         "isAproved": 0,
         "isAdmin": 1,
         "permissions": "CRUD"
+    },
+    {
+        "userName": "zany",
+        "fullname": "Narciso Cadeado",
+        "turma": "--",
+        "classe": "--",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "isAproved": 0,
+        "isAdmin": 1,
+        "permissions": "CRUD"
+    },
+    {
+        "userName": "romeu",
+        "fullname": "Narciso Cadeado",
+        "turma": "--",
+        "classe": "--",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "isAproved": 0,
+        "isAdmin": 1,
+        "permissions": "CRUD"
     }
 ]

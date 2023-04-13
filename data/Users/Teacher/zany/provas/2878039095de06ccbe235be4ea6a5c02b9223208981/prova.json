@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "title": "Zany 'Aviao'",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Pintor"
+            },
+            {
+                "id": 2,
+                "ques": "sim"
+            }
+        ],
+        "cotacao": 5,
+        "correcta": 2
+    }
+]

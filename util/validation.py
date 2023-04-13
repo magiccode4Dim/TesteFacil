@@ -1,4 +1,5 @@
 from .json_Save import *
+import hashlib
 
 #Verifica se o usuario 'e administrador
 def isAdmin(user):
@@ -19,6 +20,8 @@ def userNameExists(userName):
 #Verifica os dados do Login
 def verifyLoginData(user, pAss):
     users =  getJSON('data/users.json')
+    result = hashlib.md5(pAss.encode())
+    pAss = str(result.hexdigest())
     for u in users:
         if u['userName'] == user and u['password'] == pAss:
             return True
@@ -35,4 +38,11 @@ def verificaTeste(token):
     for x in testesCanselados:
         if(x['id']==token):
             return True
-    return False  
+    return False
+#---METODOS DA VERSAO 2
+
+def userNameIsAcept(userName):
+    if(' ' in userName or "/" in userName or '\\' in userName):
+        return False
+    else:
+        return True
