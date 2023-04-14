@@ -148,7 +148,7 @@ def users():
                 return redirect(url_for('login')) 
             #Deve verificar se a pessoa esta logada e tudo mais
             allUsers =  json_Save.getJSON('./data/Users/Teacher/'+s+'/alunos/users.json')
-            atributs = ["userName","fullname","turma","classe","Verificado"]
+            atributs = ["userName","fullname","email","turma","Verificado"]
             return render_template("users.html",allusers =  allUsers, atributs=atributs)
     return redirect(url_for('login'))
 #ok 
@@ -166,6 +166,10 @@ def verificar(username):
                 return redirect(url_for('login'))
             try:
                 validateUserToAluno(username,estudantNumberRandom(s),s)
+                dadosProvas = getAllDadosProva(s)
+                for d in dadosProvas:
+                    if(validation.alunoIsAutorized(s,username,d["token"])):
+                        makeTestAvailableForUser(s,d["token"],username)
             except Exception as e:
                 return redirect(url_for('users'))
             return redirect(url_for('users'))
@@ -183,7 +187,7 @@ def students():
                 return redirect(url_for('login'))
             #Deve verificar se a pessoa esta logada e tudo mais
             allUsers =  json_Save.getJSON('./data/Users/Teacher/'+s+'/alunos/alunos.json')
-            atributs = ["numeroEst","userName","fullname","turma","classe","Activo"]
+            atributs = ["numeroEst","userName","fullname","turma"]
             return render_template("students.html",allusers =  allUsers, atributs=atributs)
     return redirect(url_for('login'))
 #criacao e manipulacao de provas

@@ -109,9 +109,11 @@ def carregarProva(teacher,id):
                 return render_template("Error.html",erro = "Este teste Já terminou",emoji='gifs/calmdown.gif') 
             try:
                 dadosProva =  json_Save.getJSON('./data/Users/Teacher/'+teacher+'/provas/'+id+'/dadosProva.json')
+                dadosProva["teacher"]= teacher
                 messages = json_Save.getJSON('./data/Users/Teacher/'+teacher+'/provas/'+id+'/prova.json')
             except FileNotFoundError as e:
-                return render_template("Error.html",erro = "Documento não encontrado",emoji='gifs/triste.gif')  
+                return render_template("Error.html",erro = "Documento não encontrado",emoji='gifs/triste.gif')
+            user = getUserByUserName(s)  
             return render_template('index.html', messages=messages, dadosProva = dadosProva, tokenProva = id,user=user)
     return redirect(url_for('login'))
 
@@ -127,10 +129,12 @@ def onSubmit(teacher):
         if(s!=None):
             #verifica se o aluno foi autorizado a realizar a ver o teste
             try:
-                if(validation.alunoIsAutorized(teacher,s,id)==False):
+                if(validation.alunoIsAutorized(teacher,s,token)==False):
                     return render_template("Error.html",erro = "Sem autorização Para Submeter.",emoji='gifs/no.gif')
             except FileNotFoundError as e:
                 return render_template("Error.html",erro = "Sem autorização Para Submeter.",emoji='gifs/no.gif')
+            except Exception as e:
+                return render_template("Error.html",erro = "Erro na Submissao.",emoji='gifs/no.gif')
         else:
             return redirect(url_for('login'))
     else:
@@ -151,7 +155,7 @@ def onSubmit(teacher):
             x+=1
     #print(respostas)
     aL = getAlunoByUserName(s,teacher)
-    if(notaExists(aL["numeroEst"],aL["nome"],token)):
+    if(notaExists(aL["numeroEst"],aL["nome"],token,teacher)):
         return render_template("Error.html",erro = "Submissão Invalida! A Submissão já foi feita Pelo Utilizador",emoji='gifs/no3.gif')
     #Calcula e salva a nota
     nota = bussness.calcularNota(perguntas,respostas)

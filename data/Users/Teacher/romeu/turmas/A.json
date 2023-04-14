@@ -1,5 +1,10 @@
 {
     "nome": "A",
     "descricao": "Turma dos Testes",
-    "alunos": []
+    "alunos": [
+        "pax",
+        "@nanilsin",
+        "cheche",
+        "l@stuser"
+    ]
 }

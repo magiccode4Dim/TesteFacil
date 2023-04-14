@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Dados</h1>
-    <form action='/submeter' method='POST'>
+    <form action='/submit/{{dadosProva["teacher"]}}' method='POST'>
         <div class='message'>
             <p>Data:{{dadosProva['Data']}}</p>
             <p>Escola:{{dadosProva['Escola']}}</p>

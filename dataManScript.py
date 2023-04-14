@@ -11,7 +11,7 @@ import hashlib
 #=========================== METODOS DA VERSAO 1
 #Obtem os ficheiros de configuracao de todas as provas
 def getAllDadosProva(teacherUserName):
-    t = json_Save.getJSON('data/Users/Teacher/'+teacherUserName+'/provas/tokenList.json')
+    t = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/tokenList.json')
     confList = list()
     for x in t:
         try:
@@ -62,12 +62,13 @@ def tokenNumberRandom(file, lista =  None, acres = None):
 
 #Pega todas os ficheiros de configuracao das provas disponiveis para um usuario
 def getAvaliableTesteForUser(userName):
-    tokenList = json_Save.getJSON('data/tokenList.json')
+    availableforUser = json_Save.getJSON('./data/Users/SimpleUser/'+userName+"/availableTestes.json")
     available = list()
-    u = getUserByUserName(userName)
-    for t in tokenList:
-        if(validation.alunoIsAutorized(u,t)):
-            available.append(json_Save.getJSON('provas/'+str(t)+'/dadosProva.json'))
+    for t in availableforUser:
+        if(validation.alunoIsAutorized(t["teacherUserName"],userName,t["token"])):
+            av = json_Save.getJSON('./data/Users/Teacher/'+t["teacherUserName"]+'/provas/'+t["token"]+'/dadosProva.json')
+            av["teacher"] = t["teacherUserName"]
+            available.append(av)
     return available
             
 
@@ -102,18 +103,19 @@ def validateUserToAluno(userName, number,teacherUserName):
         alunos = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json')
     except FileNotFoundError as e:
         alunos = list()
-    user = getUserByUserName(userName)
+    user = getTeacherUserByUserName(userName,teacherUserName)
     newAluno = {
                 'numeroEst':number,
                 'nome':user["fullname"],
                 'turma':user["turma"],
-                'classe':user["classe"],
                 "userName": user["userName"]
             }
     #Adiciona o estudante a turma
     if addAlunoToTurma(user["userName"],teacherUserName,user["turma"]) != "ok":
         return "Nao foi possivel salvar porque a turma nao existe"
     alunos.append(newAluno)
+    #remove a request do aluno
+    removeRequest(user["userName"],user["turma"],teacherUserName)
     json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json',alunos)
     return "ok"  
     
@@ -124,6 +126,15 @@ def getUserByUserName(userName):
         if(u['userName']==userName):
             return u
     return None
+#obtem o usuario que adastrou-se para um professor
+def getTeacherUserByUserName(name,teacherUserName):
+    alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json')
+    for u in alunos:
+        if(u["userName"]==name):
+            return u
+    return None
+
+
 
 #obter aluno pelo user name
 def getAlunoByUserName(name,teacherUserName):
@@ -391,14 +402,15 @@ def getTokenTeacher(userName):
  
  #Deixa o teste diponivel para o utilizador
 def makeTestAvailableForUser(teacherUserName,tokenTest, userName):
-    availableforUser = json_Save.getJSON('./data/Users/Teacher/SimpleUser/'+userName+"/availableTestes.json")
-    availableforUser.append(
-        {
+    availableforUser = json_Save.getJSON('./data/Users/SimpleUser/'+userName+"/availableTestes.json")
+    ob =  {
             "token":tokenTest,
             "teacherUserName":teacherUserName  
         }
-    )
-    json_Save.saveJSON('./data/Users/Teacher/SimpleUser/'+userName+"/availableTestes.json",availableforUser)
+    if(ob in availableforUser):
+        return
+    availableforUser.append(ob)
+    json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/availableTestes.json",availableforUser)
  
  #pedir adesao a uma turma
 def incressarEmTurma(userName,teacherUserName, nomeTurma):
@@ -408,19 +420,30 @@ def incressarEmTurma(userName,teacherUserName, nomeTurma):
     if(user in users):
         return
     users.append(user)
-    json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json',user)
-    requestsIn = json_Save.getJSON('./data/Users/Teacher/SimpleUser/'+userName+"/requests.json")
+    json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json',users)
+    requestsIn = json_Save.getJSON('./data/Users/SimpleUser/'+userName+"/requests.json")
     requestsIn.append(
         {
           "teacherUserName":teacherUserName,
           "nomeTurma":nomeTurma 
         }
     )
-    json_Save.saveJSON('./data/Users/Teacher/SimpleUser/'+userName+"/requests.json")
+    json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/requests.json",requestsIn)
+#remove request, remove o pedido de adesao a turma
+def removeRequest(userName,turma,teacherUserName):
+    requestsIn = json_Save.getJSON('./data/Users/SimpleUser/'+userName+"/requests.json")
+    for p in requestsIn:
+        if(p["teacherUserName"]==teacherUserName and turma==p["nomeTurma"]):
+            requestsIn.remove(p)
+            break
+    json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/requests.json",requestsIn)
 if __name__ == "__main__":
     #print(createTeacher("afonso","a@gmail.com","2001","Afonso joao","8566647c1e953eeed3df6792c985e11090d53a"))
     #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")
-    #criarTurma("romeu","A","Turma dos Testes")
+    criarTurma("afonso","A zagaia","Povo no poder")
     #addAlunoToTurma("paxA","Nany","B1 12")
     #generateTokenTeacher(numbers=6)
-    incressarEmTurma("@nanilsin","romeu","A")
+    #incressarEmTurma("@nanilsin","romeu","A")
+    #print(validateUserToAluno("@nanilsin",3444,"romeu"))
+    #print(getAllDadosProva("romeu"))
+    #print(getAvaliableTesteForUser("pax"))

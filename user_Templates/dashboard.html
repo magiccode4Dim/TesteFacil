@@ -12,8 +12,8 @@
             <p>Professor:{{dadosProva['Professor']}}</p>
             <p>Prova de:{{dadosProva['Titulo']}}</p>
             Hora do Fim : <h2 id='fim' >{{dadosProva['fim']}}</h2>
-            <h2><a href="/{{dadosProva['token']}}"> VER PROVA</a></h2>
-            <h2><a href="/resultado/{{dadosProva['token']}}"> VER NOTA</a></h2>
+            <h2><a href="/load/{{dadosProva['teacher']}}/{{dadosProva['token']}}"> VER PROVA</a></h2>
+            <h2><a href="/resultado/{{dadosProva['teacher']}}/{{dadosProva['token']}}"> VER NOTA</a></h2>
         </div>
     {% endfor %}
 {% endblock %}
