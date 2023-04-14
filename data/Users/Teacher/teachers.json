@@ -13,5 +13,10 @@
         "userName": "romeu",
         "email": "r@gmail.com",
         "fullName": "Narciso Cadeado"
+    },
+    {
+        "userName": "afonso",
+        "email": "a@gmail.com",
+        "fullName": "Afonso joao"
     }
 ]

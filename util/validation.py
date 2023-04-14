@@ -26,23 +26,29 @@ def verifyLoginData(user, pAss):
         if u['userName'] == user and u['password'] == pAss:
             return True
     return False
-#Verifica se o user  esta autorizado a realizar a prova
-def alunoIsAutorized(aluno, token):
-    req = getJSON('provas/'+str(token)+'/dadosProva.json')["user_requis"]
-    if aluno["turma"] in req["turma"] and aluno["classe"] == req["classe"]:
-        return True
+#Verifica se o user  esta autorizado a realizar/ver a prova
+def alunoIsAutorized(teacherUserName, aluno, token):
+    #pega os dados da prova
+    req = getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/'+str(token)+'/dadosProva.json')["user_requis"]
+    #pega o conjunto de turmas em que aquela prova foi alocada
+    turmaProva = req["turma"].split(",")
+    for t in turmaProva:
+        #pega a turma e verifica se aquele nome de usuario consta
+        alunosTur = getJSON('./data/Users/Teacher/'+teacherUserName+'/turmas/'+t.replace(" ","_")+".json")["alunos"]
+        if( aluno in alunosTur):
+            return True
     return False
 #Verifica se o teste ainda esta disponivel ou nao    
-def verificaTeste(token):
-    testesCanselados = getJSON('data/canselados.json')
+def verificaTeste(token,teacherUserName):
+    testesCanselados = getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/canselados.json')
     for x in testesCanselados:
         if(x['id']==token):
             return True
     return False
 #---METODOS DA VERSAO 2
-
+#validacao do userName
 def userNameIsAcept(userName):
-    if(' ' in userName or "/" in userName or '\\' in userName):
+    if(' ' in userName or "/" in userName or '\\' in userName or "'" in userName or "`" in userName or '"' in userName ):
         return False
     else:
         return True

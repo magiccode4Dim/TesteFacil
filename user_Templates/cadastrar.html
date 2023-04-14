@@ -1,25 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <center>
-        <img src="{{url_for('static',filename='gifs/hello.gif')}}">
-    </center>
     <h1>{% block title %} Cadastro {% endblock %}</h1>
     <h2 style="color: Red;" >Atenção!! O USERNAME NÃO PODE CONTER ESPAÇOS, CASO TENHA CADASTRADO COM ESPAÇOS AO ESCREVER SUBSTITUA POR _ NO LUGAR DO ESPAÇO</h2>
     <form action='/cadastrar' method = 'POST'>
         <p>UserName : <input name='username' type='text'/></p>
+        <p>Email : <input name='email' type='text'/></p>
         <p>Nome Completo : <input name='fullname' type='text'/></p>
-        <p>Turma :<select name="turma">
-            {% for t in turmas  %}
-                <option value="{{t}}">{{t}}</option>
-            {% endfor %}
-        </select></p>
-        <!--<p>Turma : <input name='turma' type='text'/></p>-->
-        <p>Classe :<select name="classe">
-            {% for t in classes  %}
-                <option value="{{t}}">{{t}}</option>
-            {% endfor %}
-        </select></p>
         <!--<p>Classe/Ano : <input name='classe' type='text'/></p>-->
         <p>Senha : <input name='pass' type='password'/></p>
         <p>Repita a Senha : <input name='pass2' type='password'/></p>

@@ -19,12 +19,6 @@
     },
     {
         "userName": "--",
-        "token": "8566647c1e953eeed3df6792c985e11090d53a",
-        "type": "Normal",
-        "validade": "unlimited"
-    },
-    {
-        "userName": "--",
         "token": "931197dbf82fc4923a8a2a9a8e85049991f19",
         "type": "Normal",
         "validade": "unlimited"
@@ -56,6 +50,12 @@
     {
         "userName": "romeu",
         "token": "3930697a67c119686f8b5066f2b64f54f4040f",
+        "type": "Normal",
+        "validade": "unlimited"
+    },
+    {
+        "userName": "afonso",
+        "token": "8566647c1e953eeed3df6792c985e11090d53a",
         "type": "Normal",
         "validade": "unlimited"
     }

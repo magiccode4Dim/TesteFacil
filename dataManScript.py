@@ -21,8 +21,8 @@ def getAllDadosProva(teacherUserName):
     return confList
 
 #Obtem a nota do aluno pelo numero
-def getNotaAluno(numero,token):
-    notas = json_Save.getJSON('provas/'+token+"/notas.json")
+def getNotaAluno(numero,token,teacherUserName):
+    notas = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/'+token+"/notas.json")
     for n in notas:
         if(n["numero"]==numero):
             return n["Nota"]
@@ -126,8 +126,8 @@ def getUserByUserName(userName):
     return None
 
 #obter aluno pelo user name
-def getAlunoByUserName(name):
-    alunos =  json_Save.getJSON('data/alunos.json')
+def getAlunoByUserName(name,teacherUserName):
+    alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json')
     for u in alunos:
         if(u["userName"]==name):
             return u
@@ -147,8 +147,8 @@ def insertDadosProva(Data,Escola,Professor,Titulo,fim,requisitos, token):
     json_Save.saveJSON('provas/'+token+"/dadosProva.json")
 
 #Verifica se o teste ainda esta disponivel
-def testeDisponivel(token):
-    testesCanselados = json_Save.getJSON('data/canselados.json')
+def testeDisponivel(token,teacherUserName):
+    testesCanselados = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/canselados.json')
     for x in testesCanselados:
         if(x['id']==token):
             return False
@@ -196,9 +196,9 @@ def saveDataFrameExcel(fileName,token,teacherUserName):
     return True
 
 #Salva a nota no ficheiro de Notas
-def salvarNota(num,nomeEst,nota, token):
+def salvarNota(num,nomeEst,nota, token,teacherUserName):
     try:
-        notas = json_Save.getJSON('provas/'+token+"/notas.json")
+        notas = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/'+token+"/notas.json")
     except FileNotFoundError as e:
         notas = list()
     newTupla = {
@@ -207,10 +207,10 @@ def salvarNota(num,nomeEst,nota, token):
         'Nota':nota
     }
     notas.append(newTupla)
-    json_Save.saveJSON('provas/'+token+"/notas.json",notas)
+    json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/provas/'+token+"/notas.json",notas)
 #Verifica se a Nota ja existe
-def notaExists(num,nomeEst,token):
-    notas = json_Save.getJSON('provas/'+token+"/notas.json")
+def notaExists(num,nomeEst,token,teacherUserName):
+    notas = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/'+token+"/notas.json")
     for a in notas:
         if(a['numero']==num and a['nome']==nomeEst):
             return True
@@ -249,22 +249,28 @@ def inserirAlunos(turma = None,classe = None, numeroBool = False, n = 1, randonC
             break
     json_Save.saveJSON('data/alunos.json',alunos)  
 #create new user
-def createNewUser(userName,fullname,turma,classe,password, isAdmin = 0):
+def createNewUser(userName,fullname,password,email, isAdmin = 0):
     try:
         users = json_Save.getJSON('data/users.json')
     except FileNotFoundError as e:
         users = list()
+    result = hashlib.md5(password.encode())
     newUser = {
                 'userName':userName,
                 'fullname':fullname,
-                'turma':turma,
-                'classe':classe,
-                'password':password,
-                'isAproved':0
+                'password':str(result.hexdigest()),
+                'email':email
             }
     if(isAdmin==1):
         newUser["isAdmin"]=1
         newUser["permissions"]="CRUD"
+    else:
+        #Caso seja um usuario simples, ele vai criar uma pasta com nome do usuario
+        os.makedirs("./data/Users/SimpleUser/"+userName)
+        #cria tambem um arquivo com as provas disponiveis para aquele user
+        json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/availableTestes.json",list())
+        #ficheiro onde seram armazenados os pedidos de ingresso
+        json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/requests.json",list())
     users.append(newUser)
     json_Save.saveJSON('data/users.json',users)
 
@@ -337,13 +343,13 @@ def createTeacher(userName, email, senha, nome, token):
         return "Invalid Token"
     if validation.userNameExists(userName):
         return "UserName Alread Exist"
-    result = hashlib.md5(senha.encode())
+    
     teacher = {
             "userName":userName,
             "email":email,
             "fullName": nome 
         }
-    createNewUser(userName,nome,"--","--",str(result.hexdigest()),isAdmin=1)
+    createNewUser(userName,nome,senha,email,isAdmin=1)
     saveTeacher(teacher)
     os.makedirs("./data/Users/Teacher/"+userName+"/alunos")
     json_Save.saveJSON('./data/Users/Teacher/'+userName+'/alunos/users.json',list())
@@ -382,10 +388,39 @@ def getTokenTeacher(userName):
     for t in tokensTeacher:
         if(t["userName"]==userName):
             return t["token"]
-    
+ 
+ #Deixa o teste diponivel para o utilizador
+def makeTestAvailableForUser(teacherUserName,tokenTest, userName):
+    availableforUser = json_Save.getJSON('./data/Users/Teacher/SimpleUser/'+userName+"/availableTestes.json")
+    availableforUser.append(
+        {
+            "token":tokenTest,
+            "teacherUserName":teacherUserName  
+        }
+    )
+    json_Save.saveJSON('./data/Users/Teacher/SimpleUser/'+userName+"/availableTestes.json",availableforUser)
+ 
+ #pedir adesao a uma turma
+def incressarEmTurma(userName,teacherUserName, nomeTurma):
+    user =  getUserByUserName(userName)
+    user["turma"] = nomeTurma
+    users =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json')
+    if(user in users):
+        return
+    users.append(user)
+    json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json',user)
+    requestsIn = json_Save.getJSON('./data/Users/Teacher/SimpleUser/'+userName+"/requests.json")
+    requestsIn.append(
+        {
+          "teacherUserName":teacherUserName,
+          "nomeTurma":nomeTurma 
+        }
+    )
+    json_Save.saveJSON('./data/Users/Teacher/SimpleUser/'+userName+"/requests.json")
 if __name__ == "__main__":
-    print(createTeacher("romeu","r@gmail.com","2001","Narciso Cadeado","3930697a67c119686f8b5066f2b64f54f4040f"))
+    #print(createTeacher("afonso","a@gmail.com","2001","Afonso joao","8566647c1e953eeed3df6792c985e11090d53a"))
     #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")
-    #criarTurma("Nany","B1 12","Turma dos Malucos")
+    #criarTurma("romeu","A","Turma dos Testes")
     #addAlunoToTurma("paxA","Nany","B1 12")
     #generateTokenTeacher(numbers=6)
+    incressarEmTurma("@nanilsin","romeu","A")

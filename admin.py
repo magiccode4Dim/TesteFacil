@@ -1,7 +1,7 @@
 #PAINEL DE CONTROLE DE ADMINISTRADOR
 from flask import Flask,request,render_template, url_for, redirect, make_response,send_file
 from util import json_Save, bussness,validation,sessionsSystem
-from dataManScript import validateUserToAluno,estudantNumberRandom, tokenNumberRandom,saveToken,getAllDadosProva,stopp,saveDataFrameExcel,iniciarTeste,getUserByUserName,getTokenTeacher
+from dataManScript import validateUserToAluno,estudantNumberRandom, tokenNumberRandom,saveToken,getAllDadosProva,stopp,saveDataFrameExcel,iniciarTeste,getUserByUserName,getTokenTeacher, makeTestAvailableForUser
 import os
 import random
 import time
@@ -223,7 +223,6 @@ def createTeste():
                 #Isso so esta aqui em cima para aproveitar o try catch
         user_requis = dict()
         user_requis["turma"] = request.form.get('turma')
-        user_requis["classe"] = int(request.form.get('classe'))
     except Exception as e:
                 #se acontecer qualquer excessao na tentava de conversao
         return redirect(url_for('prova'))
@@ -234,14 +233,17 @@ def createTeste():
         per['id'] = quest
         per['title'] = request.form.get('per'+str(quest)).replace('"',"'")
         if(per['title'] == None):
+            per['title'] = "---------"
                     #'e porque foi feita alguma alteracao nos parametros hiddenn e a pessoa aumentou entao cancela
-            return redirect(url_for('prova'))
+            #return redirect(url_for('prova'))
         questions = list()
         opcao = dict()
         for op in range(maxper):
             op=op+1
             opcao["id"] = op
             opcao["ques"]=request.form.get('per'+str(quest)+'_'+str(op)).replace('"',"'")
+            if(opcao["ques"] == None):
+                opcao["ques"] = "---------"
             questions.append(opcao)
             opcao = dict()
         per["questions"] =  questions
@@ -270,6 +272,7 @@ def createTeste():
                     
             #cria um pasta em 'provas' com o nome daquele token
     os.makedirs('./data/Users/Teacher/'+s+'/provas/'+str(t))
+    os.makedirs('./data/Users/Teacher/'+s+'/provas/'+str(t)+'/resultadosAlunos')
     #time.sleep(2)
     json_Save.saveJSON('./data/Users/Teacher/'+s+"/provas/"+str(t)+"/prova.json",newtest)
             
@@ -278,6 +281,14 @@ def createTeste():
             #salva o token
     json_Save.saveJSON('./data/Users/Teacher/'+s+'/provas/'+str(t)+"/notas.json",list())
     saveToken(t,s)
+    
+    #Fazer com que o teste fique disponivel para os alunos autorizados de todas as turmas
+    tur = user_requis['turma'].split(",")
+    for tt in tur:
+        #pega os alunos dessa turma
+        alunosTur = json_Save.getJSON('./data/Users/Teacher/'+s+'/turmas/'+tt.replace(" ","_")+".json")["alunos"]
+        for a in alunosTur:
+            makeTestAvailableForUser(s,t,a)
                   
     return redirect(url_for('index'))
     

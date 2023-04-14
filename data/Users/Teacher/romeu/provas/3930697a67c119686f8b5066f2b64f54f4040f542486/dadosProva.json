@@ -6,7 +6,6 @@
     "Titulo": "Filosofia tes 1",
     "fim": "20:22:01 PM",
     "user_requis": {
-        "turma": "A",
-        "classe": 12
+        "turma": "A"
     }
 }

@@ -1,9 +1,5 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<center>
-    {% set a = emoji %}
-    <img src="{{url_for('static',filename=a)}}">
-</center>
     <h1>{% block title %} {{erro}} {% endblock %}</h1>
 {% endblock %}

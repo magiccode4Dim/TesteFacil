@@ -6,7 +6,6 @@
     "Titulo": "Teste Geral 1",
     "fim": "21:22:01 PM",
     "user_requis": {
-        "turma": "A",
-        "classe": 12
+        "turma": "A"
     }
 }
