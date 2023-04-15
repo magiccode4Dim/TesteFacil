@@ -1,7 +1,7 @@
 #PAINEL DE CONTROLE DE ADMINISTRADOR
 from flask import Flask,request,render_template, url_for, redirect, make_response,send_file
 from util import json_Save, bussness,validation,sessionsSystem
-from dataManScript import validateUserToAluno,estudantNumberRandom, tokenNumberRandom,saveToken,getAllDadosProva,stopp,saveDataFrameExcel,iniciarTeste,getUserByUserName,getTokenTeacher, makeTestAvailableForUser
+from dataManScript import validateUserToAluno,estudantNumberRandom, tokenNumberRandom,saveToken,getAllDadosProva,stopp,saveDataFrameExcel,iniciarTeste,getUserByUserName,getTokenTeacher, makeTestAvailableForUser,criarTurma
 import os
 import random
 import time
@@ -290,7 +290,11 @@ def createTeste():
     tur = user_requis['turma'].split(",")
     for tt in tur:
         #pega os alunos dessa turma
-        alunosTur = json_Save.getJSON('./data/Users/Teacher/'+s+'/turmas/'+tt.replace(" ","_")+".json")["alunos"]
+        try:
+            alunosTur = json_Save.getJSON('./data/Users/Teacher/'+s+'/turmas/'+tt.replace(" ","_")+".json")["alunos"]
+        except FileNotFoundError as e:
+            #Caso a Turma nao existir, ela sera criada automaticamente
+            criarTurma(s,tt,tt)
         for a in alunosTur:
             makeTestAvailableForUser(s,t,a)
                   

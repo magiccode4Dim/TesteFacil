@@ -52,3 +52,9 @@ def userNameIsAcept(userName):
         return False
     else:
         return True
+#Valida o Imput do utilizador
+def inputIsValid(inputtData):
+    if(len(inputtData)<100):
+        return True
+    else:
+        return False

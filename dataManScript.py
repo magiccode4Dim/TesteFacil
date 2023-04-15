@@ -168,6 +168,9 @@ def testeDisponivel(token,teacherUserName):
 
 #Para um determinadoi teste
 def stopp(token,teacherUserName):
+    #Verificar se o professor nao esta tentar cancelar um teste que nao 'e seu
+    if token not in json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/tokenList.json'):
+        return
     testesCanselados = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/canselados.json')
     can  = {'id':token}
     if can not in testesCanselados:
@@ -175,6 +178,9 @@ def stopp(token,teacherUserName):
         json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/provas/canselados.json',testesCanselados)
 #Retormar a realizacao do teste cancelado
 def iniciarTeste(token,teacherUserName):
+    #Verificar se o professor nao esta tentar iniciar um teste que nao 'e seu
+    if token not in json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/tokenList.json'):
+        return
     testesCanselados = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/canselados.json')
     for can in testesCanselados:
         if(can['id']==token):
@@ -438,9 +444,9 @@ def removeRequest(userName,turma,teacherUserName):
             break
     json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/requests.json",requestsIn)
 if __name__ == "__main__":
-    #print(createTeacher("afonso","a@gmail.com","2001","Afonso joao","8566647c1e953eeed3df6792c985e11090d53a"))
+    #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))
     #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")
-    criarTurma("afonso","A zagaia","Povo no poder")
+    criarTurma("pascoal","A4","Povo no poder")
     #addAlunoToTurma("paxA","Nany","B1 12")
     #generateTokenTeacher(numbers=6)
     #incressarEmTurma("@nanilsin","romeu","A")

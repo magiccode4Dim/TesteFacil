@@ -2,6 +2,7 @@ from flask import Flask,request,render_template, url_for, redirect, make_respons
 from util import json_Save, bussness,validation,sessionsSystem
 import os
 import random
+import secrets
 from dataManScript import salvarNota,createNewUser,getUserByUserName,getAlunoByUserName,notaExists,getAvaliableTesteForUser,testeDisponivel, getNotaAluno,incressarEmTurma
 app = Flask(__name__, template_folder="user_Templates")
 
@@ -34,6 +35,10 @@ def login():
 def autenticar():
     if(request.method=='GET'):
         return redirect(url_for('login'))
+    #caso a pessoa colocar um username invalido na autenticacao
+    a = request.form.get("username")
+    if not validation.userNameIsAcept(a) or not validation.inputIsValid(a):
+                  return render_template("Error.html",erro = "O UserName 'e Invalido")
     if(request.form.get("username") != None and request.form.get("pass") != None):
         if(validation.verifyLoginData(request.form.get("username"),request.form.get("pass"))):
             #Se for administrador cancela
@@ -47,7 +52,7 @@ def autenticar():
             #Apaga qualquer cookie anterior do utilizador se existir
             sessionsSystem.removeSession(request.form.get("username"))
             #cria uma nova sessao
-            cookie = str(request.form.get("username").__hash__())+str(random.random())
+            cookie = str(request.form.get("username").__hash__())+str(random.random())+str(secrets.token_hex(16))
             sessionsSystem.addSession(request.form.get("username"),cookie)
             #cria uma nova resposta
             availableTestes = getAvaliableTesteForUser(request.form.get("username"))
@@ -78,7 +83,7 @@ def cadastrar():
             return render_template("Error.html",erro = "O UserName Introduzido Já Existe, Tente Outro")
         else:
             a = request.form.get("username")
-            if not validation.userNameIsAcept(a):
+            if not validation.userNameIsAcept(a) or  not validation.inputIsValid(a):
                   return render_template("Error.html",erro = "O UserName 'e Invalido")
             #a=a[:len(a)-1]
             createNewUser(a,request.form.get("fullname"),request.form.get("pass2"),request.form.get("email"))
@@ -132,7 +137,7 @@ def onSubmit(teacher):
                 if(validation.alunoIsAutorized(teacher,s,token)==False):
                     return render_template("Error.html",erro = "Sem autorização Para Submeter.",emoji='gifs/no.gif')
             except FileNotFoundError as e:
-                return render_template("Error.html",erro = "Sem autorização Para Submeter.",emoji='gifs/no.gif')
+                return render_template("Error.html",erro = "Prova Nao Existe.",emoji='gifs/no.gif')
             except Exception as e:
                 return render_template("Error.html",erro = "Erro na Submissao.",emoji='gifs/no.gif')
         else:
@@ -185,11 +190,14 @@ def verResultado(teacher,token):
                 return redirect(url_for('error404'))
             except TypeError as e:
                 return redirect(url_for('error404'))
+            except Exception as e:
+                return render_template("Error.html",erro = "Erro ao ver A nota",emoji='gifs/no3.gif')
             if(testeDisponivel(token,teacher)):
                 return render_template("result.html", resultado="Nota Estará Disponivel Assim que o Teste Terminar",aL=aL,emoji='gifs/calmdown.gif')
             return render_template("result.html", resultado=nota,aL=aL,emoji='gifs/congrats.gif')
     else:
         return redirect(url_for('login'))
+    return redirect(url_for('login'))
 
 #Fazer pedido para engrassar na turma de um docente
 @app.route("/engressar/<teacher>/<turma>",methods=['GET']) 
@@ -201,7 +209,7 @@ def engressar(teacher,turma):
             try:
                 incressarEmTurma(s,teacher,turma)
             except Exception as e:
-                pass
+                return render_template("Error.html",erro = "Ocorreu um erro ao tentar ingressar nesta Turma",emoji='gifs/no3.gif')
             return redirect(url_for('index'))
     return redirect(url_for('login'))
     
