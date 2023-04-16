@@ -89,6 +89,24 @@ def createAccont():
                 #SE A PESSOA NAO 'E ADMINISTRADORA, O COOKIE DE SESSAO 'E REMOVIDO
                 sessionsSystem.removeSession(s)
     return render_template('cadastrar.html')
+#Escolher que tipo de conta se pretende criar
+#GENERAL
+@app.route("/choosecounttype",methods=['GET','POST']) 
+def countType():
+    if(request.method=='GET'):
+        return render_template("chooseTypeCount.html")
+    elif (request.method=='POST'):
+        option = request.form.get('options')
+        #print(option)
+        if(option==None):
+             return render_template("chooseTypeCount.html")
+        else:
+            if option == "teacher":
+                pass
+            elif option == "student":
+                pass
+    return redirect(url_for('login'))
+
 #ENVIAR OS DADOS VIA POST PARA O CADASTRO
 #GENERAL
 @app.route("/cadastrar",methods=['GET','POST']) 
