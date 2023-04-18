@@ -31,21 +31,23 @@
 		/>
 		
 		<!-- Google Font -->
-		
+		<!--
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
 			rel="stylesheet"
-		/>
+		/>-->
 		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/core.css')}}" />
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="vendors/styles/icon-font.min.css"
+			href="{{url_for('static',filename='styles/icon-font.min.css')}}"
 		/>
 		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/style.css')}}" />
-
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/dropways.css')}}" />
+		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<!--
 		<script
 			async
 			src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"
@@ -58,8 +60,9 @@
 			gtag("js", new Date());
 
 			gtag("config", "G-GBZ3SGGX85");
-		</script>
+		</script> -->
 		<!-- Google Tag Manager -->
+		<!--
 		<script>
 			(function (w, d, s, l, i) {
 				w[l] = w[l] || [];
@@ -71,7 +74,7 @@
 				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
 				f.parentNode.insertBefore(j, f);
 			})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
-		</script>
+		</script> -->
 		<!-- End Google Tag Manager -->
 	</head>
 	<body class="login-page">
@@ -81,7 +84,7 @@
 			>
 				<!--Mudar a Logo-->
 				<div class="brand-logo">
-					<a href="login.html">
+					<a href="/">
 						<img src="{{url_for('static',filename='images/logo.png')}}" alt="" />
 					</a>
 				</div>

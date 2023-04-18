@@ -54,5 +54,19 @@
         "email": "p@gmail.com",
         "isAdmin": 1,
         "permissions": "CRUD"
+    },
+    {
+        "userName": "bubu",
+        "fullname": "Booststrape Pai",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "bubu@gmail.com",
+        "isAdmin": 1,
+        "permissions": "CRUD"
+    },
+    {
+        "userName": "bubufilho",
+        "fullname": "Booststrape filho",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "bubufilho@gmail.com"
     }
 ]

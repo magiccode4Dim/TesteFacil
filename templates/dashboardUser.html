@@ -1,19 +1,40 @@
-{% extends 'base.html' %}
+{% extends 'baseDashBoardUser.html' %}
 
 {% block content %}
-<center>
-    <h1>{% block title %} Olá {{user}}🤪👋, desejo um bom trabalho no teste/prova! {% endblock %}</h1>
-    <img src="{{url_for('static',filename='gifs/hello2.gif')}}">
-</center>
-    <h2>Provas Disponiveis</h2>
-    {% for dadosProva in da %}
-        <div class='message'>
-            <p>Data:{{dadosProva['Data']}}</p>
-            <p>Professor:{{dadosProva['Professor']}}</p>
-            <p>Prova de:{{dadosProva['Titulo']}}</p>
-            Hora do Fim : <h2 id='fim' >{{dadosProva['fim']}}</h2>
-            <h2><a href="/load/{{dadosProva['teacher']}}/{{dadosProva['token']}}"> VER PROVA</a></h2>
-            <h2><a href="/resultado/{{dadosProva['teacher']}}/{{dadosProva['token']}}"> VER NOTA</a></h2>
+    <h1> Olá {% block title %} {{user}} {% endblock %} ! </h1>
+        <div class="min-height-200px">
+            <div class="row clearfix">
+            <div class="row clearfix">
+                {% for dadosProva in da %}    
+                    <div class="col-sm-12 col-md-4 mb-30">
+                        <div class="card card-box">
+                            <h5 class="card-header weight-500">{{dadosProva['Professor']}} - {{dadosProva['teacher']}} </h5>
+                            <div class="card-body">
+                                <h5 class="card-title">{{dadosProva['Titulo']}}</h5>
+                                <p class="card-text">
+                                    {{dadosProva["descri"]}}
+                                </p>
+                                {% if dadosProva["nota"] > 0 %}
+                                    <p class="card-text">
+                                        Teste Feito No Dia :  {{dadosProva['Data']}}
+                                    </p>
+                                    <a href="/resultado/{{dadosProva['teacher']}}/{{dadosProva['token']}}"class="btn btn-primary">Ver Correção</a>
+                                {% else %}
+                                    <p class="card-text">
+                                        Teste Marcado para :  {{dadosProva['Data']}}
+                                    </p>
+                                    <a href="/load/{{dadosProva['teacher']}}/{{dadosProva['token']}}" class="btn btn-primary">Ver Teste</a>
+                                {% endif %}
+                            </div>
+                            {% if  dadosProva["nota"] < 0  %}
+                                <div class="card-footer text-muted">Nota Final Indisponivel até ao Fim do teste.</div>
+                            {% else%}
+                                <div class="card-footer text-muted">Nota Final :  {{dadosProva["nota"]}} Valores.</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
         </div>
-    {% endfor %}
 {% endblock %}

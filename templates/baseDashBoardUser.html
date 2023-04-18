@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Basic Page Info -->
+		<meta charset="utf-8" />
+		<title>{% block title %} {% endblock %} - TesteFácil</title>
+
+		<!-- Site favicon -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="{{url_for('static',filename='images/apple-touch-icon.png')}}"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="{{url_for('static',filename='images/icon32.png')}}"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="{{url_for('static',filename='images/icon16.png')}}"
+		/>
+
+		<!-- Mobile Specific Metas -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1"
+		/>
+
+		<!-- Google Font -->
+		<!--
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>-->
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/core.css')}}" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{url_for('static',filename='styles/icon-font.min.css')}}"
+		/>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/style.css')}}" />
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/bootstrap-icons.css')}}" />
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/font-awesome.css')}}" />
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/dropways.css')}}" />
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/ionicons.css')}}" />
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<!--<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-GBZ3SGGX85");
+		</script>-->
+		<!-- Google Tag Manager -->
+        <!--
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != "dataLayer" ? "&l=" + l : "";
+				j.async = true;
+				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
+		</script>-->
+		<!-- End Google Tag Manager -->
+	</head>
+	<body>
+        <!--Barra de Progresso-->
+		<div class="pre-loader">
+			<div class="pre-loader-box">
+				<div class="loader-logo">
+					<img src="{{url_for('static',filename='images/logo.png')}}" alt="" />
+				</div>
+				<div class="loader-progress" id="progress_div">
+					<div class="bar" id="bar1"></div>
+				</div>
+				<div class="percent" id="percent1">0%</div>
+				<!--<div class="loading-text">Loading...</div>-->
+				<div class="loading-text">Power By @magiccode_mz</div>
+			</div>
+		</div>
+		<!--Barra de Progresso end-->
+		<div class="header">
+			<div class="header-left">
+				<div class="menu-icon bi bi-list"></div>
+				<div
+					class="search-toggle-icon bi bi-search"
+					data-toggle="header_search"
+				></div>
+				<div class="header-search">
+					<form action="/search" method="POST">
+						<div class="form-group mb-0">
+							<i class="dw dw-search2 search-icon"></i>
+							<input
+								type="text"
+								class="form-control search-input"
+								placeholder="Pesquisar"
+                                name="keytosearch"
+							/>
+							<div class="dropdown">
+								<a
+									class="dropdown-toggle no-arrow"
+									href="#"
+									role="button"
+									data-toggle="dropdown"
+								>
+									<i class="ion-arrow-down-c"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<div class="form-group row">
+										<label class="col-sm-12 col-md-2 col-form-label"
+											>Nome da Turma</label
+										>
+										<div class="col-sm-12 col-md-10">
+											<input name="searchTurma"
+												class="form-control form-control-sm form-control-line"
+												type="text"
+											/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-12 col-md-2 col-form-label">Nome do Professor</label>
+										<div class="col-sm-12 col-md-10">
+											<input
+												class="form-control form-control-sm form-control-line"
+												type="text" name="searchTeacher"
+											/>
+										</div>
+									</div>
+									<div class="text-right">
+										<button class="btn btn-primary">Pesquisar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="header-right">
+				<div class="user-info-dropdown">
+					<div class="dropdown">
+						<a
+							class="dropdown-toggle"
+							href="#"
+							role="button"
+							data-toggle="dropdown"
+						>
+							<span class="user-icon">
+								<img src="{{url_for('static',filename='images/magiccodeicon.png')}}" alt="" />
+							</span>
+							<span class="user-name">{{user}} </span>
+						</a>
+						<div
+							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+						>
+							<a class="dropdown-item" href="/profile/{{user}}"
+								><i class="dw dw-user1"></i> Perfil</a
+							>
+							<!--<a class="dropdown-item" href="profile.html"
+								><i class="dw dw-settings2"></i> Setting</a
+							>-->
+							<a class="dropdown-item" href="/help"
+								><i class="dw dw-help"></i> Ajuda</a
+							>
+							<a class="dropdown-item" href="/login"
+								><i class="dw dw-logout"></i> Sair</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="left-side-bar">
+			<div class="brand-logo">
+				<a href="/">
+					<img src="{{url_for('static',filename='images/logo.png')}}" alt="" class="dark-logo" />
+					<img
+						src="{{url_for('static',filename='images/testeFacilwith.png')}}"
+						alt=""
+						class="light-logo"
+					/>
+				</a>
+				<div class="close-sidebar" data-toggle="left-sidebar-close">
+					<i class="ion-close-round"></i>
+				</div>
+			</div>
+			<div class="menu-block customscroll">
+				<div class="sidebar-menu">
+					<ul id="accordion-menu">
+						<li>
+							<a href="/" class="dropdown-toggle no-arrow">
+								<span class="micon bi bi-house"></span
+                                    ><span class="mtext">Inicio</span>
+							</a>
+						</li>
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle">
+								<span class="micon bi bi-archive"></span
+								><span class="mtext">Minhas Turmas</span>
+							</a>
+							<ul class="submenu">
+								{% for tu in turmas  %}
+									<li><a href="/turma/{{tu['teacher']}}/{{tu['turma']}}">{{tu['turma']}} - {{tu['teacher']}} </a></li>
+								{% endfor %}
+                            </ul>
+						</li>
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle">
+								<span class="micon bi bi-people-fill"></span
+								><span class="mtext">Meus Professores</span>
+							</a>
+							<ul class="submenu">
+								{% for tu in turmas  %}
+									<li><a href="/profile/{{tu['teacher']}}">{{tu['teacher']}}</a></li>
+								{% endfor %}
+							</ul>
+						</li>
+                        <li>
+							<a href="/desempenho" class="dropdown-toggle no-arrow">
+								<span class="micon bi bi-pie-chart"></span
+                                    ><span class="mtext">Meu Desempenho</span>
+							</a>
+						</li>
+						<li>
+							<a href="/faleconnosco" class="dropdown-toggle no-arrow">
+								<span class="micon  bi  bi-envelope-open-heart"></span
+                                    ><span class="mtext">Fale Connosco</span>
+							</a>
+						</li>
+                        <li>
+							<a href="/about" class="dropdown-toggle no-arrow">
+								<span class="micon  bi bi-info-circle-fill"></span
+                                    ><span class="mtext">Sobre O Sistema</span>
+							</a>
+						</li>
+                        <li>
+							<a href="/login" class="dropdown-toggle no-arrow">
+								<span class="micon  dw dw-logout"></span
+                                    ><span class="mtext">Sair</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="mobile-menu-overlay"></div>
+
+		<div class="main-container">
+			<div class="pd-ltr-20 xs-pd-20-10">
+                {% block content %} {% endblock %}
+				<div class="footer-wrap pd-20 mb-20 card-box">
+					Template desenvolvido por
+					<a href="https://github.com/dropways" target="_blank"
+						>Ankit Hingarajiya</a
+					> e, adaptado por <a href="https://github.com/magiccode4Dim" target="_blank"
+                    >Magic Code Moz</a
+                >
+				</div>
+			</div>
+		</div>
+		<!-- js -->
+		<script src="{{url_for('static',filename='scripts/core.js')}}"></script>
+		<script src="{{url_for('static',filename='scripts/script.min.js')}}"></script>
+		<script src="{{url_for('static',filename='scripts/process.js')}}"></script>
+		<script src="{{url_for('static',filename='scripts/layout-settings.js')}}"></script>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript
+			><iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS"
+				height="0"
+				width="0"
+				style="display: none; visibility: hidden"
+			></iframe
+		></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+	</body>
+</html>

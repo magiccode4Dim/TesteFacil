@@ -26,10 +26,12 @@ def index():
             if(validation.isAdmin(getUserByUserName(s))==False):
                 #Pega os dados do usuario e lhe lanca para a DashBoard
                 availableTestes = getAvaliableTesteForUser(s)
+                turmas  = getAlTurmas(s,availableTestes)
                 if(len(availableTestes)==0):
-                    return render_template('dashboardUser.html',user=s)
+                    return render_template('dashboardUser.html',user=s, turmas = turmas)
                 else:
-                    return render_template('dashboardUser.html',da=availableTestes,user=s)
+                    #vai pegar todas as notas do aluno com base em dados do teste
+                    return render_template('dashboardUser.html',da=availableTestes,user=s , turmas = turmas)
             provasConf = getAllDadosProva(s)
             return render_template("dashboardAdmin.html", provas = provasConf)
     return redirect(url_for('login'))
@@ -65,10 +67,11 @@ def autenticar():
                 #se a pessoa nao for administradora
                 #cria uma nova resposta
                 availableTestes = getAvaliableTesteForUser(request.form.get("username"))
+                turmas  = getAlTurmas(request.form.get("username"),availableTestes)
                 if(len(availableTestes)==0):
-                    resposta = make_response(render_template('dashboardUser.html',user=request.form.get("username")))
+                    resposta = make_response(render_template('dashboardUser.html',user=request.form.get("username"), turmas = turmas))
                 else:
-                    resposta = make_response(render_template('dashboardUser.html',da=availableTestes,user=request.form.get("username")))
+                    resposta = make_response(render_template('dashboardUser.html',da=availableTestes,user=request.form.get("username"), turmas = turmas))
             else:
                 #se a pessoa for administradora
                 provasConf = getAllDadosProva(request.form.get("username"))
@@ -88,7 +91,7 @@ def createAccont():
             if(validation.isAdmin(getUserByUserName(s))==False):
                 #SE A PESSOA NAO 'E ADMINISTRADORA, O COOKIE DE SESSAO 'E REMOVIDO
                 sessionsSystem.removeSession(s)
-    return render_template('cadastrar.html')
+    return render_template('register.html',accountType="student")
 #Escolher que tipo de conta se pretende criar
 #GENERAL
 @app.route("/choosecounttype",methods=['GET','POST']) 
@@ -102,9 +105,9 @@ def countType():
              return render_template("chooseTypeCount.html")
         else:
             if option == "teacher":
-                pass
+                return render_template('register.html',accountType="teacher")
             elif option == "student":
-                pass
+                return render_template('register.html',accountType="student")
     return redirect(url_for('login'))
 
 #ENVIAR OS DADOS VIA POST PARA O CADASTRO
@@ -121,7 +124,15 @@ def cadastrar():
             if not validation.userNameIsAcept(a) or  not validation.inputIsValid(a):
                   return render_template("Error.html",erro = "O UserName 'e Invalido")
             #a=a[:len(a)-1]
+            #caso for um admin sendo criado
+            if(request.form.get('token') != None):
+                res = createTeacher(a,request.form.get("email"),request.form.get("pass2"),request.form.get("fullname"),request.form.get('token'), request.form.get("descr") )
+                if(res=="Sucess"):
+                    return render_template("Error.html",erro = "Criado Com Sucesso")
+                else:
+                    return render_template("Error.html",erro = res)
             createNewUser(a,request.form.get("fullname"),request.form.get("pass2"),request.form.get("email"))
+           
             return redirect(url_for('login')) 
     else:
         return render_template("Error.html",erro = "Algum Dado esta Incorrecto, Verifique e Tente Novamente",emoji='triste.gif')
@@ -338,6 +349,11 @@ def createTeste():
                     return redirect(url_for('prova'))
     dadosProva['user_requis']=user_requis
                     
+    #guarda a descricao  do teste
+    if(request.form.get('descri')!=None):
+        dadosProva["descri"]=request.form.get('descri').replace('"',"'")
+    else:
+        dadosProva["descri"] = "---"
             #cria um pasta em 'provas' com o nome daquele token
     os.makedirs('./data/Users/Teacher/'+s+'/provas/'+str(t))
     os.makedirs('./data/Users/Teacher/'+s+'/provas/'+str(t)+'/resultadosAlunos')
@@ -523,7 +539,34 @@ def sobre():
 #USER
 @app.route("/error_404",methods=['GET']) 
 def error404():
-    return render_template('404.html')        
+    return render_template('404.html')
+
+# Pesquisa alguma coisa no Painel de user        
+@app.route("/search",methods=['GET','POST']) 
+def search():
+    return "Results to search"
+
+#ver perfil de uma certa pessoa
+@app.route("/profile/<username>",methods=['GET']) 
+def perfil(username):
+    return "Results to search"
+#ver perfil de uma certa pessoa
+@app.route("/turma/<teacher>/<turma>",methods=['GET']) 
+def verturma(teacher,turma):
+    return "Results to search"
+#ajuda
+@app.route("/help",methods=['GET']) 
+def helpPage():
+    return "Pagina de Ajuda"
+@app.route("/desempenho",methods=['GET']) 
+def desempenhoDoEstudante():
+    return "retorna o desempenho do estudante"
+@app.route("/faleconnosco",methods=['GET']) 
+def talktous():
+    return "fala cmigo"
+
+
+
 
 if __name__== "__main__":
     app.run(host="0.0.0.0",port=80,debug=True)

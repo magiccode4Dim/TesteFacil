@@ -68,6 +68,15 @@ def getAvaliableTesteForUser(userName):
         if(validation.alunoIsAutorized(t["teacherUserName"],userName,t["token"])):
             av = json_Save.getJSON('./data/Users/Teacher/'+t["teacherUserName"]+'/provas/'+t["token"]+'/dadosProva.json')
             av["teacher"] = t["teacherUserName"]
+            aluno = getAlunoByUserName(userName,av["teacher"])
+            nota = getNotaAluno(aluno["numeroEst"],t["token"],av["teacher"])
+            #pega tambem a nota do teste se ela existir
+            if (testeDisponivel(t["token"],av["teacher"])):
+                av["nota"] = -2    
+            elif(nota!=None):
+                av["nota"] = nota
+            else:
+                av["nota"] = -1
             available.append(av)
     return available
             
@@ -355,7 +364,7 @@ def updateToken(userName,newToken):
             json_Save.saveJSON('./data/Users/Teacher/tokensTeacher.json',tokensTeacher)
             break
 #Cria uma nova conta Teacher
-def createTeacher(userName, email, senha, nome, token):
+def createTeacher(userName, email, senha, nome, token, descri):
     if tokenTeacherIsValid(token) == False:
         return "Invalid Token"
     if validation.userNameExists(userName):
@@ -364,7 +373,8 @@ def createTeacher(userName, email, senha, nome, token):
     teacher = {
             "userName":userName,
             "email":email,
-            "fullName": nome 
+            "fullName": nome,
+            "bio":descri 
         }
     createNewUser(userName,nome,senha,email,isAdmin=1)
     saveTeacher(teacher)
@@ -443,6 +453,21 @@ def removeRequest(userName,turma,teacherUserName):
             requestsIn.remove(p)
             break
     json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/requests.json",requestsIn)
+    
+#retorna todas as turmas em que o utilizador esta
+def getAlTurmas(userName, dadosProva):
+    turn =  list()
+    for d in dadosProva:
+        #pega o utilizador como estudante daquela turma
+        es =  getAlunoByUserName(userName,d["teacher"])
+        t = {
+            "turma":es["turma"],
+            "teacher":d["teacher"]
+            }
+        if t not in turn:
+            turn.append(t)
+    return turn
+        
 if __name__ == "__main__":
     #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))
     #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")

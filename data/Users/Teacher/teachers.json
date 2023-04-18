@@ -2,26 +2,37 @@
     {
         "userName": "Nany",
         "email": "na@gmail.com",
-        "fullName": "Narciso Cadeado"
+        "fullName": "Narciso Cadeado",
+        "bio":""
     },
     {
         "userName": "zany",
         "email": "na@gmail.com",
-        "fullName": "Narciso Cadeado"
+        "fullName": "Narciso Cadeado",
+        "bio":""
     },
     {
         "userName": "romeu",
         "email": "r@gmail.com",
-        "fullName": "Narciso Cadeado"
+        "fullName": "Narciso Cadeado",
+        "bio":""
     },
     {
         "userName": "afonso",
         "email": "a@gmail.com",
-        "fullName": "Afonso joao"
+        "fullName": "Afonso joao",
+        "bio":""
     },
     {
         "userName": "pascoal",
         "email": "p@gmail.com",
-        "fullName": "NanyNilson"
+        "fullName": "NanyNilson",
+        "bio":""
+    },
+    {
+        "userName": "bubu",
+        "email": "bubu@gmail.com",
+        "fullName": "Booststrape Pai",
+        "bio": "Eu sou o Pai do bootstrapFilho sou professor de matematica e gosto muito de avioes"
     }
 ]
