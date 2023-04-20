@@ -1,11 +1,5 @@
 [
     {
-        "numeroEst": 177388,
-        "nome": "pax pax",
-        "turma": "A",
-        "userName": "pax"
-    },
-    {
         "numeroEst": 306662,
         "nome": "shelton vintano",
         "turma": "A",
@@ -22,5 +16,17 @@
         "nome": "last last",
         "turma": "A",
         "userName": "l@stuser"
+    },
+    {
+        "numeroEst": 149969,
+        "nome": "pax pax",
+        "turma": "A",
+        "userName": "pax"
+    },
+    {
+        "numeroEst": 442846,
+        "nome": "Booststrape filho",
+        "turma": "A",
+        "userName": "bubufilho"
     }
 ]

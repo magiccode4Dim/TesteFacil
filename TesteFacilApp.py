@@ -527,7 +527,7 @@ def engressar(teacher,turma):
                 incressarEmTurma(s,teacher,turma)
             except Exception as e:
                 return render_template("Error.html",erro = "Ocorreu um erro ao tentar ingressar nesta Turma",emoji='gifs/no3.gif')
-            return redirect(url_for('index'))
+            return redirect('/turma/'+teacher+'/'+turma)
     return redirect(url_for('login'))
  #ABOUT
  #USER
@@ -549,11 +549,92 @@ def search():
 #ver perfil de uma certa pessoa
 @app.route("/profile/<username>",methods=['GET']) 
 def perfil(username):
-    return "Results to search"
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            # A pessoa só pode ver um perfil se for o seu o se ele for um administrador
+            #if(validation.isAdmin(getUserByUserName(s)) or s==username):
+                uu = getUserByUserName(s)
+                if(s==username and validation.isAdmin(uu)):
+                    user= getTeacherByUserName(s)
+                    stat = "PROFESSOR"
+                    imagem = 'images/magiccodeicon.png'
+                    return render_template("profile.html", u =  user, user = s,
+                                           editable=True,isTeacher=True, stat = stat, imagem=imagem)
+                if(s==username  and not validation.isAdmin(uu) ):
+                    #se for um simple user
+                    stat = "ESTUDANTE"
+                    availableTestes = getAvaliableTesteForUser(s)
+                    turmas  = getAlTurmas(s,availableTestes)
+                    user = getUserByUserName(s)
+                    imagem = 'images/magiccodeicon.png'
+                    return render_template("profile.html", u =  user, editable=True,
+                                           isTeacher=False,da=availableTestes,user=s ,
+                                           turmas = turmas, stat = stat, imagem=imagem)
+                if(validation.isAdmin(getUserByUserName(username)) and s!=username ):
+                    #se o perfil que se pretende ver for de administrador e nao for ele pode se ver mas nao editar
+                    stat = "PROFESSOR"
+                    availableTestes = getAvaliableTesteForUser(s)
+                    turmas  = getAlTurmas(s,availableTestes)
+                    availableTestes = getAvaliableTesteForUser(s)
+                    turmas  = getAlTurmas(s,availableTestes)
+                    user = getTeacherByUserName(username)
+                    imagem = 'images/magiccodeicon.png'
+                    return render_template("profile.html", u =  user, editable=False,
+                                           isTeacher=True,da=availableTestes,user=s ,
+                                           turmas = turmas, stat = stat, imagem=imagem)
+                if(s!=username and validation.isAdmin(uu)):
+                    #se for administrador que quer ver um perfil simples
+                    stat = "ESTUDANTE"
+                    user = getUserByUserName(s)
+                    imagem = 'images/magiccodeicon.png'
+                    return render_template("profile.html", u =  user,user = s, editable=False,
+                                           isTeacher=False, stat = stat, imagem=imagem)
+                    
+    return redirect(url_for('index'))
+    
 #ver perfil de uma certa pessoa
 @app.route("/turma/<teacher>/<turma>",methods=['GET']) 
 def verturma(teacher,turma):
-    return "Results to search"
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            tur = getTurma(teacher,turma)
+            if(tur==None):
+                return redirect(url_for('error404'))
+            uu = getUserByUserName(s)
+            #se for user simples
+            if(not validation.isAdmin(uu) ):
+                    #se for um simple user
+                    availableTestes = getAvaliableTesteForUser(s)
+                    turmas  = getAlTurmas(s,availableTestes)
+                    notInturma = True
+                    if(turmaIsRequested(s,turma,teacher)):
+                        notInturma = False
+                    if(s in tur["alunos"]):
+                        canSeeStudents = True
+                        alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacher+'/alunos/alunos.json')
+                    else:
+                        canSeeStudents = False
+                    imagem = 'images/magiccodeicon.png'
+                    return render_template("turma.html",da=availableTestes,user=s ,
+                                           turmas = turmas, imagem=imagem,  t=tur, teacher=teacher,
+                                           notInturma=notInturma, canSeeStudents=canSeeStudents , alunos = alunos, isTurmaTeacher  = False)
+            #se a pessoa for administrador mas a turma nao ser sua
+            if(validation.isAdmin(uu) and s!=teacher):
+                    imagem = 'images/magiccodeicon.png'
+                    return render_template("turma.html",user = s,
+                                          notInturma=False, imagem=imagem, t=tur, 
+                                          teacher=teacher, canSeeStudents = False, isTurmaTeacher  = False, alunos = list())
+            #quando a pessoa 'e admin e a turma 'e sua
+            if(validation.isAdmin(uu) and s==teacher ):
+                    imagem = 'images/magiccodeicon.png'
+                    return render_template("turma.html",user = s,
+                                          notInturma=False, imagem=imagem, t=tur, 
+                                          teacher=teacher, canSeeStudents = True , alunos = alunos, isTurmaTeacher = True)
+    return redirect(url_for('index'))
 #ajuda
 @app.route("/help",methods=['GET']) 
 def helpPage():

@@ -124,7 +124,7 @@ def validateUserToAluno(userName, number,teacherUserName):
         return "Nao foi possivel salvar porque a turma nao existe"
     alunos.append(newAluno)
     #remove a request do aluno
-    removeRequest(user["userName"],user["turma"],teacherUserName)
+    #removeRequest(user["userName"],user["turma"],teacherUserName)
     json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json',alunos)
     return "ok"  
     
@@ -342,6 +342,16 @@ def saveTeacher(teacher):
         teachers = list()
     teachers.append(teacher)
     json_Save.saveJSON('./data/Users/Teacher/teachers.json',teachers)
+#get teacher By Name
+def getTeacherByUserName(userName):
+    try:
+        teachers = json_Save.getJSON('./data/Users/Teacher/teachers.json')
+    except FileNotFoundError as e:
+        return None
+    for t in teachers:
+        if(t["userName"]==userName):
+            return t
+    return None
 
 #Usar o Token para um determinado professor
 def useTokenForTeacher(userName,token):
@@ -373,7 +383,7 @@ def createTeacher(userName, email, senha, nome, token, descri):
     teacher = {
             "userName":userName,
             "email":email,
-            "fullName": nome,
+            "fullname": nome,
             "bio":descri 
         }
     createNewUser(userName,nome,senha,email,isAdmin=1)
@@ -397,6 +407,14 @@ def criarTurma(userNameProfessor,nome,descricao):
         "alunos":[]
     }
     json_Save.saveJSON("./data/Users/Teacher/"+userNameProfessor+"/turmas/"+nome.replace(" ","_")+".json",newTurma)
+#retorna a turma
+def getTurma(userNameProfessor,nome):
+    try:
+        return json_Save.getJSON("./data/Users/Teacher/"+userNameProfessor+"/turmas/"+nome.replace(" ","_")+".json")
+    except FileNotFoundError as e:
+        return None
+    except Exception as e:
+        return None
 #adicionar alunos a turmas
 def addAlunoToTurma(userNameAluno, userNameProfessor,nome):
     try:
@@ -453,7 +471,13 @@ def removeRequest(userName,turma,teacherUserName):
             requestsIn.remove(p)
             break
     json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/requests.json",requestsIn)
-    
+#verifica se uma turma ja foi requistada pelo usuario
+def turmaIsRequested(userName,turma, professor):
+    resq = json_Save.getJSON('./data/Users/SimpleUser/'+userName+"/requests.json")
+    for r in resq:
+        if(r["nomeTurma"]==turma and r["teacherUserName"]==professor):
+            return True
+    return False    
 #retorna todas as turmas em que o utilizador esta
 def getAlTurmas(userName, dadosProva):
     turn =  list()

@@ -8,19 +8,19 @@
     {
         "userName": "zany",
         "email": "na@gmail.com",
-        "fullName": "Narciso Cadeado",
+        "fullname": "Narciso Cadeado",
         "bio":""
     },
     {
         "userName": "romeu",
         "email": "r@gmail.com",
-        "fullName": "Narciso Cadeado",
-        "bio":""
+        "fullname": "Romeu Afonso",
+        "bio":"Eu sou o Pai do bootstrapFilho sou professor de matematica e gosto muito de avioes"
     },
     {
         "userName": "afonso",
         "email": "a@gmail.com",
-        "fullName": "Afonso joao",
+        "fullname": "Afonso joao",
         "bio":""
     },
     {
@@ -32,7 +32,7 @@
     {
         "userName": "bubu",
         "email": "bubu@gmail.com",
-        "fullName": "Booststrape Pai",
+        "fullname": "Booststrape Pai",
         "bio": "Eu sou o Pai do bootstrapFilho sou professor de matematica e gosto muito de avioes"
     }
 ]
