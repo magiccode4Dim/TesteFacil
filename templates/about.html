@@ -1,10 +1,55 @@
-{% extends 'base.html' %}
+{% extends 'baseDashBoardUser.html' %}
 
 {% block content %}
     <h1>{% block title %} Sobre o Sistema {% endblock %}</h1>
 
-Desenvolvido Por Narciso Cadeado - Magic Code
-<h2>Email: narcisopascoal97@gmail.com ;  Instagram: magiccode_mz </h2>
-<h2>Contacto : 877067492</h2>
+<!--System Infor-->
+<div class="product-wrap">
+    <div class="product-detail-wrap mb-30">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="product-slider slider-arrow">
+                    <div class="product-slide">
+                        <img src="{{url_for('static',filename='images/testefacil.png')}}" alt="" />
+                    </div>
+                    <div class="product-slide">
+                        <img src="{{url_for('static',filename='images/bymc.png')}}" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="product-detail-desc pd-20 card-box height-100-p">
+                    <h4 class="mb-20 pt-20">Teste Fácil</h4>
+                    <p>
+                        O Teste Fácil é uma plataforma de código feixado desenvolvida pela <a href="https://www.instagram.com/magiccode_mz/" target="_blank"><i class="icon-copy bi bi-magic">Magic Code</i><a/> , para facilitar o processo de Avaliação de Estudante
+                        A Plataforma esta equipada com recursos que permitem a correção Automatica de Provas Escolares bem como a disponibilização estantanêa de Resultados.
+                        O Teste Fácil também permite que se possa ver o desempenho academico dos estudantes, permitindo assim que o Professor ou Estudante passa ter uma
+                        visão geral do que precisa ser melhorado para que se possa ter resultados Academicos mais satisfatórios.
+                    </p>
+                    <p>
+                        A Plataforma foi pensada para se adequar a realidade da maioria das Instituições em Moçambique e pelo Mundo a fora. Ela não só pode ser usada
+                        para provas escolares, pode ser usada também em mini-testes e qualquer tipo de questionário.
+                    </p>
+                    <p>
+                        O Teste Fácil tem suporte da equipa da <a href="https://www.instagram.com/magiccode_mz/" target="_blank"><i class="icon-copy bi bi-magic">Magic Code</i><a/> que trabalha para melhorar ainda mais a esperiência dos utilizadores nesta plataforma .
+                        Actualmente, a nossa equipa trabalha no desenvolvimento de modulos de Inteligência Artifical que irão possibilitar a correção automatica de perguntas abertas e analise de dados mais detalhadas
+                    </p>
+                    <p>
+                       A <a href="https://www.instagram.com/magiccode_mz/" target="_blank"><i class="icon-copy bi bi-magic">Magic Code</i><a/> é uma empresa Moçambicana de Desenvolvimento de Software. A nossa equipa trabalha com softwares por encomenda como blogs, sistemas mobile e Desktop.
+                       Trabalhamos também com API's. A Magic Code desenvolve, também, softwares/sistemas por encomenda, para mais informações, pode entrar em contacto apartir de:
+                        </br><i class="icon-copy bi bi-telephone-fill">+258 87 70 67 492</i>
+                        </br><i class="icon-copy bi bi-at">magiccodesoftware@gmail.com  </i> 
+                    </p>
+                    <p>
+                       Para Manter-se Actualizado acerta dos novos produtos e Actualizações, siga-nos no Instagram e no Youtube.
+                        </br><a href="https://m.youtube.com/channel/UCSL1NsQJOPRqegX5pdZsQyw" target="_blank"><i class="icon-copy bi bi-youtube" >Magic Code</i></a>
+                        </br><a href="https://www.instagram.com/magiccode_mz/" target="_blank"><i class="icon-copy bi bi-instagram">Magic Code</i><a/>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--system info-->
 
 {% endblock %}

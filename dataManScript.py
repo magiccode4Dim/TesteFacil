@@ -491,14 +491,54 @@ def getAlTurmas(userName, dadosProva):
         if t not in turn:
             turn.append(t)
     return turn
+#actualizar usuario
+def updateUser(user, listt):
+    users = json_Save.getJSON(listt)
+    for u in users:
+        if u['userName'] == user['userName']:
+            users.remove(u)
+            users.append(user)
+            json_Save.saveJSON(listt,users)
+            return
+#pega todas as turmas de um determinado professor
+def getAllTurmasOfTeacher(teacher):
+    turmas  =  list()
+    pasta = "./data/Users/Teacher/"+teacher+"/turmas"
+    for dirr , subfol, arqus in os.walk(pasta):
+        for ar in arqus:
+            t = json_Save.getJSON(dirr+"/"+ar)
+            t['teacher'] = teacher
+            turmas.append(t)
+    return turmas
+#pesquisa professor com alguma coisa haver com a chave
+def searchData(key):
+    res = list()
+    turmas = list()
+    try:
+        teachers = json_Save.getJSON('./data/Users/Teacher/teachers.json')
+    except FileNotFoundError as e:
+        return None
+    for t in teachers:
+        if(key in t["userName"] or key in t["email"] or key in t["fullname"] or key in t["bio"] ):
+            res.append(t)
+        allT = getAllTurmasOfTeacher(t["userName"])
+        for tur in allT:
+            if (key in tur["nome"] or key in tur["descricao"]):
+                turmas.append(tur)
+        #
+    return (res,turmas)          
         
 if __name__ == "__main__":
     #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))
     #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")
-    criarTurma("pascoal","A4","Povo no poder")
+    #criarTurma("pascoal","A4","Povo no poder")
     #addAlunoToTurma("paxA","Nany","B1 12")
     #generateTokenTeacher(numbers=6)
     #incressarEmTurma("@nanilsin","romeu","A")
     #print(validateUserToAluno("@nanilsin",3444,"romeu"))
     #print(getAllDadosProva("romeu"))
     #print(getAvaliableTesteForUser("pax"))
+    a, b  = searchData("A")
+    
+    print(a)
+    

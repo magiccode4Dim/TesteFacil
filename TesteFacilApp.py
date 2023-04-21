@@ -6,6 +6,7 @@ import os
 import random
 import time
 import secrets
+from datetime import datetime
 
 app = Flask(__name__, template_folder="templates")
 
@@ -544,7 +545,25 @@ def error404():
 # Pesquisa alguma coisa no Painel de user        
 @app.route("/search",methods=['GET','POST']) 
 def search():
-    return "Results to search"
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            uu = getUserByUserName(s)
+            if(request.form.get("keytosearch")!=None):
+                fullSeach = request.form.get("keytosearch")
+                if(len(fullSeach)>0):
+                    teachers,tur  = searchData(fullSeach)
+                    if(not validation.isAdmin(uu) ):
+                        imagem = 'images/magiccodeicon.png'
+                        availableTestes = getAvaliableTesteForUser(s)
+                        turmas  = getAlTurmas(s,availableTestes)
+                        return render_template('resultadosPesquisa.html', teachers = teachers , teachersSize = len(teachers),
+                                            turmas2 = tur,turmas2Size = len(tur), user=s,turmas = turmas, imagem=imagem , pesquisa = fullSeach)
+                    else:
+                        #quando for um adminstrador a pesquisar
+                        pass
+    return redirect(url_for('index'))
 
 #ver perfil de uma certa pessoa
 @app.route("/profile/<username>",methods=['GET']) 
@@ -560,8 +579,9 @@ def perfil(username):
                     user= getTeacherByUserName(s)
                     stat = "PROFESSOR"
                     imagem = 'images/magiccodeicon.png'
+                    turmas2 = getAllTurmasOfTeacher(username)
                     return render_template("profile.html", u =  user, user = s,
-                                           editable=True,isTeacher=True, stat = stat, imagem=imagem)
+                                           editable=True,isTeacher=True, stat = stat, imagem=imagem,turmas2 = turmas2)
                 if(s==username  and not validation.isAdmin(uu) ):
                     #se for um simple user
                     stat = "ESTUDANTE"
@@ -570,7 +590,7 @@ def perfil(username):
                     user = getUserByUserName(s)
                     imagem = 'images/magiccodeicon.png'
                     return render_template("profile.html", u =  user, editable=True,
-                                           isTeacher=False,da=availableTestes,user=s ,
+                                           isTeacher=False,user=s ,
                                            turmas = turmas, stat = stat, imagem=imagem)
                 if(validation.isAdmin(getUserByUserName(username)) and s!=username ):
                     #se o perfil que se pretende ver for de administrador e nao for ele pode se ver mas nao editar
@@ -580,10 +600,11 @@ def perfil(username):
                     availableTestes = getAvaliableTesteForUser(s)
                     turmas  = getAlTurmas(s,availableTestes)
                     user = getTeacherByUserName(username)
+                    turmas2 = getAllTurmasOfTeacher(username)
                     imagem = 'images/magiccodeicon.png'
                     return render_template("profile.html", u =  user, editable=False,
-                                           isTeacher=True,da=availableTestes,user=s ,
-                                           turmas = turmas, stat = stat, imagem=imagem)
+                                           isTeacher=True,user=s ,
+                                           turmas = turmas,turmas2 = turmas2, stat = stat, imagem=imagem)
                 if(s!=username and validation.isAdmin(uu)):
                     #se for administrador que quer ver um perfil simples
                     stat = "ESTUDANTE"
@@ -617,6 +638,7 @@ def verturma(teacher,turma):
                         canSeeStudents = True
                         alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacher+'/alunos/alunos.json')
                     else:
+                        alunos = list()
                         canSeeStudents = False
                     imagem = 'images/magiccodeicon.png'
                     return render_template("turma.html",da=availableTestes,user=s ,
@@ -639,13 +661,84 @@ def verturma(teacher,turma):
 @app.route("/help",methods=['GET']) 
 def helpPage():
     return "Pagina de Ajuda"
+#desempenho academico
 @app.route("/desempenho",methods=['GET']) 
 def desempenhoDoEstudante():
     return "retorna o desempenho do estudante"
-@app.route("/faleconnosco",methods=['GET']) 
+#fale connosco
+@app.route("/faleconnosco",methods=['GET',"POST"]) 
 def talktous():
-    return "fala cmigo"
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            uu = getUserByUserName(s)
+            if(request.method == "GET"):
+                if(not validation.isAdmin(uu) ):
+                        imagem = 'images/magiccodeicon.png'
+                        availableTestes = getAvaliableTesteForUser(s)
+                        turmas  = getAlTurmas(s,availableTestes)
+                        return render_template("talkwithus.html", user=s,turmas = turmas, imagem=imagem)
+                else:
+                        #quando for um adminstrador a pesquisar
+                        pass
+            elif (request.method == "POST") :
+                if(request.form.get("contact")!=None and request.form.get("comen") ):
+                    da = datetime.now().strftime('%D - %H:%M:%S')
+                    contact = {
+                            "userName":s,
+                            "data": da,
+                            "contacto":request.form.get("contact"),
+                            "comentario":request.form.get("comen"),
+                            "anexo":"--"
+                        }
+                    commenList  =  json_Save.getJSON("./data/Users/SystemData/talkWithUs.json")
+                    commenList.append(contact)
+                    json_Save.saveJSON("./data/Users/SystemData/talkWithUs.json", commenList)    
+                    return render_template("Error.html",erro = "Muito Obrigado por ter nos Enviado um Mensagem! A nossa equipa responderá em breve.",emoji='gifs/no3.gif') 
+    return redirect(url_for('index'))
 
+#actualizar informações de Perfil
+@app.route("/updateinformation",methods=['GET','POST']) 
+def updateInfor():
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            user = getUserByUserName(s)
+            #Actualizando UserName ou Email
+            att = ["fullname","email"]
+            for at in att:
+                if(request.form.get(at)!=None):
+                    if(len(request.form.get(at))>0):
+                        user[at] = request.form.get(at)
+            #Actualizando a senha
+            if(request.form.get("pass")!=None and request.form.get("pass2")):
+                if(len(request.form.get("pass"))>0 and len(request.form.get("pass2"))>0):
+                 if (validation.verifyLoginData(s,request.form.get("pass"))):
+                    result = hashlib.md5(request.form.get("pass2").encode())
+                    user["password"] = str(result.hexdigest())
+                 else:
+                     return render_template("Error.html",erro = "A Senha Anterior é Invalida.",emoji='gifs/no3.gif')
+            #actualizando o token
+            if(validation.isAdmin(user)):
+                if(request.form.get("token")!=None):
+                   if(len(request.form.get("token"))>0): 
+                    if (tokenTeacherIsValid(request.form.get("token"))):
+                        updateToken(s,request.form.get("token"))
+                    else:
+                        return render_template("Error.html",erro = "Token Invalido",emoji='gifs/no3.gif')
+                if(request.form.get('bio')!=None):
+                   if(len(request.form.get("bio"))>0):  
+                    user['bio'] = request.form.get('bio')
+                user2 =  user
+                user2.pop("password")
+                updateUser(user2,'./data/Users/Teacher/teachers.json')
+            updateUser(user,"./data/users.json")
+            return redirect('/profile/'+s)
+
+            
+    return redirect(url_for('index'))
 
 
 

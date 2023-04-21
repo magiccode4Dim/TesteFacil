@@ -1,8 +1,6 @@
 {% extends 'baseDashBoardUser.html' %}
 
 {% block content %}
-<div class="main-container">
-    <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
@@ -28,7 +26,7 @@
                             </ul>
                             <ul>
                                 <li>
-                                    <span>Criada Pelo Professor</br>   <a href="/profile/{{teacher}}" target="_blank">{{teacher}}</a></span>
+                                    <span>Criada Pelo Professor</br>   <a href="/profile/{{teacher}}">{{teacher}}</a></span>
                                   
                                 </li>
                             </ul>
@@ -96,9 +94,10 @@
                                                             <tr>
                                                                 {% if isTurmaTeacher %}
                                                                     <th scope="col">Número</th>
-                                                                    <th scope="col">UserName</th>
                                                                 {% endif %}
-                                                                <th scope="col">Lista de Estudantes</th>
+                                                                    <th scope="col">UserName</th>
+                                                                
+                                                                <th scope="col">Nome</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -106,8 +105,9 @@
                                                                 <tr>
                                                                     {% if isTurmaTeacher %}
                                                                         <td scope="row">{{a["numeroEst"]}}</td>
-                                                                        <td scope="row"><a href="/profile/{{a["userName"]}}" target="_blank">{{a["userName"]}}</a></td>
                                                                     {% endif %}
+                                                                        <td scope="row"><a href="/profile/{{a["userName"]}}" target="_blank">{{a["userName"]}}</a></td>
+                                                                    
                                                                     <td scope="row">{{a["nome"]}}</td>
                                                                 </tr>
                                                             {% endfor %}
@@ -135,6 +135,4 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
         {% endblock %}

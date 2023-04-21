@@ -1,8 +1,6 @@
 {% extends 'baseDashBoardUser.html' %}
 
 {% block content %}
-<div class="main-container">
-    <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
@@ -30,12 +28,12 @@
                                         <span>Biografia</span>
                                         {{u["bio"]}}<br />
                                     </li>
-                                    <!--<li>
+                                    <li>
                                         <span>Turmas</span>
-                                        {% for tu in turmas: %}
-                                            <a href="/turma/{{tu['teacher']}}/{{tu['turma']}}" target="_blank">Turma A</a>,
+                                        {% for tu in turmas2: %}
+                                            <a href="/turma/{{tu['teacher']}}/{{tu['nome']}}">{{tu['nome']}}</a>,
                                         {% endfor %}
-                                    </li>-->
+                                    </li>
                                 {% endif %}
                             </ul>
                         </div>
@@ -125,7 +123,7 @@
                                                         <div class="form-group">
                                                             <label>Carregar Nova Foto de Perfil</label>
                                                             <div class="custom-file">
-                                                                <input type="file" name="newPhone" class="custom-file-input" />
+                                                                <input type="file" name="newPhoto" class="custom-file-input" />
                                                                 <label class="custom-file-label">Nova Foto</label>
                                                             </div>
                                                         </div>
@@ -133,8 +131,8 @@
                                                             <label>Nome Completo</label>
                                                             <input
                                                                 class="form-control form-control-lg"
-                                                                type="text" name="newFullName"
-                                                                placeholder="narciso Cadeado"
+                                                                type="text" name="fullname"
+                                                                placeholder="{{u['fullname']}}"
                                                             />
                                                         </div>
                                                         <div class="form-group">
@@ -142,22 +140,48 @@
                                                             <input
                                                                 class="form-control form-control-lg"
                                                                 type="email"
-                                                                name="newEmail"
-                                                                placeholder="nany@gmail.com"
+                                                                name="email"
+                                                                placeholder="{{u['email']}}"
                                                             />
                                                         </div>
+                                                        {% if isTeacher %}
+                                                            <div class="form-group">
+                                                                <label>Token/Chave da Conta</label>
+                                                                <input
+                                                                    class="form-control form-control-lg"
+                                                                    type="text" name="token"
+                                                                    placeholder="################################"
+                                                                />
+                                                            </div>
+                                                        
+                                                            <div class="form-group">
+                                                                <label>Biográfia</label>
+                                                                <textarea class="form-control" placeholder="{{u['bio']}}" name="bio"></textarea>
+                                                            </div>
+                                                        {% endif %}
                                                         <div class="form-group">
-                                                            <label>Token/Chave da Conta</label>
+                                                            <label>Senha Actual</label>
                                                             <input
                                                                 class="form-control form-control-lg"
-                                                                type="text" name="newToken"
-                                                                placeholder="################################"
+                                                                type="password" name="pass"
+                                                                placeholder="*******************"
                                                             />
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Biográfia</label>
-                                                            <textarea class="form-control" placeholder="eu sou xyz" name="descri"></textarea>
+                                                            <label>Nova Senha</label>
+                                                            <input
+                                                                class="form-control form-control-lg"
+                                                                type="password" name="pass2"
+                                                                placeholder="*******************"
+                                                            />
                                                         </div>
+                                                        {% if not isTeacher %}
+                                                            <h5 class="text-blue h5 mb-20">
+                                                                Atenção : Os efeitos da actualização do Nome Completo ou Email só serão percebidos apartir das
+                                                                próximas que o Estudante Engressar, as anteriores permaneceram com o antigo nome ou email.
+                                                            </h5>
+                                                        {% endif %}
+                                                        <!--
                                                         <div class="form-group">
                                                             <div
                                                                 class="custom-control custom-checkbox mb-5"
@@ -167,6 +191,7 @@
                                                                     class="custom-control-input"
                                                                     id="customCheck1-1"
                                                                     name="notific"
+                                                                    
                                                                 />
                                                                 <label
                                                                     class="custom-control-label weight-400"
@@ -174,7 +199,7 @@
                                                                     >Concordo em Receber Notificações no Meu Email.</label
                                                                 >
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                         <div class="form-group mb-0">
                                                             <input
                                                                 type="submit"
@@ -194,6 +219,5 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
         {% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'baseDashBoardUser.html' %}
+
+{% block content %}
+        <!--Table-->
+        <h3 class="text-blue h3">{% block title %} Resultados da Pesquisa : "{{pesquisa}}" {% endblock %}</h3>
+        <!--Tabela Turma-->
+        {% if turmas2Size>0 %}
+        <h4 class="text-blue h4">Turmas Encontradas</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome da Turma</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Professor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set tn =  1 %}
+                    {% for tuu in turmas2  %}
+                        <tr>
+                            <td><a href="/turma/{{tuu['teacher']}}/{{tuu['nome']}}"><span class="badge badge-success">{{tuu["nome"]}}</span></a></td>
+                            <td>{{tuu["descricao"]}}</td>
+                            <td><a href="/profile/{{tuu['teacher']}}"><span class="badge badge-primary">{{tuu['teacher']}}</span></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <h4 class="text-blue h4">Sem Turmas Encontradas.</h4>
+        {% endif %}
+        <!--Tabela Professores-->
+        {% if teachersSize>0 %}
+        <h4 class="text-blue h4">Professores Encontrados</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">UserName</th>
+                        <th scope="col">Bio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tt in teachers %}
+                        <tr>
+                            <td>{{tt["fullname"]}}</td>
+                            <td><a href="/profile/{{tt['userName']}}"><span class="badge badge-primary">Ver Perfil de {{tt['userName']}}</span></a></td>
+                            <td>{{tt['bio']}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <h4 class="text-blue h4">Sem Professores Encontrados.</h4>
+        {% endif %}
+        
+        <!--EndTable-->
+{% endblock %}
