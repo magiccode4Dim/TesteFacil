@@ -535,7 +535,21 @@ def engressar(teacher,turma):
 #sem alteracoes
 @app.route("/about",methods=['GET']) 
 def sobre():
-    return render_template('about.html')
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            uu = getUserByUserName(s)
+            if(request.method == "GET"):
+                if(not validation.isAdmin(uu) ):
+                        imagem = 'images/magiccodeicon.png'
+                        availableTestes = getAvaliableTesteForUser(s)
+                        turmas  = getAlTurmas(s,availableTestes)
+                        return render_template('about.html', user=s,turmas = turmas, imagem=imagem)
+                else:
+                        #quando for um adminstrador a pesquisar
+                        pass
+    return redirect(url_for('index'))
 
 #USER
 @app.route("/error_404",methods=['GET']) 
