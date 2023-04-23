@@ -29,7 +29,10 @@ def verifyLoginData(user, pAss):
 #Verifica se o user  esta autorizado a realizar/ver a prova
 def alunoIsAutorized(teacherUserName, aluno, token):
     #pega os dados da prova
-    req = getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/'+str(token)+'/dadosProva.json')["user_requis"]
+    try:
+        req = getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/'+str(token)+'/dadosProva.json')["user_requis"]
+    except FileNotFoundError:
+        return False
     #pega o conjunto de turmas em que aquela prova foi alocada
     turmaProva = req["turma"].split(",")
     for t in turmaProva:

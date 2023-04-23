@@ -1,8 +1,74 @@
-{% extends 'base.html' %}
+{% extends 'baseDashBoardUser.html' %}
 
 {% block content %}
-    <h1>{% block title %} Resultado Final{% endblock %}</h1>
-    <h3>Nome Aluno: {{aL['nome']}}</h3>
-    <h3>Turma: {{aL['turma']}}</h3>
-    <h1>Nota Final: {{resultado}}</h1>
+
+{% block title %} Resultados {% endblock %}
+    <!--Cabeçalho do Teste-->
+    {% if resultado != -1 %}
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="title">
+                        <h4>Dados da Prova</h4>
+                    </div>
+                        <b>Nome :</b> {{u['fullname']}};
+                        <b>Turma :</b> {{u['turma']}};
+                        <b>Professor:</b> {{dadosProva['Professor']}};
+                        <b>Feito na Data:</b> {{dadosProva['Data']}};
+                        <b>Terminado as :</b> {{dadosProva['fim']}}
+                        </br>
+                        <b>Nota</b>: As respostas verdes significam certos do Utilizador. As estão em azul são as que foram selecionadas pelo Utilizador.
+                    </br>
+                    <b>Nota Final </b>:{{resultado}} Valores.
+                </div>
+            </div>
+        </div>
+    {%else %}
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4>Não Disponivel</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+<!--Cabeçalho do Teste end-->
+<!--cards-->
+<h4 class="h4 text-blue mb-30"> Perguntas </h4>
+    <div class="row clearfix">
+        {% if resultado != -1 %}
+        
+            {% for message in messages %}
+                <div class="col-md-4 col-sm-12 mb-30">
+                        <div class="card text-black bg-light card-box">
+                            <div class="card-header">ID : {{ message['id']}}  Cotação: {{message['cotacao']}} Correcta: {{message["correcta"]}}</div>
+                            <div class="card-body">
+                                <h5 class="card-title text-black">{{ message['title']}}</h5>
+                                {% set questions =  message['questions']   %}
+                                {% for q in questions %}
+                                    <ul class="list-group">
+                                        {% if message["correcta"] == message["res"] and message["correcta"] == q['id'] %}
+                                            <li class="list-group-item list-group-item-success">
+                                                {{q['ques']}}.
+                                            </li>
+                                        {% elif message["correcta"] != message["res"] and message["res"] == q['id']  %}
+                                            <li class="list-group-item list-group-item-primary">
+                                                {{q['ques']}}. 
+                                            </li>
+                                        {% else %}
+                                            <li class="list-group-item list-group-item-danger">
+                                                {{q['ques']}}.
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                {% endfor %} 
+                            </div>
+                        </div>
+                </div>
+            {% endfor %}
+        {% endif %} 
+    </div>
+<!--cards end-->
 {% endblock %}

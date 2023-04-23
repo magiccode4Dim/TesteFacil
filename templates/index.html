@@ -1,42 +1,65 @@
-{% extends 'base.html' %}
+{% extends 'baseDashBoardUser.html' %}
 
 {% block content %}
-    <h1>Dados</h1>
-    <form action='/submit/{{dadosProva["teacher"]}}' method='POST'>
-        <div class='message'>
-            <p>Data:{{dadosProva['Data']}}</p>
-            <p>Escola:{{dadosProva['Escola']}}</p>
-            <p>Professor:{{dadosProva['Professor']}}</p>
-            <p>Prova de:{{dadosProva['Titulo']}}</p>
-            <h3>UserName : {{user['userName']}}</h3>
-            <h3>fullname : {{user['fullname']}}</h3>
-            <h3>Turma : {{user['turma']}}</h3>
-            <h3>Classe : {{user['classe']}}</h3>
-            Tempo Actual : <h2 id='rel' ></h2>
-            Hora do Fim : <h2 id='fim' >{{dadosProva['fim']}}</h2>
-            <h2 style="color: Red;" >Atenção!! Verifique o se a sua prova esta correctamente preenchida porque, depois da submissão não há mais volta</h2>
-        </div>
-        <h1>{% block title %} Perguntas {% endblock %}</h1>
-        {% for message in messages %}
-            <div class='message'>
-                <h3>{{ message['id']}}.{{ message['title']}}</h3>
-                <p>Cotação : {{message['cotacao']}}</p>     
-                <!--<p>{{ message['questions'] }}</p>-->
-                {% set questions =  message['questions']   %}
-                
-             <!--<select name="q{{ message['id']}}" style="font-size: 3em; color:rgb(0, 0, 0); text-align: center;"  >-->
-                    {% for q in questions %}    
-                            <!--<option value="{{q['id']}}">{{q['ques']}}</option>-->
-                            <input type="radio" id="{{q['id']}}" name="q{{ message['id']}}" value="{{q['id']}}"><label for="{{q['id']}}">{{q['ques']}}</label><br>
-                    {% endfor %}
-                <!--</select>-->
 
-                
-
+    <!--Cabeçalho do Teste-->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="title">
+                        <h4>{% block title %} {{dadosProva['Titulo']}} - {{dadosProva["teacher"]}} {% endblock %}</h4>
+                    </div>
+                        <b>Nome :</b> {{u['fullname']}};
+                        <b>Turma :</b> {{u['turma']}};
+                        <b>Professor:</b> {{dadosProva['Professor']}};
+                        <b>Data:</b> {{dadosProva['Data']}};
+                        <b>Hora do Termino :</b> {{dadosProva['fim']}}
+                </div>
             </div>
-        {% endfor %}
+        </div>
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="title">
+                        <h4>Descrição</h4>
+                    </div>
+                        {{dadosProva["descri"]}};
+                </div>
+            </div>
+        </div>
+    <!--Cabeçalho do Teste end-->
+    <!--cards-->
+    <h4 class="h4 text-blue mb-30"> Perguntas </h4>
+    <form action='/submit/{{dadosProva["teacher"]}}' method='POST'>
+        <div class="row clearfix">
+            {% for message in messages %}
+                <div class="col-md-4 col-sm-12 mb-30">
+                        <div class="card text-white bg-dark card-box">
+                            <div class="card-header">ID : {{ message['id']}}  Cotação: {{message['cotacao']}}</div>
+                            <div class="card-body">
+                                <h5 class="card-title text-white">{{ message['title']}}</h5>
+                                {% set questions =  message['questions']   %}
+                                {% for q in questions %}
+                                    <p class="card-text">
+                                        <div class="col-md-6 col-sm-12">
+                                                <div class="custom-control custom-radio mb-5">
+                                                    <input type="radio" id="{{q['id']}}_q{{ message['id']}}" name="q{{ message['id']}}" value="{{q['id']}}" class="custom-control-input">
+                                                    <label class="custom-control-label" for="{{q['id']}}_q{{ message['id']}}">{{q['ques']}}</label>
+                                                </div>
+                                        </div>
+                                    </p>
+                                {% endfor %} 
+                            </div>
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
         <input type="hidden" name="tokenProva" value={{tokenProva}}>
-        <input type='submit' value="Entregar Prova" style="font-size: 5em; color:rgb(0, 0, 0)">
+        <div class="col-md-4 col-sm-12 mb-30">
+            <input type="submit"  class="btn btn-outline-primary" value="Entregar Teste"/>
+        </div>
     </form>
+    <!--cards end-->
+    
 
 {% endblock %}

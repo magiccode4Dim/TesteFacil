@@ -66,7 +66,10 @@ def getAvaliableTesteForUser(userName):
     available = list()
     for t in availableforUser:
         if(validation.alunoIsAutorized(t["teacherUserName"],userName,t["token"])):
-            av = json_Save.getJSON('./data/Users/Teacher/'+t["teacherUserName"]+'/provas/'+t["token"]+'/dadosProva.json')
+            try:
+                av = json_Save.getJSON('./data/Users/Teacher/'+t["teacherUserName"]+'/provas/'+t["token"]+'/dadosProva.json')
+            except FileNotFoundError as e:
+                continue
             av["teacher"] = t["teacherUserName"]
             aluno = getAlunoByUserName(userName,av["teacher"])
             nota = getNotaAluno(aluno["numeroEst"],t["token"],av["teacher"])
@@ -137,7 +140,10 @@ def getUserByUserName(userName):
     return None
 #obtem o usuario que adastrou-se para um professor
 def getTeacherUserByUserName(name,teacherUserName):
-    alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json')
+    try:
+        alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json')
+    except FileNotFoundError as e:
+        return None
     for u in alunos:
         if(u["userName"]==name):
             return u
@@ -147,7 +153,10 @@ def getTeacherUserByUserName(name,teacherUserName):
 
 #obter aluno pelo user name
 def getAlunoByUserName(name,teacherUserName):
-    alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json')
+    try:
+        alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json')
+    except FileNotFoundError as e:
+        return None
     for u in alunos:
         if(u["userName"]==name):
             return u
@@ -527,7 +536,23 @@ def searchData(key):
                 turmas.append(tur)
         #
     return (res,turmas)          
-        
+#get user prova
+def getProva(user,teacher,token):
+    try:
+        prova = json_Save.getJSON('./data/Users/Teacher/'+teacher+'/provas/'+token+'/resultadosAlunos/'+user+".json")
+    except FileNotFoundError as e:
+        return None
+    return prova
+
+#junta a prova e os resultados
+def unionProvaAndResult(prova,result):
+    newList = list()
+    pp = 0
+    for p in prova:
+        p["res"]=(result[pp])[1]
+        pp+=1
+        newList.append(p)
+    return newList
 if __name__ == "__main__":
     #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))
     #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")

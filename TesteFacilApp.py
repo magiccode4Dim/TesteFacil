@@ -428,8 +428,17 @@ def carregarProva(teacher,id):
                 messages = json_Save.getJSON('./data/Users/Teacher/'+teacher+'/provas/'+id+'/prova.json')
             except FileNotFoundError as e:
                 return render_template("Error.html",erro = "Documento não encontrado",emoji='gifs/triste.gif')
-            user = getUserByUserName(s)  
-            return render_template('index.html', messages=messages, dadosProva = dadosProva, tokenProva = id,user=user)
+            #user = getUserByUserName(s)
+            user = getTeacherUserByUserName(s,teacher)
+            if(not validation.isAdmin(user) ):
+                        imagem = 'images/magiccodeicon.png'
+                        availableTestes = getAvaliableTesteForUser(s)
+                        turmas  = getAlTurmas(s,availableTestes)
+                        #return render_template('about.html', user=s,turmas = turmas, imagem=imagem)
+                        return render_template('index.html', messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem)
+            else:
+                        #quando for um adminstrador a pesquisar
+                        pass  
     return redirect(url_for('login'))
 
 #Submete a prova
@@ -450,6 +459,7 @@ def onSubmit(teacher):
                 if(validation.alunoIsAutorized(teacher,s,token)==False):
                     return render_template("Error.html",erro = "Sem autorização Para Submeter.",emoji='gifs/no.gif')
             except FileNotFoundError as e:
+                print(e)
                 return render_template("Error.html",erro = "Prova Nao Existe.",emoji='gifs/no.gif')
             except Exception as e:
                 return render_template("Error.html",erro = "Erro na Submissao.",emoji='gifs/no.gif')
@@ -484,9 +494,22 @@ def onSubmit(teacher):
         }
     json_Save.saveJSON('./data/Users/Teacher/'+teacher+'/provas/'+token+'/resultadosAlunos/'+s+".json",resulAl) 
     salvarNota(aL["numeroEst"],aL["nome"],nota,token,teacher)
+    try:
+        dadosProva =  json_Save.getJSON('./data/Users/Teacher/'+teacher+'/provas/'+token+'/dadosProva.json')
+        dadosProva["teacher"]= teacher
+        messages = json_Save.getJSON('./data/Users/Teacher/'+teacher+'/provas/'+token+'/prova.json')
+    except FileNotFoundError as e:
+            return render_template("Error.html",erro = "Documento não encontrado",emoji='gifs/triste.gif')
+    user = getTeacherUserByUserName(s,teacher)
+    imagem = 'images/magiccodeicon.png'
+    availableTestes = getAvaliableTesteForUser(s)
+    turmas  = getAlTurmas(s,availableTestes)
+    prova =  getProva(s,teacher,token)
+            #une os dois resultados
+    messages = unionProvaAndResult(messages,prova["results"])
     if(testeDisponivel(token,teacher)):
-        return render_template("result.html", resultado="Nota Estará Disponivel Assim que o Teste Terminar",aL=aL,emoji='gifs/calmdown.gif')
-    return render_template("result.html", resultado=nota,aL=aL,emoji='gifs/congrats.gif')
+        return render_template("result.html", resultado=-1,u=user,user=s,turmas = turmas, imagem=imagem)
+    return render_template("result.html", resultado=nota,aL=aL,messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem)  
 #Ver Resultado
 #USER
 @app.route("/resultado/<teacher>/<token>",methods=['GET','POST']) 
@@ -507,12 +530,23 @@ def verResultado(teacher,token):
                 return redirect(url_for('error404'))
             except Exception as e:
                 return render_template("Error.html",erro = "Erro ao ver A nota",emoji='gifs/no3.gif')
+            try:
+                dadosProva =  json_Save.getJSON('./data/Users/Teacher/'+teacher+'/provas/'+token+'/dadosProva.json')
+                dadosProva["teacher"]= teacher
+                messages = json_Save.getJSON('./data/Users/Teacher/'+teacher+'/provas/'+token+'/prova.json')
+            except FileNotFoundError as e:
+                return render_template("Error.html",erro = "Documento não encontrado",emoji='gifs/triste.gif')
+            user = getTeacherUserByUserName(s,teacher)
+            imagem = 'images/magiccodeicon.png'
+            availableTestes = getAvaliableTesteForUser(s)
+            turmas  = getAlTurmas(s,availableTestes)
+            prova =  getProva(s,teacher,token)
+            #une os dois resultados
+            messages = unionProvaAndResult(messages,prova["results"])
             if(testeDisponivel(token,teacher)):
-                return render_template("result.html", resultado="Nota Estará Disponivel Assim que o Teste Terminar",aL=aL,emoji='gifs/calmdown.gif')
-            return render_template("result.html", resultado=nota,aL=aL,emoji='gifs/congrats.gif')
-    else:
-        return redirect(url_for('login'))
-    return redirect(url_for('login'))
+                return render_template("result.html", resultado=-1,u=user,user=s,turmas = turmas, imagem=imagem)
+            return render_template("result.html", resultado=nota,aL=aL,messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem)               
+    return redirect(url_for('index'))
 #Fazer pedido para engrassar na turma de um docente
 #USER
 @app.route("/engressar/<teacher>/<turma>",methods=['GET']) 
