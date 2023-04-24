@@ -1,6 +1,6 @@
 #APLICACAO PRINCIPAL
 from flask import Flask,request,render_template, url_for, redirect, make_response,send_file
-from util import json_Save, bussness,validation,sessionsSystem
+from util import json_Save, bussness,validation,sessionsSystem,timeLineSystem
 from dataManScript import *
 import os
 import random
@@ -45,6 +45,10 @@ def login():
     if(cookie!=None):
         s = sessionsSystem.verfiySession(cookie)
         if(s!=None):
+            if(validation.isAdmin(getUserByUserName(s))==False):
+                timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("Conf","Log Out","O User Saiu do Sistema"),s)
+            else:
+                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Log Out","O User Saiu do Sistema"),s)
             sessionsSystem.removeSession(s)
     return render_template('login.html')
 #AUTENTICATION
@@ -65,6 +69,9 @@ def autenticar():
             cookie = str(request.form.get("username").__hash__())+str(random.random())+str(secrets.token_hex(16))
             sessionsSystem.addSession(request.form.get("username"),cookie)
             if(validation.isAdmin(getUserByUserName(request.form.get("username")))==False):
+                #Adiciona o Evento de Login
+                timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("Conf","Login","Novo Inicio de Sessão"),
+                                                      request.form.get("username"))
                 #se a pessoa nao for administradora
                 #cria uma nova resposta
                 availableTestes = getAvaliableTesteForUser(request.form.get("username"))
@@ -74,6 +81,8 @@ def autenticar():
                 else:
                     resposta = make_response(render_template('dashboardUser.html',da=availableTestes,user=request.form.get("username"), turmas = turmas))
             else:
+                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Login","Novo Inicio de Sessão"),
+                                                      request.form.get("username"))
                 #se a pessoa for administradora
                 provasConf = getAllDadosProva(request.form.get("username"))
                 resposta = make_response(render_template("dashboardAdmin.html",provas = provasConf))
@@ -90,6 +99,7 @@ def createAccont():
         s = sessionsSystem.verfiySession(cookie)
         if(s!=None):
             if(validation.isAdmin(getUserByUserName(s))==False):
+                timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("Conf","Log Out","O User Saiu do Sistema"),s)
                 #SE A PESSOA NAO 'E ADMINISTRADORA, O COOKIE DE SESSAO 'E REMOVIDO
                 sessionsSystem.removeSession(s)
     return render_template('register.html',accountType="student")
@@ -169,6 +179,7 @@ def terminarProva(token):
             #Deve verificar se a pessoa esta logada e tudo mais
             try:
                 stopp(token,s)
+                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Terminou a prova "+str(token),"O professor Pausou o teste"),s)
             except Exception as e:
                 pass
             return redirect(url_for('index'))
@@ -187,6 +198,7 @@ def retomarProva(token):
             #Deve verificar se a pessoa esta logada e tudo mais
             try:
                 iniciarTeste(token,s)
+                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Inicio da Prova "+str(token),"O professor Iniciou o teste"),s)
             except Exception as e:
                 pass
             return redirect(url_for('index'))
@@ -204,6 +216,7 @@ def downloadFile(token):
                 return redirect(url_for('index'))
             try:
                 saveDataFrameExcel(str(token)+".xlsx",token,s)
+                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Download da Prova "+str(token),"O professor Fez download do teste"),s)
                 return send_file('./data/Users/Teacher/'+s+'/download/'+str(token)+".xlsx", as_attachment=True)
             except Exception as e:
                 return redirect(url_for('index'))
@@ -241,6 +254,7 @@ def verificar(username):
                 return redirect(url_for('index'))
             try:
                 validateUserToAluno(username,estudantNumberRandom(s),s)
+                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Verificação do Aluno "+str(username),"O professor Verificou o Aluno"),s)
                 dadosProvas = getAllDadosProva(s)
                 for d in dadosProvas:
                     if(validation.alunoIsAutorized(s,username,d["token"])):
@@ -378,7 +392,7 @@ def createTeste():
             criarTurma(s,tt,tt)
         for a in alunosTur:
             makeTestAvailableForUser(s,t,a)
-                  
+    timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Criação da Prova "+str(t),"O professor Criou uma Nova Prova."),s)
     return redirect(url_for('index'))
 #ADMIN ADITANTO O TESTE
 #ADMIN
@@ -506,6 +520,7 @@ def onSubmit(teacher):
     turmas  = getAlTurmas(s,availableTestes)
     prova =  getProva(s,teacher,token)
             #une os dois resultados
+    timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("Conf","Submissão da Prova "+str(token),"O User Submetei uma prova do professor "+str(teacher),s))
     messages = unionProvaAndResult(messages,prova["results"])
     if(testeDisponivel(token,teacher)):
         return render_template("result.html", resultado=-1,u=user,user=s,turmas = turmas, imagem=imagem)
@@ -560,6 +575,7 @@ def engressar(teacher,turma):
                 return redirect(url_for('index'))
             try:
                 incressarEmTurma(s,teacher,turma)
+                timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("Conf","Pedido de Engresso a Turma "+str(turma),"O User Requisitou o engresso a turma  "+str(turma)+" do professor "+str(teacher)),s)
             except Exception as e:
                 return render_template("Error.html",erro = "Ocorreu um erro ao tentar ingressar nesta Turma",emoji='gifs/no3.gif')
             return redirect('/turma/'+teacher+'/'+turma)
@@ -783,6 +799,7 @@ def updateInfor():
                 user2.pop("password")
                 updateUser(user2,'./data/Users/Teacher/teachers.json')
             updateUser(user,"./data/users.json")
+            timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("UnConf","Actualização de Dados ","O User Actualizou alguns dados do Perfil"),s)
             return redirect('/profile/'+s)
 
             

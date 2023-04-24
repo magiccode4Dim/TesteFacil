@@ -306,6 +306,8 @@ def createNewUser(userName,fullname,password,email, isAdmin = 0):
         json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/availableTestes.json",list())
         #ficheiro onde seram armazenados os pedidos de ingresso
         json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/requests.json",list())
+        #Cria a TimeLine
+        json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/timeLine.json",list())
     users.append(newUser)
     json_Save.saveJSON('data/users.json',users)
 
@@ -405,6 +407,9 @@ def createTeacher(userName, email, senha, nome, token, descri):
     json_Save.saveJSON('./data/Users/Teacher/'+userName+'/provas/tokenList.json',list())
     json_Save.saveJSON('./data/Users/Teacher/'+userName+'/provas/canselados.json',list())
     os.makedirs("./data/Users/Teacher/"+userName+"/turmas")
+    #cria a timeLine do teacher
+    #timeLine.json
+    json_Save.saveJSON('./data/Users/Teacher/'+userName+'/timeLine.json',list())
     #Usar o token
     useTokenForTeacher(userName,token)
     return "Sucess"
