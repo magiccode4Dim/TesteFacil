@@ -520,7 +520,7 @@ def onSubmit(teacher):
     turmas  = getAlTurmas(s,availableTestes)
     prova =  getProva(s,teacher,token)
             #une os dois resultados
-    timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("Conf","Submissão da Prova "+str(token),"O User Submetei uma prova do professor "+str(teacher),s))
+    timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("Conf","Submissão da Prova "+str(token),"O User Submeteu uma prova do professor "+str(teacher)),s)
     messages = unionProvaAndResult(messages,prova["results"])
     if(testeDisponivel(token,teacher)):
         return render_template("result.html", resultado=-1,u=user,user=s,turmas = turmas, imagem=imagem)
