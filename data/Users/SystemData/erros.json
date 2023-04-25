@@ -1,0 +1,52 @@
+[
+    {
+        "userName": "romeu",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930s697a67c119686f8b5066f2b64f54f4040f542486/prova.json'",
+        "data": "04/25/23 - 09:12:58"
+    },
+    {
+        "userName": "romeu",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930697a67c119686f8b5066f2b6sss4f54f4040f542486/prova.json'",
+        "data": "04/25/23 - 09:20:42"
+    },
+    {
+        "userName": "pax",
+        "descricao": "Turma n\u00e3o encontrada",
+        "data": "04/25/23 - 09:24:38"
+    },
+    {
+        "userName": "pax",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930697a67c11968aa6f8b5066f2b64f54f4040f540276/notas.json'",
+        "data": "04/25/23 - 09:25:12"
+    },
+    {
+        "userName": "pax",
+        "descricao": "'NoneType' object is not subscriptable",
+        "data": "04/25/23 - 09:25:24"
+    },
+    {
+        "userName": "pax",
+        "descricao": "'NoneType' object is not subscriptable",
+        "data": "04/25/23 - 09:26:05"
+    },
+    {
+        "userName": "pax",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930697a67c119686f8b5066f2b64f54f4040f540276ddd/notas.json'",
+        "data": "04/25/23 - 09:26:41"
+    },
+    {
+        "userName": "pax",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930697a67c119686f8b5066f2b64f54f4040f643668sss/notas.json'",
+        "data": "04/25/23 - 09:27:12"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list assignment index out of range",
+        "data": "04/25/23 - 11:01:29"
+    },
+    {
+        "userName": "pax",
+        "descricao": "'NoneType' object is not iterable",
+        "data": "04/25/23 - 11:06:14"
+    }
+]

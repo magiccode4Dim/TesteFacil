@@ -75,30 +75,35 @@
                                         <div class="pd-20">
                                             <div class="profile-timeline">
                                                 <div class="timeline-month">
-                                                    <h5>Abril 2023</h5>
+                                                    <h5>Eventos da Conta</h5>
                                                 </div>
                                                 <div class="profile-timeline-list">
                                                     <ul>
-                                                        <li>
-                                                            <div class="date">12 Abril</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-android-alarm-clock"></i> Criacao de nova Prova
-                                                            </div>
-                                                            <p>
-                                                                A prova chama-se xyz
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="date">11</div>
-                                                            <div class="task-name">
-                                                                <i class="ion-ios-chatboxes"></i> Actualização de Dados da Prova
-                                                            </div>
-                                                            <p>
-                                                                O Nome e mail foram actualizados para
-                                                            </p>
-                                                            <div class="task-time">09:30 am</div>
-                                                        </li>
+                                                        {% for log in timeLine%}
+                                                            {% if log["nivel"] == "Conf" and editable  %}
+                                                                    <li>
+                                                                        <div class="date"></div>
+                                                                        <div class="task-name">
+                                                                            <i class="ion-android-alarm-clock"></i> {{log["titulo"]}}
+                                                                        </div>
+                                                                        <p>
+                                                                            {{log["descricao"]}}
+                                                                        </p>
+                                                                        <div class="task-time">{{log["data"]}}</div>
+                                                                    </li>
+                                                            {% elif log["nivel"] == "UnConf" %}
+                                                                    <li>
+                                                                        <div class="date"></div>
+                                                                        <div class="task-name">
+                                                                            <i class="ion-android-alarm-clock"></i> {{log["titulo"]}}
+                                                                        </div>
+                                                                        <p>
+                                                                            {{log["descricao"]}}
+                                                                        </p>
+                                                                        <div class="task-time">{{log["data"]}}</div>
+                                                                    </li>
+                                                            {% endif %}
+                                                        {% endfor %}
                                                     </ul>
                                                 </div>			
                                             </div>

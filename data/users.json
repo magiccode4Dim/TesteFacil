@@ -30,12 +30,6 @@
         "permissions": "CRUD"
     },
     {
-        "userName": "pax",
-        "fullname": "pax pax",
-        "password": "202cb962ac59075b964b07152d234b70",
-        "email": "scoal97@gmail.com"
-    },
-    {
         "userName": "cheche",
         "fullname": "cheche che",
         "password": "81dc9bdb52d04dc20036dbd8313ed055",
@@ -68,5 +62,11 @@
         "fullname": "NARCISO shelton vintano william",
         "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
         "email": "narcisopascoal97@gmail.com"
+    },
+    {
+        "userName": "pax",
+        "fullname": "Paxcoal Pax",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "scoal97@gmail.com"
     }
 ]
