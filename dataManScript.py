@@ -616,7 +616,13 @@ def getPerguntasQuntAENR(userName):
 		'NRespondidas': naoRespondidas,
 		'Certas': correctas
     }
-
+#pega apenas os estudantes de uma determinada Turma
+def getOnlyStudentsOfClass(alunos,turma):
+    l = list()
+    for x in alunos:
+        if(x["turma"]==turma):
+            l.append(x)
+    return l
 
 if __name__ == "__main__":
     #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))

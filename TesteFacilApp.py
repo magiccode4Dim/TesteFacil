@@ -417,6 +417,7 @@ def createTeste():
             except FileNotFoundError as e:
                 #Caso a Turma nao existir, ela sera criada automaticamente
                 criarTurma(s,tt,tt)
+                alunosTur = list()
             for a in alunosTur:
                 makeTestAvailableForUser(s,t,a)
         timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Criação da Prova "+str(t),"O professor Criou uma Nova Prova."),s)
@@ -777,6 +778,7 @@ def verturma(teacher,turma):
                         if(s in tur["alunos"]):
                             canSeeStudents = True
                             alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacher+'/alunos/alunos.json')
+                            alunos = getOnlyStudentsOfClass(alunos,turma)
                         else:
                             alunos = list()
                             canSeeStudents = False

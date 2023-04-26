@@ -113,5 +113,10 @@
         "userName": "l@stuser",
         "descricao": "list index out of range",
         "data": "04/26/23 - 09:46:01"
+    },
+    {
+        "userName": "romeu",
+        "descricao": "local variable 'alunosTur' referenced before assignment",
+        "data": "04/26/23 - 10:34:24"
     }
 ]
