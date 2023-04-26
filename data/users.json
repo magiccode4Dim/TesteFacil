@@ -36,12 +36,6 @@
         "email": "magicc@gmail.com"
     },
     {
-        "userName": "l@stuser",
-        "fullname": "last last",
-        "password": "81dc9bdb52d04dc20036dbd8313ed055",
-        "email": "last@gmail.com"
-    },
-    {
         "userName": "pascoal",
         "fullname": "NanyNilson",
         "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
@@ -68,5 +62,11 @@
         "fullname": "Paxcoal Pax",
         "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
         "email": "scoal97@gmail.com"
+    },
+    {
+        "userName": "l@stuser",
+        "fullname": "last last",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "last@gmail.com"
     }
 ]

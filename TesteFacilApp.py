@@ -1,6 +1,6 @@
 #APLICACAO PRINCIPAL
-from flask import Flask,request,render_template, url_for, redirect, make_response,send_file
-from util import json_Save, bussness,validation,sessionsSystem,timeLineSystem
+from flask import Flask,request,render_template, url_for, redirect, make_response,send_file,jsonify
+from util import json_Save, bussness,validation,sessionsSystem,timeLineSystem,dataAnalise
 from dataManScript import *
 import os
 import random
@@ -558,13 +558,18 @@ def onSubmit(teacher):
         prova =  getProva(s,teacher,token)
                 #une os dois resultados
         timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("Conf","Submissão da Prova "+str(token),"O User Submeteu uma prova do professor "+str(teacher)),s)
-        messages = unionProvaAndResult(messages,prova["results"])
+        try:
+            messages = unionProvaAndResult(messages,prova["results"])
+        except Exception as e:
+            #erro ira acontecer quando o estudante nao submeter nada
+            pass
         if(testeDisponivel(token,teacher)):
             return render_template("result.html", resultado=-1,u=user,user=s,turmas = turmas, imagem=imagem)
         return render_template("result.html", resultado=nota,aL=aL,messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem)
     except Exception as e:
                 #se acontecer qualquer excessao na tentava de conversao
                 timeLineSystem.addError(str(e),s)
+                print(e)
                 return render_template("Error.html",erro = "Erro do Sistema")  
 #Ver Resultado
 #USER
@@ -603,7 +608,11 @@ def verResultado(teacher,token):
                 turmas  = getAlTurmas(s,availableTestes)
                 prova =  getProva(s,teacher,token)
                 #une os dois resultados
-                messages = unionProvaAndResult(messages,prova["results"])
+                try:
+                    messages = unionProvaAndResult(messages,prova["results"])
+                except Exception as e:
+                    #quando a lista de resultados estiver vazia
+                    pass
                 if(testeDisponivel(token,teacher)):
                     return render_template("result.html", resultado=-1,u=user,user=s,turmas = turmas, imagem=imagem)
                 return render_template("result.html", resultado=nota,aL=aL,messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem)
@@ -798,7 +807,23 @@ def helpPage():
 #desempenho academico
 @app.route("/desempenho",methods=['GET']) 
 def desempenhoDoEstudante():
-    return "retorna o desempenho do estudante"
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            try:
+                uu = getUserByUserName(s)
+                if(not validation.isAdmin(uu) ):
+                    imagem = 'images/magiccodeicon.png'
+                    availableTestes = getAvaliableTesteForUser(s)
+                    turmas  = getAlTurmas(s,availableTestes)
+                    return render_template("desempenho.html", user=s,turmas = turmas, imagem=imagem)
+                else:
+                    return redirect(url_for('index'))
+            except Exception as e:
+                timeLineSystem.addError(str(e),s)
+                return render_template("Error.html",erro = "Erro do Sistema")
+    redirect(url_for('index'))
 #fale connosco
 @app.route("/faleconnosco",methods=['GET',"POST"]) 
 def talktous():
@@ -881,6 +906,47 @@ def updateInfor():
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")     
     return redirect(url_for('index'))
+
+#getNotas do estudante e dadas de testes em Json
+@app.route("/user/getnotasedadastese",methods=['GET']) 
+def getNotasJson():
+    cookie = request.cookies.get('SessionID')
+    #print(cookie)
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            try:
+                uu = getUserByUserName(s)
+                if(not validation.isAdmin(uu) ): 
+                    dados = getNotaAndData(s)
+                    #print(dados)
+                    return jsonify(dados)
+                else:
+                    return  jsonify(dict())
+            except Exception as e:
+                timeLineSystem.addError(str(e),s)
+    return  jsonify(dict())
+
+
+#getNotas do estudante e dadas de testes em Json
+@app.route("/user/perguntasqunt",methods=['GET']) 
+def getperguntasqunt():
+    cookie = request.cookies.get('SessionID')
+    #print(cookie)
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            try:
+                uu = getUserByUserName(s)
+                if(not validation.isAdmin(uu) ): 
+                    dados = getPerguntasQuntAENR(s)
+                    #print(dados)
+                    return jsonify(dados)
+                else:
+                    return  jsonify(dict())
+            except Exception as e:
+                timeLineSystem.addError(str(e),s)
+    return  jsonify(dict())
 
 
 

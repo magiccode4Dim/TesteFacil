@@ -19,6 +19,13 @@ def getAllDadosProva(teacherUserName):
         except Exception as e:
             pass
     return confList
+#retorna a prova em si
+def getTeacherProva(teacherUserName, token):
+    try:
+         return json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/'+str(token)+'/prova.json')
+    except FileNotFoundError as e:
+        return list()
+   
 
 #Obtem a nota do aluno pelo numero
 def getNotaAluno(numero,token,teacherUserName):
@@ -558,6 +565,59 @@ def unionProvaAndResult(prova,result):
         pp+=1
         newList.append(p)
     return newList
+
+#retorna as notas e dadas dos testes
+def getNotaAndData(userName):
+    testes =  getAvaliableTesteForUser(userName)
+    notas = []
+    datas =  []
+    categories = [(2,'Feb'), (3,'Mar'), (4,'Apr'), (5,'May'), (6,'Jun'), (7,'Jul'), (8,'Aug'), (9,'Sep'), (10,'Oct'),(11,'Nov'),(12,'Dec')]
+    for t in testes:
+        if(t["nota"]>=0):
+            notas.append(t["nota"])
+            dad = t["Data"].split("/")   
+            for c in categories:
+                if(c[0]==int(dad[1])):
+                    datas.append(c[1])
+        else:
+            continue
+    return {
+        "datas" : datas,
+        "notas"  : notas
+    }
+    
+#retorna a quantidade de perguntas acertadas, erradas e nao respondidas do estudante AENR - Acertada Errada e Nao respondida
+def getPerguntasQuntAENR(userName):
+    testes =  getAvaliableTesteForUser(userName)
+    erradas  = 0
+    correctas = 0
+    naoRespondidas = 0
+    for t in testes:
+        tt = getProva(userName,t["teacher"],t["token"])
+        if(tt==None):
+            continue
+        results  = tt["results"]
+        prova = getTeacherProva(t["teacher"],t["token"])
+        #para saber a quantidade de perguntas nao respondidas 'e so somar a diferença entre as perguntas da prova do aluno com as da prova original
+        naoRespondidas+=len(prova)-len(results)
+        #sabendo quantidade de perguntas certas e erradas
+        for i in range(len(prova)):
+            try:
+                if ((prova[i])["id"]==(results[i])[0]):
+                    if((results[i])[1]==(prova[i])["correcta"]):
+                        correctas+=1
+                    elif ((results[i])[1]!=(prova[i])["correcta"]):
+                        erradas+=1
+            except Exception as e:
+                #essa excessao vai acontecer nas vezes em que haverao perguntas nao respondidas
+                continue
+    return {
+        'Erradas': erradas,
+		'NRespondidas': naoRespondidas,
+		'Certas': correctas
+    }
+
+
 if __name__ == "__main__":
     #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))
     #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")
@@ -568,7 +628,7 @@ if __name__ == "__main__":
     #print(validateUserToAluno("@nanilsin",3444,"romeu"))
     #print(getAllDadosProva("romeu"))
     #print(getAvaliableTesteForUser("pax"))
-    a, b  = searchData("A")
+    #a, b  = searchData("A")
     
-    print(a)
-    
+    #print(a)
+    print(getPerguntasQuntAENR('l@stuser'))

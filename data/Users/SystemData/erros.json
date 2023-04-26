@@ -48,5 +48,70 @@
         "userName": "pax",
         "descricao": "'NoneType' object is not iterable",
         "data": "04/25/23 - 11:06:14"
+    },
+    {
+        "userName": "bubufilho",
+        "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
+        "data": "04/26/23 - 09:25:33"
+    },
+    {
+        "userName": "bubufilho",
+        "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
+        "data": "04/26/23 - 09:25:33"
+    },
+    {
+        "userName": "bubufilho",
+        "descricao": "list index out of range",
+        "data": "04/26/23 - 09:25:33"
+    },
+    {
+        "userName": "bubufilho",
+        "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
+        "data": "04/26/23 - 09:26:08"
+    },
+    {
+        "userName": "bubufilho",
+        "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
+        "data": "04/26/23 - 09:26:08"
+    },
+    {
+        "userName": "pax",
+        "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
+        "data": "04/26/23 - 09:31:37"
+    },
+    {
+        "userName": "pax",
+        "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
+        "data": "04/26/23 - 09:31:37"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list index out of range",
+        "data": "04/26/23 - 09:31:37"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
+        "data": "04/26/23 - 09:40:13"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
+        "data": "04/26/23 - 09:40:13"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list index out of range",
+        "data": "04/26/23 - 09:44:08"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list index out of range",
+        "data": "04/26/23 - 09:44:13"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "list index out of range",
+        "data": "04/26/23 - 09:46:01"
     }
 ]

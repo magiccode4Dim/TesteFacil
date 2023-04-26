@@ -1,0 +1,31 @@
+{% extends 'baseDashBoardUser.html' %}
+
+
+
+{% block content %}
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4>{% block title %} Meu Desempenho {% endblock %}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Grafico-->
+    <div class="bg-white pd-20 card-box mb-30">
+        <h4 class="h4 text-blue">Gráfico de Notas das Avaliações</h4>
+        <div id="chart1"></div>
+    </div>
+    <div class="bg-white pd-20 card-box mb-30">
+        <h4 class="h4 text-blue">Gráfico de Perguntas e respostas</h4>
+        <div id="chart6"></div>
+    </div>
+    <!--Graficos -->
+
+    <script src="{{url_for('static',filename='scripts/apexcharts.min.js')}}"></script>
+	<script src="{{url_for('static',filename='scripts/apexcharts-setting.js')}}"></script>
+    <script src="{{url_for('static',filename='scripts/highcharts.js')}}"></script>
+	<script src="{{url_for('static',filename='scripts/highcharts-more.js')}}"></script>
+	<script src="{{url_for('static',filename='scripts/highchart-setting.js')}}"></script>
+{% endblock %}

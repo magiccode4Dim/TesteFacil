@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "title": "1+2",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "1"
+            },
+            {
+                "id": 2,
+                "ques": "3"
+            }
+        ],
+        "cotacao": 4,
+        "correcta": 2
+    },
+    {
+        "id": 2,
+        "title": "Jussara",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Nukher"
+            },
+            {
+                "id": 2,
+                "ques": "Mulher"
+            }
+        ],
+        "cotacao": 4,
+        "correcta": 2
+    }
+]
