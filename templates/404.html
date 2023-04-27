@@ -1,8 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'errorBase.html' %}
 
 {% block content %}
-<center>
-    <img src="{{url_for('static',filename='gifs/triste.gif')}}">
-</center>
-    <h1>{% block title %} ERROR 404 - NÃO ENCONTRADO {% endblock %}</h1>
+    <div class="pd-10">
+        <div class="error-page-wrap text-center">
+            <h1>{% block title %} 404 {% endblock %}</h1>
+            <h3>Error: 404 Página não encontrada</h3>
+            <p>
+                Desculpe mas, o recurso que tentou acessar não existe nos nossos Servidores.
+            </p>
+            <div class="pt-20 mx-auto max-width-200">
+                <a href="/" class="btn btn-primary btn-block btn-lg"
+                    >Voltar para Página Inicial</a
+                >
+            </div>
+        </div>
+    </div>
 {% endblock %}

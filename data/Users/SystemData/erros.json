@@ -118,5 +118,85 @@
         "userName": "romeu",
         "descricao": "local variable 'alunosTur' referenced before assignment",
         "data": "04/26/23 - 10:34:24"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "'>=' not supported between instances of 'str' and 'int'",
+        "data": "04/27/23 - 10:00:57"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "'>=' not supported between instances of 'str' and 'int'",
+        "data": "04/27/23 - 10:00:59"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "'>=' not supported between instances of 'str' and 'int'",
+        "data": "04/27/23 - 10:01:00"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "'>=' not supported between instances of 'str' and 'int'",
+        "data": "04/27/23 - 10:01:09"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "'>=' not supported between instances of 'str' and 'int'",
+        "data": "04/27/23 - 10:01:10"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "'>=' not supported between instances of 'str' and 'int'",
+        "data": "04/27/23 - 10:01:11"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "'>=' not supported between instances of 'str' and 'int'",
+        "data": "04/27/23 - 10:01:19"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "'>=' not supported between instances of 'str' and 'int'",
+        "data": "04/27/23 - 10:01:19"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "'>=' not supported between instances of 'str' and 'int'",
+        "data": "04/27/23 - 10:01:36"
+    },
+    {
+        "userName": "l@stuser",
+        "descricao": "'>=' not supported between instances of 'str' and 'int'",
+        "data": "04/27/23 - 10:01:50"
+    },
+    {
+        "userName": "pax",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930697a67c119686f8b5066f2b64f54f4040f540276d/notas.json'",
+        "data": "04/27/23 - 10:33:58"
+    },
+    {
+        "userName": "pax",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930697a67c119686f8b5066f2b64f54f4040f540276dd/notas.json'",
+        "data": "04/27/23 - 10:34:16"
+    },
+    {
+        "userName": "pax",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930697a67c119686f8b5066f2b64f54f4040f458280s/notas.json'",
+        "data": "04/27/23 - 10:38:17"
+    },
+    {
+        "userName": "pax",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930697a67c119686f8b5066f2b64f54f4040f458280s/notas.json'",
+        "data": "04/27/23 - 10:38:24"
+    },
+    {
+        "userName": "pax",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930697a67c119686f8b5066f2b64f54f4040f4582/notas.json'",
+        "data": "04/27/23 - 10:38:36"
+    },
+    {
+        "userName": "pax",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/romeu/provas/3930697a7c119686f8b5066f2b64f54f4040f458280/notas.json'",
+        "data": "04/27/23 - 10:38:43"
     }
 ]

@@ -1,5 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'errorBase.html' %}
 
 {% block content %}
-    <h1>{% block title %} {{erro}} {% endblock %}</h1>
+    <div class="pd-10">
+        <div class="error-page-wrap text-center">
+            <h1>{% block title %} 500 {% endblock %}</h1>
+            <h3>Ocorreu um erro</h3>
+            <p>
+                {{erro}}
+            </p>
+            <div class="pt-20 mx-auto max-width-200">
+                <a href="/" class="btn btn-primary btn-block btn-lg"
+                    >Voltar para Página Inicial</a
+                >
+            </div>
+        </div>
+    </div>
 {% endblock %}

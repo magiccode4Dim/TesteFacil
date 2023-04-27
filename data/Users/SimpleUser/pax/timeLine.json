@@ -100,5 +100,23 @@
         "titulo": "Pedido de Engresso a Turma H",
         "descricao": "O User Requisitou o engresso a turma  H do professor romeu",
         "data": "04/26/23 - 10:38:50"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "04/27/23 - 09:50:19"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Log Out",
+        "descricao": "O User Saiu do Sistema",
+        "data": "04/27/23 - 09:50:51"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "04/27/23 - 10:08:25"
     }
 ]

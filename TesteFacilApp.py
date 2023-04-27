@@ -670,6 +670,11 @@ def sobre():
 def error404():
     return render_template('404.html')
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
 # Pesquisa alguma coisa no Painel de user        
 @app.route("/search",methods=['GET','POST']) 
 def search():

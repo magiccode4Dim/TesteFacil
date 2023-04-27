@@ -46,5 +46,11 @@
         "titulo": "Verifica\u00e7\u00e3o do Aluno pax",
         "descricao": "O professor Verificou o Aluno",
         "data": "04/26/23 - 10:39:33"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "04/27/23 - 10:37:21"
     }
 ]
