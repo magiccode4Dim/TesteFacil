@@ -2,8 +2,8 @@
 
 {% block content %}
     <h1> Olá {% block title %} {{user}} {% endblock %} ! </h1>
-        <div class="min-height-200px">
-            <div class="row clearfix">
+        
+            
             <div class="row clearfix">
                 {% for dadosProva in da %}    
                     <div class="col-sm-12 col-md-4 mb-30">
@@ -18,12 +18,12 @@
                                     <p class="card-text">
                                         Teste Feito No Dia :  {{dadosProva['Data']}}
                                     </p>
-                                    <a href="/resultado/{{dadosProva['teacher']}}/{{dadosProva['token']}}"class="btn btn-primary">Ver Correção</a>
+                                    <a href="/resultado/{{dadosProva['teacher']}}/{{dadosProva['token']}}"class="btn btn-primary  bi bi-journal-bookmark-fill"> Ver Correção</a>
                                 {% else %}
                                     <p class="card-text">
                                         Teste Marcado para :  {{dadosProva['Data']}}
                                     </p>
-                                    <a href="/load/{{dadosProva['teacher']}}/{{dadosProva['token']}}" class="btn btn-primary">Ver Teste</a>
+                                    <a href="/load/{{dadosProva['teacher']}}/{{dadosProva['token']}}" class="btn btn-primary bi-layout-text-window"> Ver Teste</a>
                                 {% endif %}
                             </div>
                             {% if  dadosProva["nota"] < 0  %}
@@ -36,5 +36,5 @@
                 {% endfor %}
 
             </div>
-        </div>
+       
 {% endblock %}

@@ -1,7 +1,28 @@
-{% extends 'base1.html' %}
+{% extends 'baseDashBoardAdmin.html' %}
 
 {% block content %}
-    <h1>{% block title %} Pagina Inicial dashboard admin {% endblock %}</h1>
+    <h1>Olá Professor(a) {% block title %} {{user}} {% endblock %} !</h1>
+    <!--bOTAO DE CRIACAO DE TESE QUE NUNCA DEVE SAIR-->
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+            <div class="card card-box">
+                <img
+                    class="card-img-top"
+                    src="{{url_for('static',filename='images/testefacil.png')}}"
+                    alt="Card image cap"
+                />
+                <div class="card-body">
+                    <h5 class="card-title weight-500">Criar Teste</h5>
+                    <p class="card-text">
+                        Crie um novo Teste, selecione as turmas que irão faze-la e veja os resultados que os seus estudantes terão.
+                    </p>
+                    <a href="/prova" class="btn btn-primary bi bi-pencil-square"> Criar Nova Prova</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--bOTAO DE CRIACAO DE TESE QUE NUNCA DEVE SAIR-->
+    <!--
     <h2>Provas Criadas</h2>
     {% for dadosProva in provas %}
         <div class='message'>
@@ -14,5 +35,5 @@
             <h2><a href="/retomar/{{dadosProva['token']}}"> CONTINUAR PROVA</a></h2>
             <h2><a href="/download/{{dadosProva['token']}}"> BAIXAR RESULTADOS</a></h2>
         </div>
-    {% endfor %}
+    {% endfor %}-->
 {% endblock %}

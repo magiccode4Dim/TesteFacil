@@ -35,7 +35,8 @@ def index():
                         #vai pegar todas as notas do aluno com base em dados do teste
                         return render_template('dashboardUser.html',da=availableTestes,user=s , turmas = turmas)
                 provasConf = getAllDadosProva(s)
-                return render_template("dashboardAdmin.html", provas = provasConf)
+                t= getAllTurmasOfTeacher(s)
+                return render_template("dashboardAdmin.html", provas = provasConf, turmas = t, user =  s)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
@@ -89,8 +90,9 @@ def autenticar():
                     timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Login","Novo Inicio de Sessão"),
                                                         request.form.get("username"))
                     #se a pessoa for administradora
+                    t= getAllTurmasOfTeacher(request.form.get("username"))
                     provasConf = getAllDadosProva(request.form.get("username"))
-                    resposta = make_response(render_template("dashboardAdmin.html",provas = provasConf))
+                    resposta = make_response(render_template("dashboardAdmin.html",provas = provasConf,turmas = t, user =  request.form.get("username")))
                 resposta.set_cookie("SessionID",cookie)
                 return resposta
     except Exception as e:
@@ -148,7 +150,7 @@ def cadastrar():
                 if(request.form.get('token') != None):
                     res = createTeacher(a,request.form.get("email"),request.form.get("pass2"),request.form.get("fullname"),request.form.get('token'), request.form.get("descr") )
                     if(res=="Sucess"):
-                        return render_template("Error.html",erro = "Criado Com Sucesso")
+                        return render_template("Sucess.html",title= "Perfil Criado Com Sucesso!!", desc ="O seu Perfil Foi Criado com Sucesso")
                     else:
                         return render_template("Error.html",erro = res)
                 createNewUser(a,request.form.get("fullname"),request.form.get("pass2"),request.form.get("email"))
@@ -259,8 +261,8 @@ def users():
     return redirect(url_for('login'))
 #Admin verificando seus users
 #ADMIN
-@app.route("/users/verify/<username>",methods=['GET']) 
-def verificar(username):
+@app.route("/users/verify/<username>/<turma>",methods=['GET']) 
+def verificar(username,turma):
     #Deve verificar se a pessoa esta logada e tudo mais
     #Funcao que Gera numeros aleatorios sem repeticao
     #estou aqui
@@ -272,17 +274,17 @@ def verificar(username):
             if(validation.isAdmin(getUserByUserName(s))==False):
                 return redirect(url_for('index'))
             try:
-                validateUserToAluno(username,estudantNumberRandom(s),s)
-                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Verificação do Aluno "+str(username),"O professor Verificou o Aluno"),s)
+                validateUserToAluno(username,estudantNumberRandom(s),s,turma)
+                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Verificação do Aluno "+str(username),"O professor Verificou o Aluno para turma "+str(turma)),s)
                 dadosProvas = getAllDadosProva(s)
                 for d in dadosProvas:
                     if(validation.alunoIsAutorized(s,username,d["token"])):
                         makeTestAvailableForUser(s,d["token"],username)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
-                return redirect(url_for('users'))
-            return redirect(url_for('users'))
-    return redirect(url_for('login'))
+                return render_template("Error.html",erro = "Erro do Sistema")  
+            return redirect('/turma/'+str(s)+'/'+str(turma))
+    return redirect(url_for('index'))
 #o ADMINISTRADOR VENDO SEUS ESTUDANTES
 #ADMIN
 @app.route("/students",methods=['GET']) 
@@ -302,7 +304,7 @@ def students():
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
             return render_template("students.html",allusers =  allUsers, atributs=atributs)
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 #ADMIN CRIANDO UMA PROVA
 #ADMIN
 @app.route("/prova",methods=['GET']) 
@@ -316,7 +318,7 @@ def prova():
                 return redirect(url_for('index'))
             #Deve verificar se a pessoa esta logada e tudo mais
             return render_template('createTest.html')
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 #ADMIN GUARDANDO A PROVA
 #ADMIN
 @app.route("/prova/create",methods=['GET','POST']) 
@@ -570,7 +572,7 @@ def onSubmit(teacher):
     except Exception as e:
                 #se acontecer qualquer excessao na tentava de conversao
                 timeLineSystem.addError(str(e),s)
-                print(e)
+                #print(e)
                 return render_template("Error.html",erro = "Erro do Sistema")  
 #Ver Resultado
 #USER
@@ -773,6 +775,7 @@ def verturma(teacher,turma):
                     return redirect(url_for('error404'))
                 uu = getUserByUserName(s)
                 #se for user simples
+                alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacher+'/alunos/alunos.json')
                 if(not validation.isAdmin(uu) ):
                         #se for um simple user
                         availableTestes = getAvaliableTesteForUser(s)
@@ -782,7 +785,6 @@ def verturma(teacher,turma):
                             notInturma = False
                         if(s in tur["alunos"]):
                             canSeeStudents = True
-                            alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacher+'/alunos/alunos.json')
                             alunos = getOnlyStudentsOfClass(alunos,turma)
                         else:
                             alunos = list()
@@ -790,19 +792,24 @@ def verturma(teacher,turma):
                         imagem = 'images/magiccodeicon.png'
                         return render_template("turma.html",da=availableTestes,user=s ,
                                             turmas = turmas, imagem=imagem,  t=tur, teacher=teacher,
-                                            notInturma=notInturma, canSeeStudents=canSeeStudents , alunos = alunos, isTurmaTeacher  = False)
+                                            notInturma=notInturma, canSeeStudents=canSeeStudents , alunos = alunos, isTurmaTeacher  = False, isTeacher = False)
                 #se a pessoa for administrador mas a turma nao ser sua
                 if(validation.isAdmin(uu) and s!=teacher):
+                        t= getAllTurmasOfTeacher(s)
                         imagem = 'images/magiccodeicon.png'
-                        return render_template("turma.html",user = s,
+                        return render_template("turma.html",user = s,turmas = t,
                                             notInturma=False, imagem=imagem, t=tur, 
-                                            teacher=teacher, canSeeStudents = False, isTurmaTeacher  = False, alunos = list())
+                                            teacher=teacher, canSeeStudents = False, isTurmaTeacher  = False, alunos = list(), isTeacher = True)
                 #quando a pessoa 'e admin e a turma 'e sua
                 if(validation.isAdmin(uu) and s==teacher ):
+                        t= getAllTurmasOfTeacher(s)
+                        alunos = getOnlyStudentsOfClass(alunos,turma)
+                        alunosToAprov = getTeacherUsersUnaprovad(s,turma)
                         imagem = 'images/magiccodeicon.png'
-                        return render_template("turma.html",user = s,
+                        return render_template("turma.html",user = s,turmas = t,
                                             notInturma=False, imagem=imagem, t=tur, 
-                                            teacher=teacher, canSeeStudents = True , alunos = alunos, isTurmaTeacher = True)
+                                            teacher=teacher, canSeeStudents = True , alunos = alunos, 
+                                            isTurmaTeacher = True, isTeacher = True,alunosToAcept=alunosToAprov)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")

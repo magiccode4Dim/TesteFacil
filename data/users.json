@@ -1,71 +1,23 @@
 [
     {
-        "userName": "Nany",
-        "fullname": "Narciso Cadeado",
-        "password": "c45a9c8df5a3d40488aa1ccaaae9f33d",
-        "email": "n@gmail.com",
+        "userName": "narciso",
+        "fullname": "Narciso Pascoal Albino Cadeado",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "narcisopascoal97@gmail.com",
         "isAdmin": 1,
         "permissions": "CRUD"
     },
     {
-        "userName": "romeu",
-        "fullname": "Narciso Cadeado",
+        "userName": "magic",
+        "fullname": "Magic Code",
         "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
-        "email": "n@gmail.com",
+        "email": "magiccodesoftware@gmail.com",
         "isAdmin": 1,
         "permissions": "CRUD"
-    },
-    {
-        "userName": "@nanilsin",
-        "fullname": "shelton vintano",
-        "password": "6512bd43d9caa6e02c990b0a82652dca",
-        "email": "narcisopascoal97@gmail.com"
-    },
-    {
-        "userName": "afonso",
-        "fullname": "Afonso joao",
-        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
-        "email": "a@gmail.com",
-        "isAdmin": 1,
-        "permissions": "CRUD"
-    },
-    {
-        "userName": "cheche",
-        "fullname": "cheche che",
-        "password": "81dc9bdb52d04dc20036dbd8313ed055",
-        "email": "magicc@gmail.com"
-    },
-    {
-        "userName": "pascoal",
-        "fullname": "NanyNilson",
-        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
-        "email": "p@gmail.com",
-        "isAdmin": 1,
-        "permissions": "CRUD"
-    },
-    {
-        "userName": "bubu",
-        "fullname": "Booststrape Pai",
-        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
-        "email": "bubu@gmail.com",
-        "isAdmin": 1,
-        "permissions": "CRUD"
-    },
-    {
-        "userName": "bubufilho",
-        "fullname": "NARCISO shelton vintano william",
-        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
-        "email": "narcisopascoal97@gmail.com"
     },
     {
         "userName": "pax",
-        "fullname": "Paxcoal Pax",
-        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
-        "email": "scoal97@gmail.com"
-    },
-    {
-        "userName": "l@stuser",
-        "fullname": "last last",
+        "fullname": "Pax Pax",
         "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
         "email": "last@gmail.com"
     }

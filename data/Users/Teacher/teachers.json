@@ -1,38 +1,14 @@
 [
     {
-        "userName": "Nany",
-        "email": "na@gmail.com",
-        "fullname": "Narciso Cadeado",
-        "bio":""
+        "userName": "narciso",
+        "email": "narcisopascoal97@gmail.com",
+        "fullname": "Narciso Pascoal Albino Cadeado",
+        "bio": "Eu sou um professor muito Chato"
     },
     {
-        "userName": "zany",
-        "email": "na@gmail.com",
-        "fullname": "Narciso Cadeado",
-        "bio":""
-    },
-    {
-        "userName": "romeu",
-        "email": "r@gmail.com",
-        "fullname": "Romeu Afonso",
-        "bio":"Eu sou o Pai do bootstrapFilho sou professor de matematica e gosto muito de avioes"
-    },
-    {
-        "userName": "afonso",
-        "email": "a@gmail.com",
-        "fullname": "Afonso joao",
-        "bio":""
-    },
-    {
-        "userName": "pascoal",
-        "email": "p@gmail.com",
-        "fullname": "NanyNilson",
-        "bio":""
-    },
-    {
-        "userName": "bubu",
-        "email": "bubu@gmail.com",
-        "fullname": "Booststrape Pai",
-        "bio": "Eu sou o Pai do bootstrapFilho sou professor de matematica e gosto muito de avioes"
+        "userName": "magic",
+        "email": "magiccodesoftware@gmail.com",
+        "fullname": "Magic Code",
+        "bio": "sou magico"
     }
 ]

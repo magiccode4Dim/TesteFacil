@@ -19,9 +19,9 @@
                     {% set tn =  1 %}
                     {% for tuu in turmas2  %}
                         <tr>
-                            <td><a href="/turma/{{tuu['teacher']}}/{{tuu['nome']}}"><span class="badge badge-success">{{tuu["nome"]}}</span></a></td>
+                            <td><a href="/turma/{{tuu['teacher']}}/{{tuu['nome']}}"><span class="badge badge-success bi bi-plus-square-fill"> {{tuu["nome"]}}</span></a></td>
                             <td>{{tuu["descricao"]}}</td>
-                            <td><a href="/profile/{{tuu['teacher']}}"><span class="badge badge-primary">{{tuu['teacher']}}</span></a></td>
+                            <td><a href="/profile/{{tuu['teacher']}}"><span class="badge badge-primary bi bi-plus-square-fill"> {{tuu['teacher']}}</span></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -46,7 +46,7 @@
                     {% for tt in teachers %}
                         <tr>
                             <td>{{tt["fullname"]}}</td>
-                            <td><a href="/profile/{{tt['userName']}}"><span class="badge badge-primary">Ver Perfil de {{tt['userName']}}</span></a></td>
+                            <td><a href="/profile/{{tt['userName']}}"><span class="badge badge-primary bi bi-plus-square-fill"> Ver Perfil de {{tt['userName']}}</span></a></td>
                             <td>{{tt['bio']}}</td>
                         </tr>
                     {% endfor %}

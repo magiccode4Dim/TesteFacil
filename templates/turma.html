@@ -1,4 +1,8 @@
-{% extends 'baseDashBoardUser.html' %}
+{% if isTurmaTeacher %}
+    {% extends 'dashboardAdmin.html' %}
+{% else %}
+    {% extends 'baseDashBoardUser.html' %}
+{% endif %}
 
 {% block content %}
         <div class="min-height-200px">
@@ -33,29 +37,33 @@
                             {% if notInturma %}
                                 <ul>
                                     <li>
-                                        <a class="btn btn-primary btn-lg btn-block" href="/engressar/{{teacher}}/{{t['nome']}}">Enviar Pedido de Incresso</a>
+                                        <a class="btn btn-primary btn-lg btn-block  bi bi-send-plus" href="/engressar/{{teacher}}/{{t['nome']}}"> Enviar Pedido de Incresso</a>
                                     </li>
                                 </ul>
                             {% elif canSeeStudents  %}
-                                <ul>
-                                    <li>
-                                        <img
-                                        src="{{url_for('static',filename="images/check-mark-green.png")}}"
-                                        alt=""
-                                        class="avatar-photo"
-                                       /> Estudante Verificado Pelo Professor
-                                    </li>
-                                </ul>
+                              {% if not isTeacher %}
+                                    <ul>
+                                        <li>
+                                            <img
+                                            src="{{url_for('static',filename="images/check-mark-green.png")}}"
+                                            alt=""
+                                            class="avatar-photo"
+                                        /> Estudante Verificado Pelo Professor
+                                        </li>
+                                    </ul>
+                              {% endif %}
                             {% else %}
-                                <ul>
-                                    <li>
-                                        <img
-                                        src="{{url_for('static',filename="images/caution-sign.png")}}"
-                                        alt=""
-                                        class="avatar-photo"
-                                    /> O Seu Pedido de Ingresso a Esta Turma ainda não foi Aceite
-                                    </li>
-                                </ul>
+                             {% if not isTeacher %}
+                                    <ul>
+                                        <li>
+                                            <img
+                                            src="{{url_for('static',filename="images/caution-sign.png")}}"
+                                            alt=""
+                                            class="avatar-photo"
+                                        /> O Seu Pedido de Ingresso a Esta Turma ainda não foi Aceite
+                                        </li>
+                                    </ul>
+                              {% endif %}
                             {% endif %}
                         </ul> 
                         </div>
@@ -78,43 +86,100 @@
                                                 >Estudantes</a
                                             >
                                         </li>
+                                        {% if isTeacher %}
+                                            <li class="nav-item">
+                                                <a
+                                                    class="nav-link"
+                                                    data-toggle="tab"
+                                                    href="#aceptalunos"
+                                                    role="tab"
+                                                    >Novos Estudantes</a
+                                                >
+                                            </li>
+                                        {% endif %}
                                     {% endif %}
                                 </ul>
                                 <div class="tab-content">
                                     <!--Alunos da Turma-->
                                     {% if canSeeStudents %}
-                                    <div
-                                        class="tab-pane fade show active"
-                                        id="alunos"
-                                        role="tabpanel"
-                                    >
-                                        <div class="pd-20">           
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                {% if isTurmaTeacher %}
-                                                                    <th scope="col">Número</th>
-                                                                {% endif %}
-                                                                    <th scope="col">UserName</th>
-                                                                
-                                                                <th scope="col">Nome</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            {% for a in alunos %}
+                                        <div
+                                            class="tab-pane fade show active"
+                                            id="alunos"
+                                            role="tabpanel"
+                                        >
+                                            <div class="pd-20">           
+                                                        <table class="table">
+                                                            <thead>
                                                                 <tr>
                                                                     {% if isTurmaTeacher %}
-                                                                        <td scope="row">{{a["numeroEst"]}}</td>
+                                                                        <th scope="col">Número</th>
                                                                     {% endif %}
-                                                                        <td scope="row"><a href="/profile/{{a["userName"]}}" target="_blank">{{a["userName"]}}</a></td>
+                                                                        <th scope="col">UserName</th>
                                                                     
-                                                                    <td scope="row">{{a["nome"]}}</td>
+                                                                    <th scope="col">Nome</th>
                                                                 </tr>
-                                                            {% endfor %}
-                                                        </tbody>
-                                                    </table>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for a in alunos %}
+                                                                    <tr>
+                                                                        {% if isTurmaTeacher %}
+                                                                            <td scope="row">{{a["numeroEst"]}}</td>
+                                                                        {% endif %}
+                                                                            <td scope="row"><a href="/profile/{{a["userName"]}}" target="_blank">{{a["userName"]}}</a></td>
+                                                                        
+                                                                        <td scope="row">{{a["nome"]}}</td>
+                                                                        {% if isTeacher %}
+                                                                            <td scope="row">
+                                                                                <a href="/delet/{{user}}/{{a["userName"]}}" class="dropdown-toggle no-arrow">
+                                                                                <span class="micon bi bi-backspace-fill"> Apagar</span>
+                                                                                </a>
+                                                                            </td>
+                                                                        {% endif %}
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <!--Alunos da Turma end-->
+
+                                    <!--Stundent to acept-->
+                                        {% if isTeacher %}
+                                            <div
+                                                class="tab-pane fade show"
+                                                id="aceptalunos"
+                                                role="tabpanel"
+                                            >
+                                                <div class="pd-20">           
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">UserName</th>
+                                                                        <th scope="col">Nome</th>
+                                                                        <th scope="col">Turma</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {% for a in alunosToAcept %}
+                                                                        <tr>
+                                                                            
+                                                                                <td scope="row"><a href="/profile/{{a["userName"]}}" target="_blank">{{a["userName"]}}</a></td>
+                                                                                <td scope="row"><a href="/profile/{{a["userName"]}}" target="_blank">{{a["fullname"]}}</a></td>
+                                                                                <td scope="row">{{a["turma"]}}</td>
+                                                                                
+                                                                                <td scope="row">
+                                                                                    <a href="/users/verify/{{a['userName']}}/{{a['turma']}}" class="dropdown-toggle no-arrow">
+                                                                                    <span class="micon   bi bi-check-square-fill"> Verificar</span>
+                                                                                    </a>
+                                                                                </td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    <!--Stundent to acept end-->
                                     {% else %}
                                             <div
                                             class="tab-pane fade show active"
@@ -129,7 +194,7 @@
 
                                         
                                     {% endif %}
-                                    <!--Alunos da Turma end-->
+                                    
                                 </div>
                             </div>
                         </div>

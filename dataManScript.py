@@ -107,22 +107,20 @@ def estudantNumberRandom(teacherUserName):
             return newNumber   
 
 #Validar estudante
-def validateUserToAluno(userName, number,teacherUserName):
+def validateUserToAluno(userName, number,teacherUserName, turma):
     users = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json')
     #Muda de nao aprovado para aprovado
-    for u in users:
-        if(u["userName"]==userName):
-            us = u
-            users.remove(u)
-            us["isAproved"] = 1
-            users.append(us)
-            break
+    user = getTeacherUserByUserName(userName,teacherUserName, turma=turma)
+    if(user==None):
+        return
+    users.remove(user)
+    user["isAproved"] = 1
+    users.append(user)
     json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json',users)
     try:
         alunos = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json')
     except FileNotFoundError as e:
         alunos = list()
-    user = getTeacherUserByUserName(userName,teacherUserName)
     newAluno = {
                 'numeroEst':number,
                 'nome':user["fullname"],
@@ -146,17 +144,35 @@ def getUserByUserName(userName):
             return u
     return None
 #obtem o usuario que adastrou-se para um professor
-def getTeacherUserByUserName(name,teacherUserName):
+def getTeacherUserByUserName(name,teacherUserName , turma = None):
     try:
         alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json')
     except FileNotFoundError as e:
         return None
     for u in alunos:
+        if(turma!=None):
+            if(u["userName"]==name and turma== u["turma"]):
+                return u
+            continue
         if(u["userName"]==name):
             return u
     return None
 
-
+#obterm todos os users do professor que nao foram verificados e que foram verificados
+def getTeacherUsersUnaprovad(teacherUserName,turma):
+    users = list()
+    try:
+        alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json')
+    except FileNotFoundError as e:
+        return None
+    for a in alunos:
+        try:
+            if(a["turma"]==turma):
+                key = a["isAproved"]
+        except KeyError as e:
+            users.append(a)
+            continue
+    return users
 
 #obter aluno pelo user name
 def getAlunoByUserName(name,teacherUserName):
@@ -627,9 +643,9 @@ def getOnlyStudentsOfClass(alunos,turma):
 if __name__ == "__main__":
     #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))
     #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")
-    #criarTurma("pascoal","A4","Povo no poder")
+    criarTurma("narciso","B","Povo no Partido")
     #addAlunoToTurma("paxA","Nany","B1 12")
-    #generateTokenTeacher(numbers=6)
+    #generateTokenTeacher(numbers=10)
     #incressarEmTurma("@nanilsin","romeu","A")
     #print(validateUserToAluno("@nanilsin",3444,"romeu"))
     #print(getAllDadosProva("romeu"))
@@ -637,4 +653,5 @@ if __name__ == "__main__":
     #a, b  = searchData("A")
     
     #print(a)
-    print(getPerguntasQuntAENR('l@stuser'))
+    #user = getTeacherUserByUserName('bubufilho','romeu', turma='P122')
+    #print(user)
