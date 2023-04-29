@@ -1,7 +1,15 @@
 {% extends 'baseDashBoardAdmin.html' %}
 
 {% block content %}
-    <h1>Olá Professor(a) {% block title %} {{user}} {% endblock %} !</h1>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h1>Olá Professor(a) {% block title %} {{user}} {% endblock %} !</h1>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--bOTAO DE CRIACAO DE TESE QUE NUNCA DEVE SAIR-->
     <div class="row clearfix">
         <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
@@ -20,8 +28,83 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+            <div class="card card-box">
+                <img
+                    class="card-img-top"
+                    src="{{url_for('static',filename='images/people.png')}}"
+                    alt="Card image cap"
+                />
+                <div class="card-body">
+                    <h5 class="card-title weight-500">Criar Turma</h5>
+                    <p class="card-text">
+                        Crie uma turma e aceite os pedidos de ingresso dos seus estudantes. Antes de Verificar qualquer estudante, confirme se ele é legitimo.
+                    </p>
+                    <a href="/createturma" class="btn btn-primary bi bi-pencil-square"> Criar Turma</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+            <div class="card card-box">
+                <img
+                    class="card-img-top"
+                    src="{{url_for('static',filename='images/desempenho.png')}}"
+                    alt="Card image cap"
+                />
+                <div class="card-body">
+                    <h5 class="card-title weight-500">Desempenho Académico</h5>
+                    <p class="card-text">
+                        Veja o Desempenho académico dos seus estudantes.
+                    </p>
+                    <a href="/desempenhoacademico" class="btn btn-primary bi bi-activity"> Ver Desempenho</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+            <div class="card card-box">
+                <img
+                    class="card-img-top"
+                    src="{{url_for('static',filename='images/buggs.png')}}"
+                    alt="Card image cap"
+                />
+                <div class="card-body">
+                    <h5 class="card-title weight-500">Relatar Erros</h5>
+                    <p class="card-text">
+                        Caso tenha algum problema na utilização da Plataforma, por favor fale connosco. Vá para aba Fale connosco  ou nos mande uma mensagem apartir dos nossos contactos. Se tiver dificuldades em usar a Plataforma visite a aba "Como Usar".
+                    </p>
+                    <a href="/about" class="btn btn-primary  bi bi-file-code"> Sobre Nós</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--bOTAO DE CRIACAO DE TESE QUE NUNCA DEVE SAIR-->
+     <!--bOTAO DE CRIACAO DE TESE QUE NUNCA DEVE SAIR-->
+     <!--Provas-->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4>Testes Criados</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Provas end-->
+    <div class="row clearfix">
+        {% for dadosProva in provas %}
+            <div class="col-sm-12 col-md-4 mb-30">
+                <div class="card card-box text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">{{dadosProva['Titulo']}}</h5>
+                        <p class="card-text">
+                            {{dadosProva['descri']}}
+                        </p>
+                        <a href="/ver/{{dadosProva['token']}}" class="btn btn-primary bi bi-eye-fill"> Ver Teste</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+   
     <!--
     <h2>Provas Criadas</h2>
     {% for dadosProva in provas %}

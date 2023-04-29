@@ -175,12 +175,16 @@ def getTeacherUsersUnaprovad(teacherUserName,turma):
     return users
 
 #obter aluno pelo user name
-def getAlunoByUserName(name,teacherUserName):
+def getAlunoByUserName(name,teacherUserName, turma = None):
     try:
         alunos =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json')
     except FileNotFoundError as e:
         return None
     for u in alunos:
+        if(turma!=None):
+            if(u["userName"]==name and turma== u["turma"]):
+                return u
+            continue
         if(u["userName"]==name):
             return u
     return None
@@ -472,11 +476,12 @@ def getTokenTeacher(userName):
             return t["token"]
  
  #Deixa o teste diponivel para o utilizador
-def makeTestAvailableForUser(teacherUserName,tokenTest, userName):
+def makeTestAvailableForUser(teacherUserName,tokenTest, userName,turma):
     availableforUser = json_Save.getJSON('./data/Users/SimpleUser/'+userName+"/availableTestes.json")
     ob =  {
             "token":tokenTest,
-            "teacherUserName":teacherUserName  
+            "teacherUserName":teacherUserName,
+            "turma":turma  
         }
     if(ob in availableforUser):
         return
@@ -639,6 +644,47 @@ def getOnlyStudentsOfClass(alunos,turma):
         if(x["turma"]==turma):
             l.append(x)
     return l
+
+#apaga um determinado aluno
+def deletAluno(userName,tur,teacherUserName):
+    try:
+        #remove o user da lista de users
+        users =  json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json')
+        user = getTeacherUserByUserName(userName,teacherUserName,turma=tur)
+        users.remove(user)
+        
+        #remove o aluno da lista de alunos
+        alunos  = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json')
+        aluno = getAlunoByUserName(userName,teacherUserName,turma=tur)
+        alunos.remove(aluno)
+        
+        #remove o aluno da turma
+        turma  = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/turmas/'+(tur.replace(" ","_"))+".json")
+        turma['alunos'].remove(userName)
+        
+        #Removo os testes daquela turma da disponibilidade do aluno
+        availableforUser = json_Save.getJSON('./data/Users/SimpleUser/'+userName+"/availableTestes.json")
+        #print(len(availableforUser))
+        availableforUser2 = list()
+        for av in availableforUser:
+            if(av["turma"] !=  tur):
+                availableforUser2.append(av)
+        #apaga a requeste o estudante fez para aquela turma
+        removeRequest(userName,tur,teacherUserName)
+        print("bugg")
+    except Exception as e:
+        print(e)
+        return False
+    
+    #Começa a salvar os ficheiros
+    json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/users.json',users)
+    json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json',alunos)
+    json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/turmas/'+(tur.replace(" ","_"))+".json",turma)
+    json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/availableTestes.json",availableforUser2)
+    return True
+        
+                 
+
 
 if __name__ == "__main__":
     #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))

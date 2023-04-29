@@ -1,26 +1,48 @@
-{% extends 'base1.html' %}
+{% extends 'dashboardAdmin.html' %}
 
 {% block content %}
-    <h1>{% block title %} Users {% endblock %}</h1>
-        <table border="1">
-            <tr>
-                <!--Print all table atributes-->
-                {% for a in atributs %}
-                    <th>{{a}}</th>
-                {% endfor %}
-            </tr>
-            {% for u in allusers %}
-                <tr>
-                    <td>{{u["userName"]}}</td>
-                    <td>{{u["fullname"]}}</td>
-                    <td>{{u["email"]}}</td>
-                    <td>{{u["turma"]}}</td>
-                    {% if u["isAproved"] == 1  %}
-                        <td>SIM</td>
-                    {% else %}
-                            <td><a href="/users/verify/{{u['userName']}}">Verificar</a></td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        </table>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h1>{% block title %} Lista de Estudantes {% endblock %}</h1>
+                </div>
+                <div class="title">
+                    <p>Os estudantes que não estiverem com o botão azul, ainda não foram aprovados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="pd-20 card-box mb-30">
+            <table class="table">
+                <thead>
+                    <tr>
+                        
+                            <th scope="col">UserName</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Turma</th>
+                            <th scope="col">Aprovado</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in allusers %}
+                        <tr>
+
+                            <td>{{u["userName"]}}</td>
+                            <td>{{u["fullname"]}}</td>
+                            <td>{{u["email"]}}</td>
+                            <td>{{u["turma"]}}</td>
+                            {% if u["isAproved"] == 1  %}
+                                <td><a href='/profile/{{u["userName"]}}' ><span class="badge badge-primary">Ver Perfil</span></a></td>
+                            {% else %}
+                                <td><a href='/turma/{{user}}/{{u["turma"]}}' ><span class="badge badge-warning">Ver Turma</span></a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

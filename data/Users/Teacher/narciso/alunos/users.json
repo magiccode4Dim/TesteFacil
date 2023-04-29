@@ -4,15 +4,22 @@
         "fullname": "Pax Pax",
         "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
         "email": "last@gmail.com",
+        "turma": "B",
+        "isAproved": 1
+    },
+    {
+        "userName": "Nany",
+        "fullname": "Nany Nay",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "nany@gmail.com",
         "turma": "A",
         "isAproved": 1
     },
     {
         "userName": "pax",
-        "fullname": "Pax Pax",
+        "fullname": "Pax Pascoal",
         "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
         "email": "last@gmail.com",
-        "turma": "B",
-        "isAproved": 1
+        "turma": "A"
     }
 ]

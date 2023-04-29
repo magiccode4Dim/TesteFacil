@@ -1,4 +1,4 @@
-{% if isTurmaTeacher %}
+{% if istTeacher %}
     {% extends 'dashboardAdmin.html' %}
 {% else %}
     {% extends 'baseDashBoardUser.html' %}
@@ -130,7 +130,7 @@
                                                                         <td scope="row">{{a["nome"]}}</td>
                                                                         {% if isTeacher %}
                                                                             <td scope="row">
-                                                                                <a href="/delet/{{user}}/{{a["userName"]}}" class="dropdown-toggle no-arrow">
+                                                                                <a href="/delet/{{user}}/{{t["nome"]}}/{{a["userName"]}}" class="dropdown-toggle no-arrow">
                                                                                 <span class="micon bi bi-backspace-fill"> Apagar</span>
                                                                                 </a>
                                                                             </td>

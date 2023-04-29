@@ -1,4 +1,8 @@
-{% extends 'baseDashBoardUser.html' %}
+{% if istTeacher %}
+    {% extends 'dashboardAdmin.html' %}
+{% else %}
+    {% extends 'baseDashBoardUser.html' %}
+{% endif %}
 
 {% block content %}
         <!--Table-->

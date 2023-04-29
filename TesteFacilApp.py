@@ -175,11 +175,13 @@ def verProva(token):
             #Deve verificar se a pessoa esta logada e tudo mais
             try:
                 p = json_Save.getJSON('./data/Users/Teacher/'+s+'/provas/'+token+"/prova.json")
+                dadosProva =  json_Save.getJSON('./data/Users/Teacher/'+s+'/provas/'+token+"/dadosProva.json")
+                t= getAllTurmasOfTeacher(s)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
-                return redirect(url_for('index'))
-            return render_template("verProva.html", messages= p)
-    return redirect(url_for('login'))
+                return render_template("Error.html",erro = "Erro do Sistema")
+            return render_template("verProva.html", messages= p, dadosProva = dadosProva, turmas = t, user = s)
+    return redirect(url_for('index'))
 #Admin terminando prova
 #ADMIN
 @app.route("/terminar/<token>",methods=['GET']) 
@@ -194,12 +196,12 @@ def terminarProva(token):
             #Deve verificar se a pessoa esta logada e tudo mais
             try:
                 stopp(token,s)
-                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Terminou a prova "+str(token),"O professor Pausou o teste"),s)
+                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("UnConf","Terminou a prova "+str(token),"O professor Pausou o teste"),s)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
-                #return render_template("Error.html",erro = "Erro do Sistema")
-            return redirect(url_for('index'))
-    return redirect(url_for('login'))
+                return render_template("Error.html",erro = "Erro do Sistema")
+            return redirect('/ver/'+str(token))
+    return redirect(url_for('index'))
 #Admim retomando teste
 #ADMIN
 @app.route("/retomar/<token>",methods=['GET']) 
@@ -217,8 +219,29 @@ def retomarProva(token):
                 timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("UnConf","Inicio da Prova "+str(token),"O professor Iniciou o teste"),s)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
-            return redirect(url_for('index'))
+            return redirect('/ver/'+str(token))
     return redirect(url_for('login'))
+#Apagar um Aluno
+@app.route("/delet/<teacher>/<turma>/<aluno>",methods=['GET']) 
+def apagaUmAluno(teacher,turma,aluno):
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            #verifica se a pessoa 'e admin
+            if(validation.isAdmin(getUserByUserName(s))==False or s!=teacher):
+                return redirect(url_for('index')) 
+            #Deve verificar se a pessoa esta logada e tudo mais
+            try:
+                #Apaga o Aluno
+                deletAluno(aluno,turma,s)
+                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Apagou o Aluno "+str(aluno),"O professor apagou um Aluno"),s)
+            except Exception as e:
+                timeLineSystem.addError(str(e),s)
+            return redirect('/turma/'+str(s)+'/'+str(turma))
+    return redirect(url_for('index'))
+
+
 #o ADmin faz download dos resultados da prova
 #ADMIN
 @app.route('/download/<token>')
@@ -253,12 +276,12 @@ def users():
             try:
                 #Deve verificar se a pessoa esta logada e tudo mais
                 allUsers =  json_Save.getJSON('./data/Users/Teacher/'+s+'/alunos/users.json')
-                atributs = ["userName","fullname","email","turma","Verificado"]
+                t= getAllTurmasOfTeacher(s)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
-            return render_template("users.html",allusers =  allUsers, atributs=atributs)
-    return redirect(url_for('login'))
+            return render_template("users.html",allusers =  allUsers,turmas = t, user = s)
+    return redirect(url_for('index'))
 #Admin verificando seus users
 #ADMIN
 @app.route("/users/verify/<username>/<turma>",methods=['GET']) 
@@ -279,32 +302,13 @@ def verificar(username,turma):
                 dadosProvas = getAllDadosProva(s)
                 for d in dadosProvas:
                     if(validation.alunoIsAutorized(s,username,d["token"])):
-                        makeTestAvailableForUser(s,d["token"],username)
+                        makeTestAvailableForUser(s,d["token"],username,turma)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")  
             return redirect('/turma/'+str(s)+'/'+str(turma))
     return redirect(url_for('index'))
-#o ADMINISTRADOR VENDO SEUS ESTUDANTES
-#ADMIN
-@app.route("/students",methods=['GET']) 
-def students():
-    cookie = request.cookies.get('SessionID')
-    if(cookie!=None):
-        s = sessionsSystem.verfiySession(cookie)
-        if(s!=None):
-            #verifica se a pessoa 'e admin
-            if(validation.isAdmin(getUserByUserName(s))==False):
-                return redirect(url_for('index'))
-            #Deve verificar se a pessoa esta logada e tudo mais
-            try:
-                allUsers =  json_Save.getJSON('./data/Users/Teacher/'+s+'/alunos/alunos.json')
-                atributs = ["numeroEst","userName","fullname","turma"]
-            except Exception as e:
-                timeLineSystem.addError(str(e),s)
-                return render_template("Error.html",erro = "Erro do Sistema")
-            return render_template("students.html",allusers =  allUsers, atributs=atributs)
-    return redirect(url_for('index'))
+
 #ADMIN CRIANDO UMA PROVA
 #ADMIN
 @app.route("/prova",methods=['GET']) 
@@ -421,8 +425,8 @@ def createTeste():
                 criarTurma(s,tt,tt)
                 alunosTur = list()
             for a in alunosTur:
-                makeTestAvailableForUser(s,t,a)
-        timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Criação da Prova "+str(t),"O professor Criou uma Nova Prova."),s)
+                makeTestAvailableForUser(s,t,a,tt)
+        timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("UnConf","Criação e Publicação da Prova "+str(t),"O professor Criou uma Nova Prova."),s)
         return redirect(url_for('index'))
     except Exception as e:
         timeLineSystem.addError(str(e),s)
@@ -654,14 +658,15 @@ def sobre():
             try:
                 uu = getUserByUserName(s)
                 if(request.method == "GET"):
-                    if(not validation.isAdmin(uu) ):
-                            imagem = 'images/magiccodeicon.png'
+                    imagem = 'images/magiccodeicon.png'
+                    if(not validation.isAdmin(uu) ):     
                             availableTestes = getAvaliableTesteForUser(s)
                             turmas  = getAlTurmas(s,availableTestes)
-                            return render_template('about.html', user=s,turmas = turmas, imagem=imagem)
+                            return render_template('about.html', user=s,turmas = turmas, imagem=imagem, istTeacher=False )
                     else:
                             #quando for um adminstrador a pesquisar
-                            pass
+                            t= getAllTurmasOfTeacher(s)
+                            return render_template('about.html', user=s,turmas = t, istTeacher = True, imagem=imagem)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
@@ -695,8 +700,12 @@ def search():
                             availableTestes = getAvaliableTesteForUser(s)
                             turmas  = getAlTurmas(s,availableTestes)
                             return render_template('resultadosPesquisa.html', teachers = teachers , teachersSize = len(teachers),
-                                                turmas2 = tur,turmas2Size = len(tur), user=s,turmas = turmas, imagem=imagem , pesquisa = fullSeach)
+                                                turmas2 = tur,turmas2Size = len(tur), user=s,turmas = turmas, imagem=imagem , pesquisa = fullSeach, istTeacher=False)
                         else:
+                            imagem = 'images/magiccodeicon.png'
+                            t= getAllTurmasOfTeacher(s)
+                            return render_template('resultadosPesquisa.html', teachers = teachers , teachersSize = len(teachers),
+                                                turmas2 = tur,turmas2Size = len(tur), user=s,turmas = t, imagem=imagem , pesquisa = fullSeach, istTeacher = True)
                             #quando for um adminstrador a pesquisar
                             pass
             except Exception as e:
@@ -717,12 +726,13 @@ def perfil(username):
                 uu = getUserByUserName(s)
                 if(s==username and validation.isAdmin(uu)):
                     user= getTeacherByUserName(s)
+                    t= getAllTurmasOfTeacher(s)
                     stat = "PROFESSOR"
                     imagem = 'images/magiccodeicon.png'
                     timeLine = timeLineSystem.getTimeLineTeacher(s)
                     turmas2 = getAllTurmasOfTeacher(username)
-                    return render_template("profile.html",timeLine = timeLine, u =  user, user = s,
-                                           editable=True,isTeacher=True, stat = stat, imagem=imagem,turmas2 = turmas2)
+                    return render_template("profile.html",turmas = t,timeLine = timeLine, u =  user, user = s,
+                                           editable=True,isTeacher=True, stat = stat, imagem=imagem,turmas2 = turmas2, istTeacher = True)
                 if(s==username  and not validation.isAdmin(uu) ):
                     #se for um simple user
                     stat = "ESTUDANTE"
@@ -733,29 +743,36 @@ def perfil(username):
                     imagem = 'images/magiccodeicon.png'
                     return render_template("profile.html",timeLine = timeLine, u =  user, editable=True,
                                            isTeacher=False,user=s ,
-                                           turmas = turmas, stat = stat, imagem=imagem)
+                                           turmas = turmas, stat = stat, imagem=imagem, istTeacher = False)
                 if(validation.isAdmin(getUserByUserName(username)) and s!=username ):
                     #se o perfil que se pretende ver for de administrador e nao for ele pode se ver mas nao editar
                     stat = "PROFESSOR"
-                    availableTestes = getAvaliableTesteForUser(s)
-                    turmas  = getAlTurmas(s,availableTestes)
-                    availableTestes = getAvaliableTesteForUser(s)
-                    turmas  = getAlTurmas(s,availableTestes)
                     timeLine = timeLineSystem.getTimeLineTeacher(username)
                     user = getTeacherByUserName(username)
                     turmas2 = getAllTurmasOfTeacher(username)
                     imagem = 'images/magiccodeicon.png'
-                    return render_template("profile.html",timeLine = timeLine, u =  user, editable=False,
-                                           isTeacher=True,user=s ,
-                                           turmas = turmas,turmas2 = turmas2, stat = stat, imagem=imagem)
+                    if(validation.isAdmin(uu)):
+                        t= getAllTurmasOfTeacher(s)
+                        return render_template("profile.html",timeLine = timeLine, u =  user, editable=False,
+                                            isTeacher=True,user=s ,
+                                            turmas = t,turmas2 = turmas2, stat = stat, imagem=imagem, istTeacher = True)
+                    else:
+                        availableTestes = getAvaliableTesteForUser(s)
+                        turmas  = getAlTurmas(s,availableTestes)
+                        availableTestes = getAvaliableTesteForUser(s)
+                        turmas  = getAlTurmas(s,availableTestes)
+                        return render_template("profile.html",timeLine = timeLine, u =  user, editable=False,
+                                            isTeacher=True,user=s ,
+                                            turmas = turmas,turmas2 = turmas2, stat = stat, imagem=imagem, istTeacher = False)
                 if(s!=username and validation.isAdmin(uu)):
                     #se for administrador que quer ver um perfil simples
                     stat = "ESTUDANTE"
-                    user = getUserByUserName(s)
+                    t= getAllTurmasOfTeacher(s)
+                    user = getUserByUserName(username)
                     timeLine = timeLineSystem.getTimeLineUser(username)
                     imagem = 'images/magiccodeicon.png'
                     return render_template("profile.html",timeLine = timeLine, u =  user,user = s, editable=False,
-                                           isTeacher=False, stat = stat, imagem=imagem)
+                                           isTeacher=False, stat = stat, imagem=imagem, turmas = t, istTeacher = True)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")              
@@ -792,14 +809,14 @@ def verturma(teacher,turma):
                         imagem = 'images/magiccodeicon.png'
                         return render_template("turma.html",da=availableTestes,user=s ,
                                             turmas = turmas, imagem=imagem,  t=tur, teacher=teacher,
-                                            notInturma=notInturma, canSeeStudents=canSeeStudents , alunos = alunos, isTurmaTeacher  = False, isTeacher = False)
+                                            notInturma=notInturma, canSeeStudents=canSeeStudents , alunos = alunos, isTurmaTeacher  = False, isTeacher = False, istTeacher = False)
                 #se a pessoa for administrador mas a turma nao ser sua
                 if(validation.isAdmin(uu) and s!=teacher):
                         t= getAllTurmasOfTeacher(s)
                         imagem = 'images/magiccodeicon.png'
                         return render_template("turma.html",user = s,turmas = t,
                                             notInturma=False, imagem=imagem, t=tur, 
-                                            teacher=teacher, canSeeStudents = False, isTurmaTeacher  = False, alunos = list(), isTeacher = True)
+                                            teacher=teacher, canSeeStudents = False, isTurmaTeacher  = False, alunos = list(), isTeacher = True, istTeacher = True)
                 #quando a pessoa 'e admin e a turma 'e sua
                 if(validation.isAdmin(uu) and s==teacher ):
                         t= getAllTurmasOfTeacher(s)
@@ -809,7 +826,7 @@ def verturma(teacher,turma):
                         return render_template("turma.html",user = s,turmas = t,
                                             notInturma=False, imagem=imagem, t=tur, 
                                             teacher=teacher, canSeeStudents = True , alunos = alunos, 
-                                            isTurmaTeacher = True, isTeacher = True,alunosToAcept=alunosToAprov)
+                                            isTurmaTeacher = True, isTeacher = True,alunosToAcept=alunosToAprov, istTeacher = True)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
@@ -852,10 +869,11 @@ def talktous():
                             imagem = 'images/magiccodeicon.png'
                             availableTestes = getAvaliableTesteForUser(s)
                             turmas  = getAlTurmas(s,availableTestes)
-                            return render_template("talkwithus.html", user=s,turmas = turmas, imagem=imagem)
+                            return render_template("talkwithus.html", user=s,turmas = turmas, imagem=imagem, istTeacher = False)
                     else:
-                            #quando for um adminstrador a pesquisar
-                            pass
+                             t= getAllTurmasOfTeacher(s)
+                             return render_template("talkwithus.html", user=s,turmas = t, istTeacher = True)
+                            #quando for um adminstrador a pesquisar      
                 elif (request.method == "POST") :
                     if(request.form.get("contact")!=None and request.form.get("comen") ):
                         da = datetime.now().strftime('%D - %H:%M:%S')
@@ -868,8 +886,9 @@ def talktous():
                             }
                         commenList  =  json_Save.getJSON("./data/Users/SystemData/talkWithUs.json")
                         commenList.append(contact)
-                        json_Save.saveJSON("./data/Users/SystemData/talkWithUs.json", commenList)    
-                        return render_template("Error.html",erro = "Muito Obrigado por ter nos Enviado um Mensagem! A nossa equipa responderá em breve.")
+                        json_Save.saveJSON("./data/Users/SystemData/talkWithUs.json", commenList)
+                        #,    
+                        return render_template("Sucess.html",title= "Mensagem Enviada!!", desc ="Muito Obrigado Por ter Nos enviado uma Mensagem!! A nossa equipa entrará em contacto consigo dentro de algum tempo.")
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema") 
@@ -940,6 +959,31 @@ def getNotasJson():
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
     return  jsonify(dict())
+#criar um turma
+@app.route("/createturma",methods=['GET','POST']) 
+def createTurma():
+    cookie = request.cookies.get('SessionID')
+    #print(cookie)
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            try:
+                uu = getUserByUserName(s)
+                if(validation.isAdmin(uu) ):
+                    if(request.method == 'GET'):
+                        provasConf = getAllDadosProva(s)
+                        t= getAllTurmasOfTeacher(s)
+                        return render_template("criarTurma.html",provas = provasConf, turmas = t, user =  s)
+                    elif (request.method == 'POST'):
+                        nome = request.form.get('nome')
+                        descri =  request.form.get('descri')
+                        criarTurma(s,nome,descri)
+                        return redirect('/turma/'+s+'/'+nome)  
+            except Exception as e:
+                timeLineSystem.addError(str(e),s)
+                return render_template("Error.html",erro = "Erro do Sistema")
+    return redirect(url_for('index'))
+
 
 
 #getNotas do estudante e dadas de testes em Json

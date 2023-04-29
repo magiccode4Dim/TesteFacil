@@ -1,7 +1,15 @@
 {% extends 'baseDashBoardUser.html' %}
 
 {% block content %}
-    <h1> Olá {% block title %} {{user}} {% endblock %} ! </h1>
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="title">
+                            <h1>Olá {% block title %} {{user}} {% endblock %} !</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
         
             
             <div class="row clearfix">
@@ -23,7 +31,7 @@
                                     <p class="card-text">
                                         Teste Marcado para :  {{dadosProva['Data']}}
                                     </p>
-                                    <a href="/load/{{dadosProva['teacher']}}/{{dadosProva['token']}}" class="btn btn-primary bi-layout-text-window"> Ver Teste</a>
+                                    <a href="/load/{{dadosProva['teacher']}}/{{dadosProva['token']}}" class="btn btn-primary bi bi-eye-fill"> Ver Teste</a>
                                 {% endif %}
                             </div>
                             {% if  dadosProva["nota"] < 0  %}

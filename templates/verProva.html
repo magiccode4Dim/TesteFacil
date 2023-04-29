@@ -1,19 +1,65 @@
-{% extends 'base1.html' %}
+{% extends 'baseDashBoardAdmin.html' %}
 
 {% block content %}
-    <h1>{% block title %} Ver Prova {% endblock %}</h1>
-    {% for message in messages %}
-            <div class='message'>
-                <h3>{{ message['id']}}.{{ message['title']}}</h3>
-                <p>Cotação : {{message['cotacao']}}</p>     
-                <!--<p>{{ message['questions'] }}</p>-->
-                {% set questions =  message['questions']   %}
-       
-                    {% for q in questions %}    
-                            <p>Opção: {{q['ques']}}</p>
-                       
-                    {% endfor %}
-                
+
+    <!--Cabeçalho do Teste-->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="title">
+                        <h4>{% block title %} {{dadosProva['Titulo']}} {% endblock %}</h4>
+                    </div>
+                        <b>Professor:</b> {{dadosProva['Professor']}};
+                        <b>Data:</b> {{dadosProva['Data']}};
+                        <b>Hora do Termino :</b> {{dadosProva['fim']}}
+                </div>
             </div>
-        {% endfor %}
+        </div>
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="title">
+                        <h4>Descrição</h4>
+                    </div>
+                        {{dadosProva["descri"]}}
+                    <div class="title">
+                        <a href="/terminar/{{dadosProva['token']}}" class="dropdown-toggle no-arrow">
+                                <span class="micon  bi bi-pause-circle-fill "> Parar Teste</span></a>
+                        <a href="/retomar/{{dadosProva['token']}}" class="dropdown-toggle no-arrow">
+                                <span class="micon  bi bi-play-fill "> Retormar Teste</span></a>        
+                        <a href="/download/{{dadosProva['token']}}" class="dropdown-toggle no-arrow">
+                                <span class="micon  bi bi-filetype-xls"> Baixar Resultados em Excel</span></a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--Cabeçalho do Teste end-->
+    <!--cards-->
+    <h4 class="h4 text-blue mb-30"> Perguntas </h4>
+        <div class="row clearfix">
+            {% for message in messages %}
+                <div class="col-md-4 col-sm-12 mb-30">
+                        <div class="card text-black bg-light card-box">
+                        <div class="card-header">ID : {{ message['id']}}  Cotação: {{message['cotacao']}} Correcta: {{message["correcta"]}}</div>
+                        <div class="card-body">
+                                <h5 class="card-title text-black">{{ message['title']}}</h5>
+                                {% set questions =  message['questions']   %}
+                                {% for q in questions %}
+                                        <ul class="list-group">
+                                        
+                                                <li class="list-group-item list-group-item-primary">
+                                                        {{q['ques']}}. 
+                                                </li>
+                                        
+                                        </ul>
+                                {% endfor %} 
+                        </div>
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
+    <!--cards end-->
+    
+
 {% endblock %}

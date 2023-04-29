@@ -3,5 +3,10 @@
         "userName": "pax",
         "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
         "data": "04/27/23 - 20:12:14"
+    },
+    {
+        "userName": "bapu",
+        "descricao": "Turma n\u00e3o encontrada",
+        "data": "04/29/23 - 15:06:34"
     }
 ]

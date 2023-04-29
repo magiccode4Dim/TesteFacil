@@ -10,5 +10,11 @@
         "email": "magiccodesoftware@gmail.com",
         "fullname": "Magic Code",
         "bio": "sou magico"
+    },
+    {
+        "userName": "bapu",
+        "email": "kalid@gmail.com",
+        "fullname": "Kalid Bapu",
+        "bio": "Eu sou professor de Base de Dados"
     }
 ]

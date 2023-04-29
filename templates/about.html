@@ -1,4 +1,9 @@
-{% extends 'baseDashBoardUser.html' %}
+{% if istTeacher %}
+    {% extends 'dashboardAdmin.html' %}
+{% else %}
+    {% extends 'baseDashBoardUser.html' %}
+{% endif %}
+
 
 {% block content %}
     <h1>{% block title %} Sobre o Sistema {% endblock %}</h1>
