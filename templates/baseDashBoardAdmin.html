@@ -43,12 +43,37 @@
 			type="text/css"
 			href="{{url_for('static',filename='styles/icon-font.min.css')}}"
 		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{url_for('static',filename='styles/asColorPicker.css')}}"
+		/>
 		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/style.css')}}" />
 		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/bootstrap-icons.css')}}" />
 		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/font-awesome.css')}}" />
 		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/dropways.css')}}" />
 		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/ionicons.css')}}" />
 		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/apexcharts.css')}}" />
+
+		<!-- switchery css -->
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{url_for('static',filename='styles/switchery.min.css')}}"
+		/>
+		<!-- bootstrap-tagsinput css -->
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{url_for('static',filename='styles/bootstrap-tagsinput.css')}}"
+		/>
+		<!-- bootstrap-touchspin css -->
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{url_for('static',filename='styles/jquery.bootstrap-touchspin.css')}}"/>
+
+
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<!--<script
 			async
@@ -298,15 +323,29 @@
 		<script src="{{url_for('static',filename='scripts/process.js')}}"></script>
 		<script src="{{url_for('static',filename='scripts/layout-settings.js')}}"></script>
 		<script src="{{url_for('static',filename='scripts/relogio.js')}}"></script>
+
+
+		<script src="{{url_for('static',filename='scripts/jquery-asColor.js')}}"></script>
+		<script src="{{url_for('static',filename='scripts/jquery-asGradient.js')}}"></script>
+		<script src="{{url_for('static',filename='scripts/jquery-asColorPicker.js')}}"></script>
+		<script src="{{url_for('static',filename='scripts/colorpicker.js')}}"></script>
+
+		<!-- switchery js -->
+		<script src="{{url_for('static',filename='scripts/switchery.min.js')}}"></script>
+		<!-- bootstrap-tagsinput js -->
+		<script src="{{url_for('static',filename='scripts/bootstrap-tagsinput.js')}}"></script>
+		<!-- bootstrap-touchspin js -->
+		<script src="{{url_for('static',filename='scripts/jquery.bootstrap-touchspin.js')}}"></script>
+		<script src="{{url_for('static',filename='scripts/advanced-components.js')}}"></script>
 		<!-- Google Tag Manager (noscript) -->
-		<noscript
+		<!--<noscript
 			><iframe
 				src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS"
 				height="0"
 				width="0"
 				style="display: none; visibility: hidden"
 			></iframe
-		></noscript>
+		></noscript>-->
 		<!-- End Google Tag Manager (noscript) -->
 	</body>
 </html>

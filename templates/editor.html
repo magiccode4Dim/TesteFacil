@@ -1,17 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Teste Editor- MultiplaEscolhaOnline</title>
-</head>
-<body>
+{% extends 'baseDashBoardAdmin.html' %}
+
+{% block content %}
+<form action="/prova/create" method="POST">
+                <div class="faq-wrap">
+					<h4 class="mb-20 h4 text-blue">{% block title %} Criar um Novo Teste{% endblock %}</h4>
+					<div id="accordion">
+
+                            {% for quest in range(maxquest) %}
+                                {% set quest=quest+1 %} 
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a
+                                            class="btn btn-block collapsed"
+                                            data-toggle="collapse"
+                                            href="#quest{{quest}}"
+                                        >
+                                            Pergunta Número {{quest}}.
+                                    </a>
+                                    </div>
+                                    <div id="quest{{quest}}" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>
+                                                <div class="form-group">
+                                                    <label>Pergunta</label>
+                                                    <textarea name="per{{quest}}" placeholder="Escreva aqui a sua pergunta. Nos espaços a baixo escreva as Opções para ela e, do lado direito, marque a que estiver correcta. Por último, insira a cotação. É importante que todos os passos sejam seguidos porque se não, o teste não será salvo. Caso tenha uma pergunta com menos opções, preencha as primeiras e deixe as outras em branco. Caso tenha mais dúvidas, visite a aba 'Como Usar?'" class="form-control"></textarea>
+                                                </div>
+                                                <!--Respostas-->
+                                                {% for op in range(maxper) %}
+                                                    {% set op=op+1 %}
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12 col-md-10">
+                                                            <input class="form-control" placeholder="Opção {{op}}" name = 'per{{quest}}_{{op}}' type="text">
+                                                        </div>
+                                                        <div class="custom-control custom-radio mb-5">
+                                                            <input type="radio" id="per{{quest}}_{{op}}_corr" name="per{{quest}}_corr" value="{{op}}" class="custom-control-input">
+                                                            <label class="custom-control-label" for="per{{quest}}_{{op}}_corr">Opção {{op}}</label>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+
+                                            </p>
+                                            <p class="mb-0">
+                                                <label>Cotação</label>
+                                                <input
+                                                    id="cota"
+                                                        type="text"
+                                                        value="1"
+                                                        name = 'cota{{quest}}'
+
+                                                />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>                   
+                            {% endfor %}
+                            <!--Hiddem parans-->
+                            <input type="hidden" name ='maxquest' value="{{maxquest}}" />
+                            <input type="hidden" name ='maxper' value="{{maxper}}" />
+                            <input type="hidden" name = 'turma' value="{{turma}}" /> 
+                            <input type="hidden" name = 'Data' value="{{data}}" />
+                            <!--Descricao da Prova-->
+                            
+                            <input class="form-control" placeholder="Título" name = 'Titulo' type="text">
+                
+                            <div class="form-group">
+                                <label>Descrição da Prova</label>
+                                <textarea  name="descri" placeholder="Coloque a Descricao uma preve Descricao do teste" class="form-control"></textarea>
+                            </div>
+                            <input class="btn btn-primary btn-lg btn-block" type='submit' value='Criar'/>
+                        </form>
+					</div>
+                </div>
+   
+</form>
+
+{% endblock %}
+
+
+<!--
    <h1>EDITOR</h1>
+   <h2>{{data}}</h2>
+   <h2>{{turma}}</h2>
    <form action="/prova/create" method="POST">
             {% for quest in range(maxquest) %}
-                {% set quest=quest+1 %} <!--Evitando O ID 0-->
+                {% set quest=quest+1 %} 
                 <p><textarea name="per{{quest}}" placeholder="Pergunta {{quest}}"></textarea><input type="text" name = 'cota{{quest}}' placeholder="cotação"/></p>
                 {% for op in range(maxper) %}
-                    {% set op=op+1 %}<!--Evitando O ID 0-->
+                    {% set op=op+1 %}
                     <input type="text" name = 'per{{quest}}_{{op}}' placeholder="Opção {{op}}"/>
                     <input type="radio" id="per{{quest}}_{{op}}_corr" name="per{{quest}}_corr" value="{{op}}"><br>
                 {% endfor %}
@@ -28,6 +103,4 @@
             <input type="hidden" name ='maxper' value="{{maxper}}" />
             <textarea type="text" name="descri" placeholder="Coloque a Descricao uma preve Descricao do teste"></textarea>
             <input type="submit"/>
-    </form>
-</body>
-</html>
+    </form>-->

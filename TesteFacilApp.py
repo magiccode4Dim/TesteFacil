@@ -321,14 +321,15 @@ def prova():
             if(validation.isAdmin(getUserByUserName(s))==False):
                 return redirect(url_for('index'))
             #Deve verificar se a pessoa esta logada e tudo mais
-            return render_template('createTest.html')
+            t= getAllTurmasOfTeacher(s)
+            return render_template('createTest.html',turmas = t, user = s)
     return redirect(url_for('index'))
 #ADMIN GUARDANDO A PROVA
 #ADMIN
 @app.route("/prova/create",methods=['GET','POST']) 
 def createTeste():
     if(request.method=='GET'):
-        return redirect(url_for('login'))
+        return redirect(url_for('index'))
     cookie = request.cookies.get('SessionID')
     if(cookie!=None):
         s = sessionsSystem.verfiySession(cookie)
@@ -339,14 +340,27 @@ def createTeste():
         else:
             return redirect(url_for('login'))
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('index'))
             #Deve verificar se a pessoa esta logada e tudo mais
+    dadosProva = dict()
     try:
         maxquest = int(request.form.get('maxquest'))
         maxper = int(request.form.get('maxper'))
                 #Isso so esta aqui em cima para aproveitar o try catch
         user_requis = dict()
-        user_requis["turma"] = request.form.get('turma')
+        user_requis["turma"] = request.form.get('turma')[:len(request.form.get('turma'))-1]
+        dt = request.form.get('Data')
+        categories = [(2,'Feb'), (3,'Mar'), (4,'Apr'), (5,'May'), (6,'Jun'), (7,'Jul'), (8,'Aug'), (9,'Sep'), (10,'Oct'),(11,'Nov'),(12,'Dec')]
+        #Tenta converter o dia e o ano
+        dataSplit = dt.split(' ')
+        dia = int(dataSplit[0])
+        ano = int(dataSplit[2])
+        for catt in categories:
+            if(catt[1] in  dataSplit[1]):
+                mes = catt[0]
+                break
+        dadosProva["Data"] = str(dia)+"/"+str(mes)+"/"+str(ano)
+        dadosProva["fim"] = str(dataSplit[3])+str(dataSplit[4])
     except Exception as e:
                 #se acontecer qualquer excessao na tentava de conversao
         timeLineSystem.addError(str(e),s)
@@ -380,22 +394,25 @@ def createTeste():
                 per["correcta"] = int(request.form.get('per'+str(quest)+'_corr'))
             except Exception as e:
                     #se acontecer qualquer excessao na tentava de conversao
-                    return redirect(url_for('prova'))
+                    return render_template("Error.html",erro = "Dados Inválidos")
             #print(per)
             newtest.append(per)
             per=dict()
                 #gera um novo token
         t = str(tokenNumberRandom('data/Users/Teacher/'+s+'/provas/tokenList.json', acres=getTokenTeacher(s)))
                 #Criacao do ficheiro de configuracao
-        dadosProva = dict()
+        
         dadosProva["token"] = t
-        parans =  ["Data","Escola","Professor","Titulo","fim"]
+        parans =  ["Titulo"]
         for p in parans:
                     dadosProva[p] =  request.form.get(p)
                     if(dadosProva[p]== None):
                         #Se algum dado da prova for nulo entao cancela tudo
-                        return redirect(url_for('prova'))
+                        return render_template("Error.html",erro = "Algum dado Obrigatório Não foi Preechido")
+        teac =  getTeacherByUserName(s)
+        dadosProva['Professor'] =teac["fullname"]
         dadosProva['user_requis']=user_requis
+        
                         
         #guarda a descricao  do teste
         if(request.form.get('descri')!=None):
@@ -427,7 +444,7 @@ def createTeste():
             for a in alunosTur:
                 makeTestAvailableForUser(s,t,a,tt)
         timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("UnConf","Criação e Publicação da Prova "+str(t),"O professor Criou uma Nova Prova."),s)
-        return redirect(url_for('index'))
+        return redirect('/ver/'+str(t))
     except Exception as e:
         timeLineSystem.addError(str(e),s)
         return render_template("Error.html",erro = "Erro do Sistema")
@@ -446,13 +463,19 @@ def createEditor():
             try:
                 maxquest = int(request.form.get('maxquest'))
                 maxper = int(request.form.get('maxper'))
+                t= getAllTurmasOfTeacher(s)
+                turmas = ""
+                for tur in t:
+                    if(request.form.get(tur['nome']) == tur['nome']): 
+                            turmas+= tur['nome']+","
+                data =  request.form.get('data')
             except Exception as e:
                 #se acontecer qualquer excessao na tentava de conversao
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Dados Invalidos")
             
-            return render_template('editor.html',maxquest=maxquest,maxper=maxper)
-    return redirect(url_for('login'))
+            return render_template('editor.html',maxquest=maxquest,maxper=maxper, turmas =  t,turma = turmas,user=s, data=data)
+    return redirect(url_for('index'))
 
 #Carrega a prova com um determinado ID
 #USER

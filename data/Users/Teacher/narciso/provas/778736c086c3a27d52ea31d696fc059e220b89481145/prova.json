@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Musica",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "fresca"
+            }
+        ],
+        "cotacao": 10,
+        "correcta": 1
+    },
+    {
+        "id": 2,
+        "title": "Oque \u00e9 agua?",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Um liquido"
+            }
+        ],
+        "cotacao": 10,
+        "correcta": 1
+    }
+]

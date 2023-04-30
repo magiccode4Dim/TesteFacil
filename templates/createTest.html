@@ -1,15 +1,56 @@
-{% extends 'base1.html' %}
+{% extends 'baseDashBoardAdmin.html' %}
 
 {% block content %}
-    <h1>{% block title %} Criar Prova {% endblock %}</h1>
-    <form action="/prova/editor" method="POST">
-        <p>Quantos Perguntas a Prova tem?:<input type="text" name="maxquest" /></p>
-        <p>Qual é o Número Máximo de Opções:<input type="text" name="maxper" /></p>
-        <input type="submit" />
-    </form>
-    <!--Aqui 'e onde ira aparecer o editor
-    <div>
-        <iframe width="500" height="500" src="/prova/editor">
-        </iframe>
-    </div>-->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4>{% block title %} Configuações Iniciais{% endblock %}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <form action="/prova/editor" method="POST">
+                    <div class="form-group">
+                        <label>Data e Hora do Teste e, o Horario que Deverá terminar</label>
+                        <input
+                            class="form-control datetimepicker"
+                            placeholder="Choose Date anf time"
+                            type="text"
+                            name="data"
+                        />
+                        <label>Quantos Perguntas o Teste tem?</label>
+                        <input
+                            id="demo_vertical2"
+                                type="text"
+                                value="5"
+                                name="maxquest"
+                        />
+                        <label>Qual é o Número Máximo de Opções?</label>
+                        <input
+                            id="demo_vertical2"
+                                type="text"
+                                value="3"
+                                name="maxper"
+                        />
+                        <label class="weight-600">Turmas a Realizar</label>
+                        {% for tu in turmas  %}
+                                <div class="custom-control custom-checkbox mb-5">
+                                    <input type="checkbox" class="custom-control-input" value="{{tu['nome']}}" name="{{tu['nome']}}" id="{{tu['nome']}}">
+                                    <label class="custom-control-label" for="{{tu['nome']}}"><a href="/turma/{{tu['teacher']}}/{{tu['nome']}}">{{tu['nome']}}</a></label>
+                                </div>
+						{% endfor %}
+                            <div class="input-group mb-0">	
+                                <input class="btn btn-primary" type="submit" value=" Proximo">
+                            </div>
+                        
+                    </div>
+                
+                </form>
+            </div>
+        </div>
+
 {% endblock %}
