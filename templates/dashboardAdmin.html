@@ -104,19 +104,4 @@
             </div>
         {% endfor %}
     </div>
-   
-    <!--
-    <h2>Provas Criadas</h2>
-    {% for dadosProva in provas %}
-        <div class='message'>
-            <p>Data:{{dadosProva['Data']}}</p>
-            <p>Professor:{{dadosProva['Professor']}}</p>
-            <p>Prova de:{{dadosProva['Titulo']}}</p>
-            Hora do Fim : <h2 id='fim' >{{dadosProva['fim']}}</h2>
-            <h2><a href="/ver/{{dadosProva['token']}}"> VER PROVA</a></h2>
-            <h2><a href="/terminar/{{dadosProva['token']}}"> TERMINAR PROVA</a></h2>
-            <h2><a href="/retomar/{{dadosProva['token']}}"> CONTINUAR PROVA</a></h2>
-            <h2><a href="/download/{{dadosProva['token']}}"> BAIXAR RESULTADOS</a></h2>
-        </div>
-    {% endfor %}-->
 {% endblock %}

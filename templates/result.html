@@ -1,15 +1,13 @@
 {% extends 'baseDashBoardUser.html' %}
 
 {% block content %}
-
-{% block title %} Resultados {% endblock %}
     <!--Cabeçalho do Teste-->
     {% if resultado != -1 %}
         <div class="page-header">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="title">
-                        <h4>Dados da Prova</h4>
+                        <h4>{% block title %} Resultados {% endblock %}</h4>
                     </div>
                         <b>Nome :</b> {{u['fullname']}};
                         <b>Turma :</b> {{u['turma']}};

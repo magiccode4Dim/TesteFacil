@@ -1,0 +1,18 @@
+{% extends 'baseDashBoardAdmin.html' %}
+
+{% block content %}
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4>{% block title %} Desempenho dos Estudantes {% endblock %}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white pd-20 card-box mb-30">
+        <h4 class="h4 text-blue">Gráfico de Perguntas Certas,Erradas e Não Respondidas</h4>
+        <div id="chart4"></div>
+    </div>
+
+{% endblock %}

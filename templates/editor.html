@@ -76,31 +76,3 @@
 
 {% endblock %}
 
-
-<!--
-   <h1>EDITOR</h1>
-   <h2>{{data}}</h2>
-   <h2>{{turma}}</h2>
-   <form action="/prova/create" method="POST">
-            {% for quest in range(maxquest) %}
-                {% set quest=quest+1 %} 
-                <p><textarea name="per{{quest}}" placeholder="Pergunta {{quest}}"></textarea><input type="text" name = 'cota{{quest}}' placeholder="cotação"/></p>
-                {% for op in range(maxper) %}
-                    {% set op=op+1 %}
-                    <input type="text" name = 'per{{quest}}_{{op}}' placeholder="Opção {{op}}"/>
-                    <input type="radio" id="per{{quest}}_{{op}}_corr" name="per{{quest}}_corr" value="{{op}}"><br>
-                {% endfor %}
-            {% endfor %} 
-            <h1>DADOS DA PROVA</h1>
-            Data:<input type="text" name = 'Data' placeholder="18/03/2023"/><br>
-            Escola:<input type="text" name = 'Escola' placeholder="Escola Secundaria de Maputo"/><br>
-            Professor:<input type="text" name = 'Professor' placeholder="Willian Vintano"/><br>
-            Titulo<input type="text" name = 'Titulo' placeholder="Filosofia 2 teste"/><br>
-            Horario do Fim:<input type="text" name = 'fim' placeholder="19:13:09 PM"/><br>
-            <h2>Dados das Turmas</h2>
-            Turma/as<input type="text" name = 'turma' placeholder="B1,B3,B3"/><br>
-            <input type="hidden" name ='maxquest' value="{{maxquest}}" />
-            <input type="hidden" name ='maxper' value="{{maxper}}" />
-            <textarea type="text" name="descri" placeholder="Coloque a Descricao uma preve Descricao do teste"></textarea>
-            <input type="submit"/>
-    </form>-->

@@ -1,17 +1,17 @@
 
-const url1 =  '/user/perguntasqunt';
-const cookie2 = document.cookie;
+const url3 =  '/user/perguntasqunt';
+const cookie3 = document.cookie;
 
-fetch(url1, {
+fetch(url3, {
   headers: {
-    'Cookie': cookie2
+    'Cookie': cookie3
   }
 })
   .then(response => response.json())
   .then(data => {
 		console.log(data)
 		// chart 6
-		Highcharts.chart('chart6', {
+		Highcharts.chart('perres', {
 			chart: {
 				type: 'pie',
 				options3d: {

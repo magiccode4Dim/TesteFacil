@@ -1,20 +1,8 @@
 [
     {
-        "userName": "narciso",
-        "email": "narcisopascoal97@gmail.com",
-        "fullname": "Narciso Pascoal Albino Cadeado",
-        "bio": "Eu sou um professor muito Chato"
-    },
-    {
-        "userName": "magic",
-        "email": "magiccodesoftware@gmail.com",
-        "fullname": "Magic Code",
-        "bio": "sou magico"
-    },
-    {
-        "userName": "bapu",
-        "email": "kalid@gmail.com",
-        "fullname": "Kalid Bapu",
-        "bio": "Eu sou professor de Base de Dados"
+        "userName": "professor1",
+        "email": "teste@gmail.com",
+        "fullname": "Professor1 Teste1",
+        "bio": "Sou professor de Matematica"
     }
 ]

@@ -1,0 +1,18 @@
+[
+    {
+        "userName": "estu",
+        "fullname": "Joao Estudante",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "estudante1@gmail.com",
+        "turma": "Cloud",
+        "isAproved": 1
+    },
+    {
+        "userName": "pax",
+        "fullname": "pax pax",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "estudant@gmail.com",
+        "turma": "Cloud",
+        "isAproved": 1
+    }
+]

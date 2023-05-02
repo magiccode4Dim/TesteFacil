@@ -608,12 +608,19 @@ def getNotaAndData(userName):
     }
     
 #retorna a quantidade de perguntas acertadas, erradas e nao respondidas do estudante AENR - Acertada Errada e Nao respondida
-def getPerguntasQuntAENR(userName):
+def getPerguntasQuntAENR(userName, teacher = None, token = None):
     testes =  getAvaliableTesteForUser(userName)
     erradas  = 0
     correctas = 0
     naoRespondidas = 0
     for t in testes:
+        if teacher != None:
+            #se passarmos o teacher como parametro
+            if(t["teacher"]!=teacher):
+                continue
+        if token != None:
+            if(t["token"]!=token):
+                continue
         tt = getProva(userName,t["teacher"],t["token"])
         if(tt==None):
             continue
@@ -682,16 +689,74 @@ def deletAluno(userName,tur,teacherUserName):
     json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/turmas/'+(tur.replace(" ","_"))+".json",turma)
     json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/availableTestes.json",availableforUser2)
     return True
-        
+
+#Pega a quantidade de perguntas Certas, Erradas e Nao respondidas de cada estudante em cada teste
+def getAllQuantErradasCertasNRes(teacher):
+    dadosProvas = getAllDadosProva(teacher)
+    alunos  = json_Save.getJSON('./data/Users/Teacher/'+teacher+'/alunos/alunos.json')
+    provaNome = []
+    erradas = []
+    naoRespond = []
+    certasA  = []
+    allData = list()
+    for a in alunos:
+        for d in dadosProvas:
+            #certas, erradas e nao respondidas de um determinado teste
+            res  = getPerguntasQuntAENR(a['userName'],teacher=teacher,token=d["token"])
+            if (res['Erradas']==0  and res['NRespondidas']==0 and res['Certas'] == 0):
+                #qundo isso acontece quer dizer que o estudante nao fez o teste
+                continue
+            res['Titulo'] = d["Titulo"]
+            res['userName'] = a['userName']   
+            allData.append(res)
+    #guarda so os titulos das provas
+    titulos = list()
+    for a in allData:
+         titulos.append(a['Titulo'])
+    #para cada titulo
+    for t in titulos:
+        pos = -1
+        if t in provaNome:
+            pos =  provaNome.index(t)
+        else:
+            provaNome.append(t)
+        certast= 0
+        erradast = 0
+        naoRespondt = 0
+        for a in allData:
+            if(a['Titulo']==t):
+                certast+= a['Certas']
+                erradast+= a['Erradas']
+                naoRespondt+= a['NRespondidas']
+                allData.remove(a)
+        if(pos!=-1):
+            erradas[pos] = erradas[pos]+erradast
+            certasA[pos] = certasA[pos]+certast
+            naoRespond[pos] = naoRespond[pos]+naoRespondt
+            #pos = -1
+        else:      
+            erradas.append(erradast)
+            certasA.append(certast)
+            naoRespond.append(naoRespondt)
+        #reduz a lista para nao demorar muito tempo nas proximas vezes
+    return {
+        "testes":provaNome,
+        "erradas":erradas,
+        "certas":certasA,
+        "nrespond":naoRespond
+    }
+    
+            
+                
                  
 
 
 if __name__ == "__main__":
     #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))
     #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")
-    criarTurma("narciso","B","Povo no Partido")
+    #criarTurma("narciso","B","Povo no Partido")
     #addAlunoToTurma("paxA","Nany","B1 12")
-    #generateTokenTeacher(numbers=10)
+    generateTokenTeacher(numbers=10)
     #incressarEmTurma("@nanilsin","romeu","A")
     #print(validateUserToAluno("@nanilsin",3444,"romeu"))
     #print(getAllDadosProva("romeu"))
@@ -701,3 +766,5 @@ if __name__ == "__main__":
     #print(a)
     #user = getTeacherUserByUserName('bubufilho','romeu', turma='P122')
     #print(user)
+    
+    #print(getAllQuantErradasCertasNRes('narciso'))

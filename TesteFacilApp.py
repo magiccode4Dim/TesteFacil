@@ -878,6 +878,27 @@ def desempenhoDoEstudante():
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
     redirect(url_for('index'))
+#desempenho academico para docentes
+@app.route("/desempenhoacademico",methods=['GET']) 
+def desempenhoGeralDosEstudantes():
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            try:
+                imagem = 'images/magiccodeicon.png'
+                uu = getUserByUserName(s)
+                if(validation.isAdmin(uu) ):
+                    t= getAllTurmasOfTeacher(s)
+                    return render_template("desempenhoestudantes.html", user=s,turmas = t, imagem=imagem)
+                else:
+                    return redirect(url_for('index'))
+            except Exception as e:
+                timeLineSystem.addError(str(e),s)
+                return render_template("Error.html",erro = "Erro do Sistema")
+    redirect(url_for('index'))
+    
+    
 #fale connosco
 @app.route("/faleconnosco",methods=['GET',"POST"]) 
 def talktous():
@@ -975,6 +996,25 @@ def getNotasJson():
                 uu = getUserByUserName(s)
                 if(not validation.isAdmin(uu) ): 
                     dados = getNotaAndData(s)
+                    #print(dados)
+                    return jsonify(dados)
+                else:
+                    return  jsonify(dict())
+            except Exception as e:
+                timeLineSystem.addError(str(e),s)
+    return  jsonify(dict())
+#pega todas perguntas nao respondidad erradas e certas e nao respond de todas as provas
+@app.route("/teacher/getcenr",methods=['GET']) 
+def getcenr():
+    cookie = request.cookies.get('SessionID')
+    #print(cookie)
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            try:
+                uu = getUserByUserName(s)
+                if(validation.isAdmin(uu) ): 
+                    dados = getAllQuantErradasCertasNRes(s)
                     #print(dados)
                     return jsonify(dados)
                 else:
