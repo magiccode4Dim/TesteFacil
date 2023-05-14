@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "title": "Como amar?",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Beijar"
+            },
+            {
+                "id": 2,
+                "ques": "Comprar Roupas"
+            },
+            {
+                "id": 3,
+                "ques": ""
+            }
+        ],
+        "cotacao": 1,
+        "correcta": 1
+    },
+    {
+        "id": 2,
+        "title": "Complete a Frase.... 'Amor \u00e9 Fpgo que ...'",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Queima nos Matando"
+            },
+            {
+                "id": 2,
+                "ques": "Arde sem se ver"
+            },
+            {
+                "id": 3,
+                "ques": "Ama a Vida Louca"
+            }
+        ],
+        "cotacao": 0,
+        "correcta": 2
+    }
+]

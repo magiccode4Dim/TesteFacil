@@ -1,3 +1,37 @@
 [
-    
+    {
+        "userName": "desconhecido",
+        "descricao": "addUserNotificaTion() missing 3 required positional arguments: 'descri', 'user', and 'link'",
+        "data": "05/12/23 - 08:40:12"
+    },
+    {
+        "userName": "luis",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/Teacher/professor1/notifications.json'",
+        "data": "05/12/23 - 08:44:22"
+    },
+    {
+        "userName": "luis",
+        "descricao": "'NoneType' object is not subscriptable",
+        "data": "05/12/23 - 09:06:58"
+    },
+    {
+        "userName": "luis",
+        "descricao": "'NoneType' object is not subscriptable",
+        "data": "05/12/23 - 09:07:48"
+    },
+    {
+        "userName": "luis",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/luis/availableTestes.json'",
+        "data": "05/12/23 - 09:09:57"
+    },
+    {
+        "userName": "luis",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/luis/availableTestes.json'",
+        "data": "05/12/23 - 09:10:00"
+    },
+    {
+        "userName": "luis",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/luis/availableTestes.json'",
+        "data": "05/12/23 - 09:10:05"
+    }
 ]

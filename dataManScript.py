@@ -1,4 +1,4 @@
-from util import json_Save
+from util import json_Save,notificationSystem
 import pandas as pd
 from datetime import datetime
 import time
@@ -133,6 +133,8 @@ def validateUserToAluno(userName, number,teacherUserName, turma):
     alunos.append(newAluno)
     #remove a request do aluno
     #removeRequest(user["userName"],user["turma"],teacherUserName)
+     #adiciona uma notificacao do utilizador
+    notificationSystem.addUserNotificaTion("Pedido Para Turma ","O Pedido de Ingresso para Turma"+str(user["turma"])+" do Professor "+str(teacherUserName)+" Foi Aceite.",userName,'/turma/'+str(teacherUserName)+"/"+str(user["turma"]))
     json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/alunos/alunos.json',alunos)
     return "ok"  
     
@@ -335,6 +337,8 @@ def createNewUser(userName,fullname,password,email, isAdmin = 0):
         json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/requests.json",list())
         #Cria a TimeLine
         json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/timeLine.json",list())
+        #cria o ficheiro das notificacoes
+        json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/notifications.json",list())
     users.append(newUser)
     json_Save.saveJSON('data/users.json',users)
 
@@ -437,6 +441,8 @@ def createTeacher(userName, email, senha, nome, token, descri):
     #cria a timeLine do teacher
     #timeLine.json
     json_Save.saveJSON('./data/Users/Teacher/'+userName+'/timeLine.json',list())
+    #ficheiro de nottificacoes 
+    json_Save.saveJSON('./data/Users/Teacher/'+userName+'/notifications.json',list())
     #Usar o token
     useTokenForTeacher(userName,token)
     return "Sucess"
@@ -486,6 +492,8 @@ def makeTestAvailableForUser(teacherUserName,tokenTest, userName,turma):
     if(ob in availableforUser):
         return
     availableforUser.append(ob)
+    #adiciona uma notificacao do utilizador
+    notificationSystem.addUserNotificaTion("Novo Teste Disponivel","Novo teste "+str(tokenTest)+" \n do Professor "+str(teacherUserName),userName, "/load/"+str(teacherUserName)+"/"+str(tokenTest))
     json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/availableTestes.json",availableforUser)
  
  #pedir adesao a uma turma
@@ -504,6 +512,7 @@ def incressarEmTurma(userName,teacherUserName, nomeTurma):
           "nomeTurma":nomeTurma 
         }
     )
+    notificationSystem.addTeacherNotification("Pedido de Engresso","O utilizador "+str(userName)+" fez um pedido de engresso para Turma "+str(nomeTurma),teacherUserName,'/turma/'+str(teacherUserName)+"/"+str(nomeTurma))
     json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/requests.json",requestsIn)
 #remove request, remove o pedido de adesao a turma
 def removeRequest(userName,turma,teacherUserName):
@@ -678,7 +687,8 @@ def deletAluno(userName,tur,teacherUserName):
                 availableforUser2.append(av)
         #apaga a requeste o estudante fez para aquela turma
         removeRequest(userName,tur,teacherUserName)
-        print("bugg")
+        #print("bugg")
+        notificationSystem.addUserNotificaTion("Foi Removido de Uma Turma","Foi removido da turma "+str(tur)+" do Professor "+str(teacherUserName),userName,"/turma/"+str(teacherUserName)+"/"+str(tur))
     except Exception as e:
         print(e)
         return False
@@ -745,7 +755,13 @@ def getAllQuantErradasCertasNRes(teacher):
         "certas":certasA,
         "nrespond":naoRespond
     }
-    
+#adiciona um novo atributo aos testes disponiveis, isso 'e para aqueles casos em que o usuario nao realizou os testes mas estes estao visiveis em seu painel
+def apenasProvasDisponiveis(dadosProvas):
+    newDadosProva =list()
+    for  d in dadosProvas:
+        d["invisible"]=validation.verificaTeste(d["token"],d["teacher"])
+        newDadosProva.append(d)
+    return newDadosProva
             
                 
                  

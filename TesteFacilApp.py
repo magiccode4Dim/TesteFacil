@@ -28,15 +28,17 @@ def index():
                 if(validation.isAdmin(getUserByUserName(s))==False):
                     #Pega os dados do usuario e lhe lanca para a DashBoard
                     availableTestes = getAvaliableTesteForUser(s)
+                    #retorna somente as provas que podem ser visiveis pelo user
+                    availableTestes = apenasProvasDisponiveis(availableTestes)
                     turmas  = getAlTurmas(s,availableTestes)
                     if(len(availableTestes)==0):
-                        return render_template('dashboardUser.html',user=s, turmas = turmas)
+                        return render_template('dashboardUser.html',user=s, turmas = turmas, notifications = notificationSystem.getUserNotification(s))
                     else:
                         #vai pegar todas as notas do aluno com base em dados do teste
-                        return render_template('dashboardUser.html',da=availableTestes,user=s , turmas = turmas)
+                        return render_template('dashboardUser.html',da=availableTestes,user=s , turmas = turmas, notifications = notificationSystem.getUserNotification(s))
                 provasConf = getAllDadosProva(s)
                 t= getAllTurmasOfTeacher(s)
-                return render_template("dashboardAdmin.html", provas = provasConf, turmas = t, user =  s)
+                return render_template("dashboardAdmin.html", provas = provasConf, turmas = t, user =  s, notifications = notificationSystem.getProfNotification(s))
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
@@ -74,6 +76,7 @@ def autenticar():
                 #cria uma nova sessao
                 cookie = str(request.form.get("username").__hash__())+str(random.random())+str(secrets.token_hex(16))
                 sessionsSystem.addSession(request.form.get("username"),cookie)
+                #print("Guardando Cookie")
                 if(validation.isAdmin(getUserByUserName(request.form.get("username")))==False):
                     #Adiciona o Evento de Login
                     timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("Conf","Login","Novo Inicio de Sessão"),
@@ -81,18 +84,20 @@ def autenticar():
                     #se a pessoa nao for administradora
                     #cria uma nova resposta
                     availableTestes = getAvaliableTesteForUser(request.form.get("username"))
+                    #retorna somente as provas que podem ser visiveis pelo user
+                    availableTestes = apenasProvasDisponiveis(availableTestes)
                     turmas  = getAlTurmas(request.form.get("username"),availableTestes)
                     if(len(availableTestes)==0):
-                        resposta = make_response(render_template('dashboardUser.html',user=request.form.get("username"), turmas = turmas))
+                        resposta = make_response(render_template('dashboardUser.html',user=request.form.get("username"), turmas = turmas, notifications = notificationSystem.getUserNotification(request.form.get("username"))))
                     else:
-                        resposta = make_response(render_template('dashboardUser.html',da=availableTestes,user=request.form.get("username"), turmas = turmas))
+                        resposta = make_response(render_template('dashboardUser.html',da=availableTestes,user=request.form.get("username"), turmas = turmas, notifications = notificationSystem.getUserNotification(request.form.get("username"))))
                 else:
                     timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Login","Novo Inicio de Sessão"),
                                                         request.form.get("username"))
                     #se a pessoa for administradora
                     t= getAllTurmasOfTeacher(request.form.get("username"))
                     provasConf = getAllDadosProva(request.form.get("username"))
-                    resposta = make_response(render_template("dashboardAdmin.html",provas = provasConf,turmas = t, user =  request.form.get("username")))
+                    resposta = make_response(render_template("dashboardAdmin.html",provas = provasConf,turmas = t, user =  request.form.get("username"),notifications = notificationSystem.getProfNotification(request.form.get("username"))))
                 resposta.set_cookie("SessionID",cookie)
                 return resposta
     except Exception as e:
@@ -180,7 +185,7 @@ def verProva(token):
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
-            return render_template("verProva.html", messages= p, dadosProva = dadosProva, turmas = t, user = s)
+            return render_template("verProva.html", messages= p, dadosProva = dadosProva, turmas = t, user = s,notifications = notificationSystem.getProfNotification(s))
     return redirect(url_for('index'))
 #Admin terminando prova
 #ADMIN
@@ -220,7 +225,7 @@ def retomarProva(token):
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
             return redirect('/ver/'+str(token))
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 #Apagar um Aluno
 @app.route("/delet/<teacher>/<turma>/<aluno>",methods=['GET']) 
 def apagaUmAluno(teacher,turma,aluno):
@@ -280,7 +285,7 @@ def users():
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
-            return render_template("users.html",allusers =  allUsers,turmas = t, user = s)
+            return render_template("users.html",allusers =  allUsers,turmas = t, user = s,notifications = notificationSystem.getProfNotification(s))
     return redirect(url_for('index'))
 #Admin verificando seus users
 #ADMIN
@@ -322,7 +327,7 @@ def prova():
                 return redirect(url_for('index'))
             #Deve verificar se a pessoa esta logada e tudo mais
             t= getAllTurmasOfTeacher(s)
-            return render_template('createTest.html',turmas = t, user = s)
+            return render_template('createTest.html',turmas = t, user = s, notifications = notificationSystem.getProfNotification(s))
     return redirect(url_for('index'))
 #ADMIN GUARDANDO A PROVA
 #ADMIN
@@ -474,7 +479,7 @@ def createEditor():
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Dados Invalidos")
             
-            return render_template('editor.html',maxquest=maxquest,maxper=maxper, turmas =  t,turma = turmas,user=s, data=data)
+            return render_template('editor.html',maxquest=maxquest,maxper=maxper, turmas =  t,turma = turmas,user=s, data=data, notifications = notificationSystem.getProfNotification(s))
     return redirect(url_for('index'))
 
 #Carrega a prova com um determinado ID
@@ -491,20 +496,20 @@ def carregarProva(teacher,id):
             #verifica se o aluno foi autorizado a realizar a ver o teste
             try:
                 if(validation.alunoIsAutorized(teacher,s,id)==False):
-                    return render_template("Error.html",erro = "Sem autorização Para Ver o Documento.",emoji='gifs/no.gif')
+                    return render_template("Error.html",erro = "Sem autorização Para Ver o Documento.")
             except FileNotFoundError as e:
                 timeLineSystem.addError(str(e),s)
                 return redirect(url_for('error404'))
             #Verifica se o teste ainda esta disponivel
             if(validation.verificaTeste(id,teacher)):
-                return render_template("Error.html",erro = "Este teste Já terminou",emoji='gifs/calmdown.gif') 
+                return render_template("Error.html",erro = "Este teste Já terminou") 
             try:
                 dadosProva =  json_Save.getJSON('./data/Users/Teacher/'+teacher+'/provas/'+id+'/dadosProva.json')
                 dadosProva["teacher"]= teacher
                 messages = json_Save.getJSON('./data/Users/Teacher/'+teacher+'/provas/'+id+'/prova.json')
             except FileNotFoundError as e:
                 timeLineSystem.addError(str(e),s)
-                return render_template("Error.html",erro = "Documento não encontrado",emoji='gifs/triste.gif')
+                return render_template("Error.html",erro = "Documento não encontrado")
             #user = getUserByUserName(s)
             user = getTeacherUserByUserName(s,teacher)
             if(not validation.isAdmin(user) ):
@@ -512,11 +517,11 @@ def carregarProva(teacher,id):
                         availableTestes = getAvaliableTesteForUser(s)
                         turmas  = getAlTurmas(s,availableTestes)
                         #return render_template('about.html', user=s,turmas = turmas, imagem=imagem)
-                        return render_template('index.html', messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem)
+                        return render_template('index.html', messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem, notifications = notificationSystem.getUserNotification(s))
             else:
                         #quando for um adminstrador a pesquisar
                         pass  
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 #Submete a prova
 #USER
@@ -594,8 +599,8 @@ def onSubmit(teacher):
             #erro ira acontecer quando o estudante nao submeter nada
             pass
         if(testeDisponivel(token,teacher)):
-            return render_template("result.html", resultado=-1,u=user,user=s,turmas = turmas, imagem=imagem)
-        return render_template("result.html", resultado=nota,aL=aL,messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem)
+            return render_template("result.html", resultado=-1,u=user,user=s,turmas = turmas, imagem=imagem,notifications = notificationSystem.getUserNotification(s))
+        return render_template("result.html", resultado=nota,aL=aL,messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem,notifications = notificationSystem.getUserNotification(s))
     except Exception as e:
                 #se acontecer qualquer excessao na tentava de conversao
                 timeLineSystem.addError(str(e),s)
@@ -644,8 +649,8 @@ def verResultado(teacher,token):
                     #quando a lista de resultados estiver vazia
                     pass
                 if(testeDisponivel(token,teacher)):
-                    return render_template("result.html", resultado=-1,u=user,user=s,turmas = turmas, imagem=imagem)
-                return render_template("result.html", resultado=nota,aL=aL,messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem)
+                    return render_template("result.html", resultado=-1,u=user,user=s,turmas = turmas, imagem=imagem,notifications = notificationSystem.getUserNotification(s))
+                return render_template("result.html", resultado=nota,aL=aL,messages=messages, dadosProva = dadosProva, tokenProva = id,u=user,user=s,turmas = turmas, imagem=imagem,notifications = notificationSystem.getUserNotification(s))
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")               
@@ -685,11 +690,11 @@ def sobre():
                     if(not validation.isAdmin(uu) ):     
                             availableTestes = getAvaliableTesteForUser(s)
                             turmas  = getAlTurmas(s,availableTestes)
-                            return render_template('about.html', user=s,turmas = turmas, imagem=imagem, istTeacher=False )
+                            return render_template('about.html', user=s,turmas = turmas, imagem=imagem, istTeacher=False,notifications = notificationSystem.getUserNotification(s) )
                     else:
                             #quando for um adminstrador a pesquisar
                             t= getAllTurmasOfTeacher(s)
-                            return render_template('about.html', user=s,turmas = t, istTeacher = True, imagem=imagem)
+                            return render_template('about.html', user=s,turmas = t, istTeacher = True, imagem=imagem,notifications = notificationSystem.getProfNotification(s))
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
@@ -723,12 +728,12 @@ def search():
                             availableTestes = getAvaliableTesteForUser(s)
                             turmas  = getAlTurmas(s,availableTestes)
                             return render_template('resultadosPesquisa.html', teachers = teachers , teachersSize = len(teachers),
-                                                turmas2 = tur,turmas2Size = len(tur), user=s,turmas = turmas, imagem=imagem , pesquisa = fullSeach, istTeacher=False)
+                                                turmas2 = tur,turmas2Size = len(tur), user=s,turmas = turmas, imagem=imagem , pesquisa = fullSeach, istTeacher=False,notifications = notificationSystem.getUserNotification(s))
                         else:
                             imagem = 'images/magiccodeicon.png'
                             t= getAllTurmasOfTeacher(s)
                             return render_template('resultadosPesquisa.html', teachers = teachers , teachersSize = len(teachers),
-                                                turmas2 = tur,turmas2Size = len(tur), user=s,turmas = t, imagem=imagem , pesquisa = fullSeach, istTeacher = True)
+                                                turmas2 = tur,turmas2Size = len(tur), user=s,turmas = t, imagem=imagem , pesquisa = fullSeach, istTeacher = True,notifications = notificationSystem.getProfNotification(s))
                             #quando for um adminstrador a pesquisar
                             pass
             except Exception as e:
@@ -755,7 +760,7 @@ def perfil(username):
                     timeLine = timeLineSystem.getTimeLineTeacher(s)
                     turmas2 = getAllTurmasOfTeacher(username)
                     return render_template("profile.html",turmas = t,timeLine = timeLine, u =  user, user = s,
-                                           editable=True,isTeacher=True, stat = stat, imagem=imagem,turmas2 = turmas2, istTeacher = True)
+                                           editable=True,isTeacher=True, stat = stat, imagem=imagem,turmas2 = turmas2, istTeacher = True,notifications = notificationSystem.getProfNotification(s))
                 if(s==username  and not validation.isAdmin(uu) ):
                     #se for um simple user
                     stat = "ESTUDANTE"
@@ -766,7 +771,7 @@ def perfil(username):
                     imagem = 'images/magiccodeicon.png'
                     return render_template("profile.html",timeLine = timeLine, u =  user, editable=True,
                                            isTeacher=False,user=s ,
-                                           turmas = turmas, stat = stat, imagem=imagem, istTeacher = False)
+                                           turmas = turmas, stat = stat, imagem=imagem, istTeacher = False,notifications = notificationSystem.getUserNotification(s))
                 if(validation.isAdmin(getUserByUserName(username)) and s!=username ):
                     #se o perfil que se pretende ver for de administrador e nao for ele pode se ver mas nao editar
                     stat = "PROFESSOR"
@@ -778,7 +783,7 @@ def perfil(username):
                         t= getAllTurmasOfTeacher(s)
                         return render_template("profile.html",timeLine = timeLine, u =  user, editable=False,
                                             isTeacher=True,user=s ,
-                                            turmas = t,turmas2 = turmas2, stat = stat, imagem=imagem, istTeacher = True)
+                                            turmas = t,turmas2 = turmas2, stat = stat, imagem=imagem, istTeacher = True,notifications = notificationSystem.getProfNotification(s))
                     else:
                         availableTestes = getAvaliableTesteForUser(s)
                         turmas  = getAlTurmas(s,availableTestes)
@@ -786,7 +791,7 @@ def perfil(username):
                         turmas  = getAlTurmas(s,availableTestes)
                         return render_template("profile.html",timeLine = timeLine, u =  user, editable=False,
                                             isTeacher=True,user=s ,
-                                            turmas = turmas,turmas2 = turmas2, stat = stat, imagem=imagem, istTeacher = False)
+                                            turmas = turmas,turmas2 = turmas2, stat = stat, imagem=imagem, istTeacher = False,notifications = notificationSystem.getUserNotification(s))
                 if(s!=username and validation.isAdmin(uu)):
                     #se for administrador que quer ver um perfil simples
                     stat = "ESTUDANTE"
@@ -795,7 +800,7 @@ def perfil(username):
                     timeLine = timeLineSystem.getTimeLineUser(username)
                     imagem = 'images/magiccodeicon.png'
                     return render_template("profile.html",timeLine = timeLine, u =  user,user = s, editable=False,
-                                           isTeacher=False, stat = stat, imagem=imagem, turmas = t, istTeacher = True)
+                                           isTeacher=False, stat = stat, imagem=imagem, turmas = t, istTeacher = True, notifications = notificationSystem.getProfNotification(s))
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")              
@@ -832,14 +837,16 @@ def verturma(teacher,turma):
                         imagem = 'images/magiccodeicon.png'
                         return render_template("turma.html",da=availableTestes,user=s ,
                                             turmas = turmas, imagem=imagem,  t=tur, teacher=teacher,
-                                            notInturma=notInturma, canSeeStudents=canSeeStudents , alunos = alunos, isTurmaTeacher  = False, isTeacher = False, istTeacher = False)
+                                            notInturma=notInturma, canSeeStudents=canSeeStudents , alunos = alunos, isTurmaTeacher  = False,
+                                            isTeacher = False, istTeacher = False, notifications = notificationSystem.getUserNotification(s))
                 #se a pessoa for administrador mas a turma nao ser sua
                 if(validation.isAdmin(uu) and s!=teacher):
                         t= getAllTurmasOfTeacher(s)
                         imagem = 'images/magiccodeicon.png'
                         return render_template("turma.html",user = s,turmas = t,
                                             notInturma=False, imagem=imagem, t=tur, 
-                                            teacher=teacher, canSeeStudents = False, isTurmaTeacher  = False, alunos = list(), isTeacher = True, istTeacher = True)
+                                            teacher=teacher, canSeeStudents = False, isTurmaTeacher  = False, alunos = list(), isTeacher = True, 
+                                            istTeacher = True, notifications = notificationSystem.getProfNotification(s))
                 #quando a pessoa 'e admin e a turma 'e sua
                 if(validation.isAdmin(uu) and s==teacher ):
                         t= getAllTurmasOfTeacher(s)
@@ -849,7 +856,8 @@ def verturma(teacher,turma):
                         return render_template("turma.html",user = s,turmas = t,
                                             notInturma=False, imagem=imagem, t=tur, 
                                             teacher=teacher, canSeeStudents = True , alunos = alunos, 
-                                            isTurmaTeacher = True, isTeacher = True,alunosToAcept=alunosToAprov, istTeacher = True)
+                                            isTurmaTeacher = True, isTeacher = True,
+                                            alunosToAcept=alunosToAprov, istTeacher = True,notifications = notificationSystem.getProfNotification(s))
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
@@ -871,7 +879,7 @@ def desempenhoDoEstudante():
                     imagem = 'images/magiccodeicon.png'
                     availableTestes = getAvaliableTesteForUser(s)
                     turmas  = getAlTurmas(s,availableTestes)
-                    return render_template("desempenho.html", user=s,turmas = turmas, imagem=imagem)
+                    return render_template("desempenho.html", user=s,turmas = turmas, imagem=imagem,notifications = notificationSystem.getUserNotification(s))
                 else:
                     return redirect(url_for('index'))
             except Exception as e:
@@ -890,7 +898,7 @@ def desempenhoGeralDosEstudantes():
                 uu = getUserByUserName(s)
                 if(validation.isAdmin(uu) ):
                     t= getAllTurmasOfTeacher(s)
-                    return render_template("desempenhoestudantes.html", user=s,turmas = t, imagem=imagem)
+                    return render_template("desempenhoestudantes.html", user=s,turmas = t, imagem=imagem,notifications = notificationSystem.getProfNotification(s))
                 else:
                     return redirect(url_for('index'))
             except Exception as e:
@@ -913,10 +921,12 @@ def talktous():
                             imagem = 'images/magiccodeicon.png'
                             availableTestes = getAvaliableTesteForUser(s)
                             turmas  = getAlTurmas(s,availableTestes)
-                            return render_template("talkwithus.html", user=s,turmas = turmas, imagem=imagem, istTeacher = False)
+                            return render_template("talkwithus.html", user=s,turmas = turmas,
+                                                   imagem=imagem, istTeacher = False,notifications = notificationSystem.getUserNotification(s))
                     else:
                              t= getAllTurmasOfTeacher(s)
-                             return render_template("talkwithus.html", user=s,turmas = t, istTeacher = True)
+                             return render_template("talkwithus.html", user=s,turmas = t, istTeacher = True,
+                                                    notifications = notificationSystem.getProfNotification(s))
                             #quando for um adminstrador a pesquisar      
                 elif (request.method == "POST") :
                     if(request.form.get("contact")!=None and request.form.get("comen") ):
@@ -1069,6 +1079,13 @@ def getperguntasqunt():
                 timeLineSystem.addError(str(e),s)
     return  jsonify(dict())
 
+
+"""
+#Assim que uma notificacao 'e enviada,
+# ela deve ser primeiro tratada neste link e so depois 'e que deve ser redirecionada
+#abri a notificacao
+@app.route("/notification/",methods=['GET']) 
+def openNotification()"""
 
 
 if __name__== "__main__":

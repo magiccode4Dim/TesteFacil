@@ -117,6 +117,35 @@
 				</div>
 			</div>
 			<div class="header-right">
+				<div class="user-notification">
+					<div class="dropdown">
+						<a
+							class="dropdown-toggle no-arrow"
+							href="#"
+							role="button"
+							data-toggle="dropdown"
+						>
+							<i class="icon-copy dw dw-notification"></i>
+							<span class="badge notification-active"></span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<div class="notification-list mx-h-350 customscroll">
+								<ul>
+									{% for no in notifications %}
+										<li>
+											<a href="{{no['link']}}">
+												<h3>{{no["title"]}}</h3>
+												<p>
+													{{no["descri"]}}
+												</p>
+											</a>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="user-info-dropdown">
 					<div class="dropdown">
 						<a

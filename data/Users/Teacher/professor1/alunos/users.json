@@ -14,5 +14,13 @@
         "email": "estudant@gmail.com",
         "turma": "Cloud",
         "isAproved": 1
+    },
+    {
+        "userName": "testeuser",
+        "fullname": "Luis Fonseca",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "last@gmail.com",
+        "turma": "Cloud",
+        "isAproved": 1
     }
 ]

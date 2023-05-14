@@ -31,7 +31,13 @@
                                     <p class="card-text">
                                         Teste Marcado para :  {{dadosProva['Data']}}
                                     </p>
-                                    <a href="/load/{{dadosProva['teacher']}}/{{dadosProva['token']}}" class="btn btn-primary bi bi-eye-fill"> Ver Teste</a>
+                                    {% if dadosProva["invisible"] %}
+                                        <p class="card-text">
+                                            Indisponivel para Si.
+                                        </p>
+                                    {% else %}
+                                        <a href="/load/{{dadosProva['teacher']}}/{{dadosProva['token']}}" class="btn btn-primary bi bi-eye-fill"> Ver Teste</a>
+                                    {% endif %}
                                 {% endif %}
                             </div>
                             {% if  dadosProva["nota"] < 0  %}
