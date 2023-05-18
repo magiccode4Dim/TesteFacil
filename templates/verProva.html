@@ -47,6 +47,7 @@
                                 <h5 class="card-title text-black">{{ message['title']}}</h5>
                                 {% set questions =  message['questions']   %}
                                 {% for q in questions %}
+                                    {% if q['ques']|length > 0 %}
                                         <ul class="list-group">
                                         
                                                 <li class="list-group-item list-group-item-primary">
@@ -54,6 +55,7 @@
                                                 </li>
                                         
                                         </ul>
+                                    {% endif %}
                                 {% endfor %} 
                         </div>
                         </div>

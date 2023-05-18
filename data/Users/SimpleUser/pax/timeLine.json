@@ -166,5 +166,29 @@
         "titulo": "Log Out",
         "descricao": "O User Saiu do Sistema",
         "data": "05/14/23 - 19:47:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "05/14/23 - 19:52:42"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "05/15/23 - 07:52:43"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Log Out",
+        "descricao": "O User Saiu do Sistema",
+        "data": "05/15/23 - 07:59:13"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "05/15/23 - 08:25:56"
     }
 ]

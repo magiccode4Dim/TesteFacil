@@ -33,5 +33,15 @@
         "userName": "luis",
         "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/luis/availableTestes.json'",
         "data": "05/12/23 - 09:10:05"
+    },
+    {
+        "userName": "professor1",
+        "descricao": "list index out of range",
+        "data": "05/15/23 - 07:15:07"
+    },
+    {
+        "userName": "professor1",
+        "descricao": "list index out of range",
+        "data": "05/15/23 - 07:15:14"
     }
 ]

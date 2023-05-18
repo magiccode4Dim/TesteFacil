@@ -40,14 +40,16 @@
                                 <h5 class="card-title text-white">{{ message['title']}}</h5>
                                 {% set questions =  message['questions']   %}
                                 {% for q in questions %}
-                                    <p class="card-text">
-                                        <div class="col-md-6 col-sm-12">
-                                                <div class="custom-control custom-radio mb-5">
-                                                    <input type="radio" id="{{q['id']}}_q{{ message['id']}}" name="q{{ message['id']}}" value="{{q['id']}}" class="custom-control-input">
-                                                    <label class="custom-control-label" for="{{q['id']}}_q{{ message['id']}}">{{q['ques']}}</label>
-                                                </div>
-                                        </div>
-                                    </p>
+                                    {% if q['ques']|length > 0 %}
+                                        <p class="card-text">
+                                            <div class="col-md-6 col-sm-12">
+                                                    <div class="custom-control custom-radio mb-5">
+                                                        <input type="radio" id="{{q['id']}}_q{{ message['id']}}" name="q{{ message['id']}}" value="{{q['id']}}" class="custom-control-input">
+                                                        <label class="custom-control-label" for="{{q['id']}}_q{{ message['id']}}">{{q['ques']}}</label>
+                                                    </div>
+                                            </div>
+                                        </p>
+                                    {% endif %}
                                 {% endfor %} 
                             </div>
                         </div>

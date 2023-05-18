@@ -82,5 +82,11 @@
         "titulo": "Login",
         "descricao": "Novo Inicio de Sess\u00e3o",
         "data": "05/14/23 - 19:47:44"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Log Out",
+        "descricao": "O User Saiu do Sistema",
+        "data": "05/14/23 - 19:52:37"
     }
 ]

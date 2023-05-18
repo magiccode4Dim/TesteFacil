@@ -126,14 +126,16 @@
 							data-toggle="dropdown"
 						>
 							<i class="icon-copy dw dw-notification"></i>
-							<span class="badge notification-active"></span>
+							{% if  notifications | length > 0 %}
+								<span class="badge notification-active"></span>
+							{% endif %}
 						</a>
 						<div class="dropdown-menu dropdown-menu-right">
 							<div class="notification-list mx-h-350 customscroll">
 								<ul>
 									{% for no in notifications %}
 										<li>
-											<a href="{{no['link']}}">
+											<a href="/notification?link={{no['link']}}&id={{no["id"]}}">
 												<h3>{{no["title"]}}</h3>
 												<p>
 													{{no["descri"]}}

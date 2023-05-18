@@ -46,21 +46,23 @@
                                 <h5 class="card-title text-black">{{ message['title']}}</h5>
                                 {% set questions =  message['questions']   %}
                                 {% for q in questions %}
-                                    <ul class="list-group">
-                                        {% if message["correcta"] == message["res"] and message["correcta"] == q['id'] %}
-                                            <li class="list-group-item list-group-item-success">
-                                                {{q['ques']}}.
-                                            </li>
-                                        {% elif message["correcta"] != message["res"] and message["res"] == q['id']  %}
-                                            <li class="list-group-item list-group-item-primary">
-                                                {{q['ques']}}. 
-                                            </li>
-                                        {% else %}
-                                            <li class="list-group-item list-group-item-danger">
-                                                {{q['ques']}}.
-                                            </li>
-                                        {% endif %}
-                                    </ul>
+                                    {% if q['ques']|length > 0 %}
+                                        <ul class="list-group">
+                                            {% if message["correcta"] == message["res"] and message["correcta"] == q['id'] %}
+                                                <li class="list-group-item list-group-item-success">
+                                                    {{q['ques']}}.
+                                                </li>
+                                            {% elif message["correcta"] != message["res"] and message["res"] == q['id']  %}
+                                                <li class="list-group-item list-group-item-primary">
+                                                    {{q['ques']}}. 
+                                                </li>
+                                            {% else %}
+                                                <li class="list-group-item list-group-item-danger">
+                                                    {{q['ques']}}.
+                                                </li>
+                                            {% endif %}
+                                        </ul>
+                                    {% endif %}
                                 {% endfor %} 
                             </div>
                         </div>

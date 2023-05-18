@@ -354,18 +354,12 @@ def createTeste():
                 #Isso so esta aqui em cima para aproveitar o try catch
         user_requis = dict()
         user_requis["turma"] = request.form.get('turma')[:len(request.form.get('turma'))-1]
-        dt = request.form.get('Data')
-        categories = [(2,'Feb'), (3,'Mar'), (4,'Apr'), (5,'May'), (6,'Jun'), (7,'Jul'), (8,'Aug'), (9,'Sep'), (10,'Oct'),(11,'Nov'),(12,'Dec')]
-        #Tenta converter o dia e o ano
-        dataSplit = dt.split(' ')
-        dia = int(dataSplit[0])
-        ano = int(dataSplit[2])
-        for catt in categories:
-            if(catt[1] in  dataSplit[1]):
-                mes = catt[0]
-                break
-        dadosProva["Data"] = str(dia)+"/"+str(mes)+"/"+str(ano)
-        dadosProva["fim"] = str(dataSplit[3])+str(dataSplit[4])
+        data =  request.form.get('data')
+        fim  =  request.form.get('fim')
+        if(len(data)!=20 and len(fim)!=20):
+            return render_template("Error.html",erro = "Dados Invalidos, as Datas são invalidas")
+        dadosProva["Data"] = formatData(data)
+        dadosProva["fim"] = formatData(fim)
     except Exception as e:
                 #se acontecer qualquer excessao na tentava de conversao
         timeLineSystem.addError(str(e),s)
@@ -474,12 +468,16 @@ def createEditor():
                     if(request.form.get(tur['nome']) == tur['nome']): 
                             turmas+= tur['nome']+","
                 data =  request.form.get('data')
+                fim  =  request.form.get('fim')
+                print(fim)
+                if(len(data)!=20 and len(fim)!=20):
+                    return render_template("Error.html",erro = "Dados Invalidos, as Datas são invalidas")
             except Exception as e:
                 #se acontecer qualquer excessao na tentava de conversao
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Dados Invalidos")
             
-            return render_template('editor.html',maxquest=maxquest,maxper=maxper, turmas =  t,turma = turmas,user=s, data=data, notifications = notificationSystem.getProfNotification(s))
+            return render_template('editor.html',maxquest=maxquest,maxper=maxper, turmas =  t,turma = turmas,user=s, data=data,fim=fim , notifications = notificationSystem.getProfNotification(s))
     return redirect(url_for('index'))
 
 #Carrega a prova com um determinado ID
@@ -1080,12 +1078,25 @@ def getperguntasqunt():
     return  jsonify(dict())
 
 
-"""
+
 #Assim que uma notificacao 'e enviada,
 # ela deve ser primeiro tratada neste link e so depois 'e que deve ser redirecionada
 #abri a notificacao
-@app.route("/notification/",methods=['GET']) 
-def openNotification()"""
+@app.route("/notification",methods=['GET']) 
+def openNotification():
+    cookie = request.cookies.get('SessionID')
+    #print(cookie)
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        link =  request.args.get('link')
+        try:
+            id =  int(request.args.get("id"))
+            notificationSystem.removeNotification(id,getUserByUserName(s))
+            return redirect(link)
+        except Exception as e:
+           return redirect(url_for('index'))
+        #apaga a notificacao 
+    return redirect(url_for('index'))
 
 
 if __name__== "__main__":

@@ -1,17 +1,1 @@
-[
-    {
-        "title": "Pedido de Engresso",
-        "descri": "O utilizador luis fez um pedido de engresso para Turma Cloud",
-        "link": "/turma/professor1/Cloud"
-    },
-    {
-        "title": "Pedido de Engresso",
-        "descri": "O utilizador pax fez um pedido de engresso para Turma Cloud",
-        "link": "/turma/professor1/Cloud"
-    },
-    {
-        "title": "Pedido de Engresso",
-        "descri": "O utilizador testeuser fez um pedido de engresso para Turma Cloud",
-        "link": "/turma/professor1/Cloud"
-    }
-]
+[]

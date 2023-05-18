@@ -1,12 +1,10 @@
 #SISTEMA DE NOTIFICAÇÕES
 from .json_Save import *
+from .validation import isAdmin
  
  #adiciona uma notificacao  a um aluno
 def addUserNotificaTion(title, descri, user, link):
     notfic =  getJSON('./data/Users/SimpleUser/'+user+"/notifications.json")
-    if(len(notfic)==15):
-        #se chegar no nomero maximo de notificacoes, deve reiniciar a lista
-        notfic = list()
     notfic.append({
         "title":title,
         "descri":descri,
@@ -18,9 +16,6 @@ def addUserNotificaTion(title, descri, user, link):
 #adiciona um a notificacao a um professor
 def addTeacherNotification(title , descri, teacher, link):
     notfic =  getJSON('./data/Users/Teacher/'+teacher+'/notifications.json')
-    if(len(notfic)==15):
-        #se chegar no nomero maximo de notificacoes, deve reiniciar a lista
-        notfic = list()
     notfic.append({
         "title":title,
         "descri":descri,
@@ -32,14 +27,15 @@ def getUserNotification(user):
     try:
         #retorna somente as ultimas 10 notificacoes
         notif = getJSON('./data/Users/SimpleUser/'+user+"/notifications.json")
-        notif.reverse()
         lastTen = list()
-        if(len(notif)>10):
-            for n in range(10):
-                lastTen.append(notif[n])
-            return lastTen
-        else:
-            return notif
+        for n in range(10):
+                try:
+                    nll = notif[n]
+                except Exception as e:
+                    break
+                nll["id"] = n
+                lastTen.append(nll)
+        return lastTen
     except FileNotFoundError as e:
         return list()
 
@@ -47,13 +43,28 @@ def getUserNotification(user):
 def getProfNotification(teacher):
     try:
         notif = getJSON('./data/Users/Teacher/'+teacher+'/notifications.json')
-        notif.reverse()
         lastTen = list()
-        if(len(notif)>10):
-            for n in range(10):
-                lastTen.append(notif[n])
-            return lastTen
-        else:
-            return notif
+        for n in range(10):
+            try:
+                nll = notif[n]
+            except Exception as e:
+                break
+            nll["id"] = n
+            lastTen.append(nll)
+        return lastTen
+
     except FileNotFoundError as e:
         return list()
+
+#remove a notificacao com determina ID
+def removeNotification(id, user):
+    if(isAdmin(user)):
+        path = './data/Users/Teacher/'+user['userName']+'/notifications.json'
+        notif = getJSON(path)
+        notif.remove(notif[id])
+    else:
+        path = './data/Users/SimpleUser/'+user['userName']+"/notifications.json"
+        notif = getJSON(path)
+        notif.remove(notif[id])
+    saveJSON(path,notif)
+        
