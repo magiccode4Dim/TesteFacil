@@ -43,5 +43,120 @@
         "userName": "professor1",
         "descricao": "list index out of range",
         "data": "05/15/23 - 07:15:14"
+    },
+    {
+        "userName": "professor1",
+        "descricao": "object of type 'NoneType' has no len()",
+        "data": "05/22/23 - 08:16:48"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list indices must be integers or slices, not str",
+        "data": "05/22/23 - 08:26:35"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list indices must be integers or slices, not str",
+        "data": "05/22/23 - 08:26:36"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list indices must be integers or slices, not str",
+        "data": "05/22/23 - 08:28:18"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list indices must be integers or slices, not str",
+        "data": "05/22/23 - 08:28:22"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list indices must be integers or slices, not str",
+        "data": "05/22/23 - 08:28:52"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list indices must be integers or slices, not str",
+        "data": "05/22/23 - 08:29:49"
+    },
+    {
+        "userName": "professor1",
+        "descricao": "list indices must be integers or slices, not str",
+        "data": "05/22/23 - 08:30:23"
+    },
+    {
+        "userName": "pax",
+        "descricao": "list indices must be integers or slices, not str",
+        "data": "05/22/23 - 08:30:37"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:36:49"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:36:49"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:40:05"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:40:24"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:40:34"
+    },
+    {
+        "userName": "professor1",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:41:11"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:41:14"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:42:07"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:43:01"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:43:26"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:45:01"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:45:20"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:45:55"
+    },
+    {
+        "userName": "pax",
+        "descricao": "string indices must be integers",
+        "data": "05/22/23 - 08:46:02"
     }
 ]

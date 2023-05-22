@@ -358,8 +358,8 @@ def createTeste():
         fim  =  request.form.get('fim')
         if(len(data)!=20 and len(fim)!=20):
             return render_template("Error.html",erro = "Dados Invalidos, as Datas são invalidas")
-        dadosProva["Data"] = formatData(data)
-        dadosProva["fim"] = formatData(fim)
+        dadosProva["Data"] = validation.formatData(data)
+        dadosProva["fim"] = validation.formatData(fim)
     except Exception as e:
                 #se acontecer qualquer excessao na tentava de conversao
         timeLineSystem.addError(str(e),s)

@@ -763,26 +763,7 @@ def apenasProvasDisponiveis(dadosProvas):
         newDadosProva.append(d)
     return newDadosProva
     
-#formata a data de um modo padrao para o sistema
-def formatData(data):
-    dt = data
-    categories = [(2,'Feb'), (3,'Mar'), (4,'Apr'), (5,'May'), (6,'Jun'), (7,'Jul'), (8,'Aug'), (9,'Sep'), (10,'Oct'),(11,'Nov'),(12,'Dec')]
-    #Tenta converter o dia e o ano
-    dataSplit = dt.split(' ')
-    dia = int(dataSplit[0])
-    ano = int(dataSplit[2])
-    for catt in categories:
-        if(catt[1] in  dataSplit[1]):
-            mes = catt[0]
-            break
-    if(len(str(mes))==1):
-        mes="0"+str(mes)
-    return str(dia)+"/"+str(mes)+"/"+str(ano)+"|"+str(dataSplit[3])+" "+str(dataSplit[4]).upper()    
-#retorna a data do sistema no mesmo formato que o anterior
-def getSystemData():            
-    s = datetime.now()
-    dd = s.strftime("%d/%m/%Y|%I:%M %p")
-    return dd
+
 
 if __name__ == "__main__":
     #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))
@@ -801,5 +782,8 @@ if __name__ == "__main__":
     #print(user)
     
     #print(getAllQuantErradasCertasNRes('narciso'))
-    print(formatData("10 May 2023 08:55 pm"))
-    print(getSystemData())
+    #print(validation.formatData("10 May 2023 08:55 pm"))
+    #print(validation.getSystemData())
+     
+    #print(validation.dataInInterval('10/05/2023|08:00 AM','10/05/2023|09:00 PM','11/05/2023|09:00 PM'))
+    print(getAvaliableTesteForUser('pax'))

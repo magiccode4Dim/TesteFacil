@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "title": "Samora",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Presidente"
+            },
+            {
+                "id": 2,
+                "ques": "Musico"
+            }
+        ],
+        "cotacao": 10,
+        "correcta": 1
+    },
+    {
+        "id": 2,
+        "title": "Narciso",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Programador"
+            },
+            {
+                "id": 2,
+                "ques": "Traidor"
+            }
+        ],
+        "cotacao": 10,
+        "correcta": 1
+    }
+]
