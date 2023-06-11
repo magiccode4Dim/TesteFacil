@@ -1,4 +1,4 @@
-from util import json_Save,notificationSystem
+from util import json_Save,notificationSystem,timeLineSystem
 import pandas as pd
 from datetime import datetime
 import time
@@ -7,6 +7,7 @@ from util import validation
 import os
 import secrets
 import hashlib
+import csv
 
 #=========================== METODOS DA VERSAO 1
 #Obtem os ficheiros de configuracao de todas as provas
@@ -438,6 +439,7 @@ def createTeacher(userName, email, senha, nome, token, descri):
     json_Save.saveJSON('./data/Users/Teacher/'+userName+'/provas/tokenList.json',list())
     json_Save.saveJSON('./data/Users/Teacher/'+userName+'/provas/canselados.json',list())
     os.makedirs("./data/Users/Teacher/"+userName+"/turmas")
+    os.makedirs("./data/Users/Teacher/"+userName+"/manualaddstudentes")
     #cria a timeLine do teacher
     #timeLine.json
     json_Save.saveJSON('./data/Users/Teacher/'+userName+'/timeLine.json',list())
@@ -762,7 +764,42 @@ def apenasProvasDisponiveis(dadosProvas):
         d["invisible"]=validation.verificaTeste(d["token"],d["teacher"])
         newDadosProva.append(d)
     return newDadosProva
-    
+#gera os estudantes com base em um arquivo csv
+def generateStudents(arquivo,professor,turma):
+    #cadastrar os usuarios normalmente
+    errosList = list()
+    with open(arquivo, 'r') as arquivo:
+        leitor_csv = csv.DictReader(arquivo)
+        for linha in leitor_csv:
+            try:
+                nome = linha['nome']
+                username = linha['username']
+                senha = linha['senha']
+            except KeyError as e:
+                #Colunas Invalidas
+                return "Error1"
+            # ...
+            print(nome, username, senha)
+            if(validation.userNameExists(username)):
+                errosList.append("[ERRO] O Nome do Usuario "+username+" Já Existe Tente Outro")
+                continue
+            else:
+                if not validation.userNameIsAcept(username) or  not validation.inputIsValid(username):
+                    errosList.append("[ERRO] O Nome do Usuario "+username+" É Invalido")
+                    continue
+                createNewUser(username,nome,senha,"default@magiccode.com")
+                errosList.append("[SUCESSO] O Estudante "+username+" Foi Cadastrado Com Sucesso")
+                #permitir o acesso a uma tuma estantanemante
+                #primeiro o estudante deve ingressar
+                incressarEmTurma(username,professor,turma)
+                validateUserToAluno(username,estudantNumberRandom(professor),professor,turma)
+                timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Adicionou o Aluno "+str(username),",Na Turma"+str(turma)),professor)
+                dadosProvas = getAllDadosProva(professor)
+                for d in dadosProvas:
+                    if(validation.alunoIsAutorized(professor,username,d["token"])):
+                        makeTestAvailableForUser(professor,d["token"],username,turma)
+    return errosList
+
 
 
 if __name__ == "__main__":
@@ -786,4 +823,4 @@ if __name__ == "__main__":
     #print(validation.getSystemData())
      
     #print(validation.dataInInterval('10/05/2023|08:00 AM','10/05/2023|09:00 PM','11/05/2023|09:00 PM'))
-    print(getAvaliableTesteForUser('pax'))
+    print( validateUserToAluno("joao",estudantNumberRandom("professor1"),"professor1","B1"))

@@ -156,5 +156,11 @@ def dataInInterval(inicio,fim,data):
     else:
         return False
     
+#verifica se o formato do arquivo é valido ou nao
+def allowed_file(filename):
+    ALLOWED_EXTENSIONS = {'csv'}  # Tipos de arquivo permitidos
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+    
         
     

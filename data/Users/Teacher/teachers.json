@@ -4,5 +4,11 @@
         "email": "teste@gmail.com",
         "fullname": "Professor1 Teste1",
         "bio": "Sou professor de Matematica"
+    },
+    {
+        "userName": "sds",
+        "email": "vintano@gmail.com",
+        "fullname": "shelton vintano",
+        "bio": "sfds"
     }
 ]

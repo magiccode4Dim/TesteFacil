@@ -16,5 +16,29 @@
         "nome": "Luis Fonseca",
         "turma": "Cloud",
         "userName": "testeuser"
+    },
+    {
+        "numeroEst": 572175,
+        "nome": "any",
+        "turma": "B1",
+        "userName": "shiwa"
+    },
+    {
+        "numeroEst": 110182,
+        "nome": "Afonso Joao Mucavele",
+        "turma": "B1",
+        "userName": "mucamuca"
+    },
+    {
+        "numeroEst": 78526,
+        "nome": " she she shelton",
+        "turma": "B1",
+        "userName": "she"
+    },
+    {
+        "numeroEst": 891665,
+        "nome": "joao alberto",
+        "turma": "B1",
+        "userName": "joao"
     }
 ]

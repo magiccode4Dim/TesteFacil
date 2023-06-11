@@ -158,5 +158,35 @@
         "userName": "pax",
         "descricao": "string indices must be integers",
         "data": "05/22/23 - 08:46:02"
+    },
+    {
+        "userName": "professor1",
+        "descricao": "You tried to access the file 'arquivo' in the request.files dictionary but it does not exist. The mimetype for the request is 'application/x-www-form-urlencoded' instead of 'multipart/form-data' which means that no file contents were transmitted. To fix this error you should provide enctype=\"multipart/form-data\" in your form.\n\nThe browser instead transmitted some file names. This was submitted: '715078f2bd02469689729bb86d1124c6c7d54e450389.xlsx'",
+        "data": "06/11/23 - 16:17:13"
+    },
+    {
+        "userName": "joao",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/joao/availableTestes.json'",
+        "data": "06/11/23 - 18:23:57"
+    },
+    {
+        "userName": "joao",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/joao/availableTestes.json'",
+        "data": "06/11/23 - 18:23:59"
+    },
+    {
+        "userName": "professor1",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/pax/availableTestes.json'",
+        "data": "06/11/23 - 18:24:05"
+    },
+    {
+        "userName": "professor1",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/pax/availableTestes.json'",
+        "data": "06/11/23 - 18:27:31"
+    },
+    {
+        "userName": "professor1",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/pax/availableTestes.json'",
+        "data": "06/11/23 - 18:27:50"
     }
 ]

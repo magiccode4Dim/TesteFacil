@@ -356,7 +356,7 @@ def createTeste():
         user_requis["turma"] = request.form.get('turma')[:len(request.form.get('turma'))-1]
         data =  request.form.get('data')
         fim  =  request.form.get('fim')
-        if(len(data)!=20 and len(fim)!=20):
+        if(len(data)<20 or len(fim)<20):
             return render_template("Error.html",erro = "Dados Invalidos, as Datas são invalidas")
         dadosProva["Data"] = validation.formatData(data)
         dadosProva["fim"] = validation.formatData(fim)
@@ -470,7 +470,7 @@ def createEditor():
                 data =  request.form.get('data')
                 fim  =  request.form.get('fim')
                 print(fim)
-                if(len(data)!=20 and len(fim)!=20):
+                if(len(data)<20 and len(fim)<20):
                     return render_template("Error.html",erro = "Dados Invalidos, as Datas são invalidas")
             except Exception as e:
                 #se acontecer qualquer excessao na tentava de conversao
@@ -1050,6 +1050,31 @@ def createTurma():
                         descri =  request.form.get('descri')
                         criarTurma(s,nome,descri)
                         return redirect('/turma/'+s+'/'+nome)  
+            except Exception as e:
+                timeLineSystem.addError(str(e),s)
+                return render_template("Error.html",erro = "Erro do Sistema")
+    return redirect(url_for('index'))
+#insere uma arquivo execel que contem os dados dos novos estudantes
+@app.route('/<turma>/generatestudents', methods=['GET','POST'])
+def criateNewStudentes(turma):
+    cookie = request.cookies.get('SessionID')
+    #print(cookie)
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            try:
+                uu = getUserByUserName(s)
+                if(validation.isAdmin(uu) ):
+                    arquivo = request.files['arquivo']
+                    if arquivo and validation.allowed_file(arquivo.filename):
+                        # Aqui você pode fazer o processamento do arquivo
+                        # por exemplo, salvar em algum local no servidor
+                        fileName = './data/Users/Teacher/'+s+'/manualaddstudentes/' + arquivo.filename
+                        arquivo.save(fileName)
+                        logs  = generateStudents(fileName,s,turma)
+                        return str(logs)
+                    else:
+                        return render_template("Error.html",erro = "Formato Invalido")
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")

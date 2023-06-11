@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "title": "quem 'e arissfdds",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "filosofo"
+            },
+            {
+                "id": 2,
+                "ques": "artista"
+            }
+        ],
+        "cotacao": 3,
+        "correcta": 1
+    },
+    {
+        "id": 2,
+        "title": "quem palann",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "astronauta"
+            },
+            {
+                "id": 2,
+                "ques": "filosofo"
+            }
+        ],
+        "cotacao": 2,
+        "correcta": 2
+    }
+]

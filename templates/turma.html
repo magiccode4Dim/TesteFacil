@@ -96,6 +96,16 @@
                                                     >Novos Estudantes</a
                                                 >
                                             </li>
+                                            <li class="nav-item">
+                                                <a
+                                                    class="nav-link"
+                                                    data-toggle="tab"
+                                                    href="#uploadCreds"
+                                                    role="tab"
+                                                    >Adicionar Alunos</a
+                                                >
+                                            </li>
+                                            
                                         {% endif %}
                                     {% endif %}
                                 </ul>
@@ -177,6 +187,39 @@
                                                                 </tbody>
                                                             </table>
                                                 </div>
+                                            </div>
+                                            <!--upload de credenciais-->
+                                            <div
+                                                class="tab-pane fade show"
+                                                id="uploadCreds"
+                                                role="tabpanel"
+                                            >
+                                            <div class="profile-setting">
+                                                <form action="/{{t['nome']}}/generatestudents" method="POST"  enctype="multipart/form-data">
+                                                    <ul class="profile-edit-list row">
+                                                        <li class="weight-500 col-md-6">
+                                                            <h4 class="text-blue h5 mb-20">
+                                                                O ficheiro de Conter as Colunas nome,username,senha.
+                                                            </h4>
+                                                            <div class="form-group">
+                                                                <label>Carregar Ficheiro Execel (CSV)</label>
+                                                                <div class="custom-file">
+                                                                    <input type="file" name="arquivo" class="custom-file-input" />
+                                                                    <label class="custom-file-label">Ficheiro CSV</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb-0">
+                                                                <input
+                                                                    type="submit"
+                                                                    class="btn btn-primary"
+                                                                    value="Gerar Estudantes"
+                                                                />
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </form>
+                                            </div>
+                                                
                                             </div>
                                         {% endif %}
                                     <!--Stundent to acept end-->
