@@ -1072,7 +1072,7 @@ def criateNewStudentes(turma):
                         fileName = './data/Users/Teacher/'+s+'/manualaddstudentes/' + arquivo.filename
                         arquivo.save(fileName)
                         logs  = generateStudents(fileName,s,turma)
-                        return str(logs)
+                        return redirect('/turma/'+s+'/'+turma)  
                     else:
                         return render_template("Error.html",erro = "Formato Invalido")
             except Exception as e:

@@ -765,10 +765,10 @@ def apenasProvasDisponiveis(dadosProvas):
         newDadosProva.append(d)
     return newDadosProva
 #gera os estudantes com base em um arquivo csv
-def generateStudents(arquivo,professor,turma):
+def generateStudents(path,professor,turma):
     #cadastrar os usuarios normalmente
     errosList = list()
-    with open(arquivo, 'r') as arquivo:
+    with open(path, 'r') as arquivo:
         leitor_csv = csv.DictReader(arquivo)
         for linha in leitor_csv:
             try:
@@ -798,6 +798,7 @@ def generateStudents(arquivo,professor,turma):
                 for d in dadosProvas:
                     if(validation.alunoIsAutorized(professor,username,d["token"])):
                         makeTestAvailableForUser(professor,d["token"],username,turma)
+    os.remove(path)
     return errosList
 
 

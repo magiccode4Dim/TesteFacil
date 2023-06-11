@@ -54,5 +54,29 @@
         "email": "default@magiccode.com",
         "turma": "B1",
         "isAproved": 1
+    },
+    {
+        "userName": "paxj",
+        "fullname": "ddd",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "default@magiccode.com",
+        "turma": "B1",
+        "isAproved": 1
+    },
+    {
+        "userName": "ddddggg",
+        "fullname": "she she sheltondd",
+        "password": "81dc9bdb52d04dc20036dbd8313ed055",
+        "email": "default@magiccode.com",
+        "turma": "B1",
+        "isAproved": 1
+    },
+    {
+        "userName": "mataruca",
+        "fullname": "francisco",
+        "password": "934b535800b1cba8f96a5d72f72f1611",
+        "email": "default@magiccode.com",
+        "turma": "B1",
+        "isAproved": 1
     }
 ]
