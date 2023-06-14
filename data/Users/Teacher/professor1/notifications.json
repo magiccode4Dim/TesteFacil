@@ -28,5 +28,15 @@
         "title": "Pedido de Engresso",
         "descri": "O utilizador mataruca fez um pedido de engresso para Turma B1",
         "link": "/turma/professor1/B1"
+    },
+    {
+        "title": "Pedido de Engresso",
+        "descri": "O utilizador ggfgf fez um pedido de engresso para Turma Programacao",
+        "link": "/turma/professor1/Programacao"
+    },
+    {
+        "title": "Pedido de Engresso",
+        "descri": "O utilizador bvcc fez um pedido de engresso para Turma Programacao",
+        "link": "/turma/professor1/Programacao"
     }
 ]

@@ -78,5 +78,21 @@
         "email": "default@magiccode.com",
         "turma": "B1",
         "isAproved": 1
+    },
+    {
+        "userName": "ggfgf",
+        "fullname": "gcgdhxdxd",
+        "password": "6512bd43d9caa6e02c990b0a82652dca",
+        "email": "default@magiccode.com",
+        "turma": "Programacao",
+        "isAproved": 1
+    },
+    {
+        "userName": "bvcc",
+        "fullname": "gfggc",
+        "password": "531d5c1fbcf6e356cafeeba55a5b73d0",
+        "email": "default@magiccode.com",
+        "turma": "Programacao",
+        "isAproved": 1
     }
 ]
