@@ -898,5 +898,17 @@
         "titulo": "Adicionou o Aluno Zanela",
         "descricao": ",Na TurmaB2_12_Classe",
         "data": "06/15/23 - 15:48:23"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Log Out",
+        "descricao": "O User Saiu do Sistema",
+        "data": "06/15/23 - 16:10:15"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "06/15/23 - 16:10:20"
     }
 ]
