@@ -773,7 +773,7 @@ def generateStudents(path,professor,turma):
         for linha in leitor_csv:
             try:
                 nome = linha['nome']
-                username = linha['username']
+                username = linha['username'].replace(" ","")
                 senha = linha['senha']
             except KeyError as e:
                 #Colunas Invalidas
