@@ -912,5 +912,13 @@
         "fullname": "user",
         "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
         "email": "userTeste@gmial.com"
+    },
+    {
+        "userName": "marlon",
+        "fullname": "Marlon Marr",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "magiccodesoftware@gmail.com",
+        "isAdmin": 1,
+        "permissions": "CRUD"
     }
 ]

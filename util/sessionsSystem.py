@@ -35,4 +35,16 @@ def getActiveSessionsUsers():
             active.append(s["userName"])
     return active
 
-    
+#retorna a lista de usuarios online, retorna quais estao online e quais estao offline
+def getUsersStatus(allUsers):
+    sessiosn =  getJSON('data/sessions.json')
+    newList = list()
+    for u in allUsers:
+        u["status"] = "Ausente"
+        for s in sessiosn:
+            if(s['userName']==u['userName']):
+                u["status"] = "Presente"
+                sessiosn.remove(s)
+                break
+        newList.append(u)
+    return newList

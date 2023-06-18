@@ -23,6 +23,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Turma</th>
                             <th scope="col">Aprovado</th>
+                            <th scope="col">Estado</th>
                         
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                             {% else %}
                                 <td><a href='/turma/{{user}}/{{u["turma"]}}' ><span class="badge badge-warning">Ver Turma</span></a></td>
                             {% endif %}
+                            <td>{{u["status"]}}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

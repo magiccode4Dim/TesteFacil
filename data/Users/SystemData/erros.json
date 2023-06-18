@@ -178,5 +178,15 @@
         "userName": "user",
         "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
         "data": "06/18/23 - 18:23:35"
+    },
+    {
+        "userName": "user",
+        "descricao": "'bio'",
+        "data": "06/18/23 - 18:47:16"
+    },
+    {
+        "userName": "user",
+        "descricao": "'bio'",
+        "data": "06/18/23 - 18:47:41"
     }
 ]

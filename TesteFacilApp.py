@@ -281,6 +281,8 @@ def users():
             try:
                 #Deve verificar se a pessoa esta logada e tudo mais
                 allUsers =  json_Save.getJSON('./data/Users/Teacher/'+s+'/alunos/users.json')
+                #verifica   quais users estao online
+                allUsers =  sessionsSystem.getUsersStatus(allUsers)
                 t= getAllTurmasOfTeacher(s)
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
