@@ -23,5 +23,15 @@
         "userName": "vintano",
         "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/vintano/availableTestes.json'",
         "data": "06/18/23 - 11:24:12"
+    },
+    {
+        "userName": "nany",
+        "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
+        "data": "06/18/23 - 18:08:23"
+    },
+    {
+        "userName": "nany",
+        "descricao": "int() argument must be a string, a bytes-like object or a number, not 'NoneType'",
+        "data": "06/18/23 - 18:08:23"
     }
 ]

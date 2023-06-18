@@ -64,5 +64,17 @@
         "titulo": "Log Out",
         "descricao": "O User Saiu do Sistema",
         "data": "06/18/23 - 12:40:35"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "06/18/23 - 18:07:03"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Submiss\u00e3o da Prova 151743242ea1769150d9e3178896be04d00204836047",
+        "descricao": "O User Submeteu uma prova do professor vintan",
+        "data": "06/18/23 - 18:08:23"
     }
 ]
