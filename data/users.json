@@ -906,5 +906,11 @@
         "fullname": "Zanela Armando Bila",
         "password": "61fc58ed2557fb045a15df0dbe214193",
         "email": "default@magiccode.com"
+    },
+    {
+        "userName": "user",
+        "fullname": "user",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "userTeste@gmial.com"
     }
 ]

@@ -1498,5 +1498,10 @@
         "title": "Pedido de Engresso",
         "descri": "O utilizador Zanela fez um pedido de engresso para Turma B2_12_Classe",
         "link": "/turma/vintan/B2_12_Classe"
+    },
+    {
+        "title": "Pedido de Engresso",
+        "descri": "O utilizador user fez um pedido de engresso para Turma B1_12_Classe",
+        "link": "/turma/vintan/B1_12_Classe"
     }
 ]

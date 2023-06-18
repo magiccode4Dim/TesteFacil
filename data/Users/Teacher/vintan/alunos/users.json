@@ -1198,5 +1198,13 @@
         "email": "default@magiccode.com",
         "turma": "B2_12_Classe",
         "isAproved": 1
+    },
+    {
+        "userName": "user",
+        "fullname": "user",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "userTeste@gmial.com",
+        "turma": "B1_12_Classe",
+        "isAproved": 1
     }
 ]
