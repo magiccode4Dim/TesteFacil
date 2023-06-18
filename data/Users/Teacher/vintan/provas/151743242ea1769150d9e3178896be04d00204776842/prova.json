@@ -1,0 +1,962 @@
+[
+    {
+        "id": 1,
+        "title": "Proposi\u00e7\u00e3o \u00e9 toda ora\u00e7\u00e3o declarativa, que sempre tem um \u00fanico valor l\u00f3gico, verdadeiro (v) ou falso (f). Indica abaixo a frase declarativa.",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Beije-me, querida. "
+            },
+            {
+                "id": 2,
+                "ques": "Escuta primeiro os teus bot\u00f5es. "
+            },
+            {
+                "id": 3,
+                "ques": "Duas vezes um n\u00famero mais tr\u00eas \u00e9 igual a sete."
+            },
+            {
+                "id": 4,
+                "ques": "Que mulher chata! "
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 2,
+        "title": "Proposi\u00e7\u00e3o composta \u00e9 constitu\u00edda por duas ou mais proposi\u00e7\u00f5es simples ligadas por conectivos l\u00f3gicos. Considere as constru\u00e7\u00f5es abaixo e assinale aquela que representa uma proposi\u00e7\u00e3o simples. ",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "O homem s\u00e1bio agiu com tranquilidade e foi embora. "
+            },
+            {
+                "id": 2,
+                "ques": "Vou \u00e0 praia se, e somente se, faz sol. "
+            },
+            {
+                "id": 3,
+                "ques": "Jos\u00e9 n\u00e3o passou, mas M\u00e1rio foi classificado no concurso"
+            },
+            {
+                "id": 4,
+                "ques": "Se n\u00e3o chove, ent\u00e3o Beto vai ao cinema"
+            },
+            {
+                "id": 5,
+                "ques": "Carlos e Ant\u00f3nio foram aprovados no concurso"
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 5
+    },
+    {
+        "id": 3,
+        "title": "Considere a proposi\u00e7\u00e3o: \u201cPaula estuda, mas n\u00e3o passa no concurso.\u201d Nessa proposi\u00e7\u00e3o, o conectivo l\u00f3gico \u00e9 uma: ",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Disjun\u00e7\u00e3o inclusiva; "
+            },
+            {
+                "id": 2,
+                "ques": "Conjun\u00e7\u00e3o; "
+            },
+            {
+                "id": 3,
+                "ques": "Disjun\u00e7\u00e3o exclusiva; "
+            },
+            {
+                "id": 4,
+                "ques": "Implica\u00e7\u00e3o; "
+            },
+            {
+                "id": 5,
+                "ques": "Equival\u00eancia."
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 2
+    },
+    {
+        "id": 4,
+        "title": "A afirma\u00e7\u00e3o \u201cTrabalhar n\u00e3o \u00e9 saud\u00e1vel ou o cigarro mata\u201d \u00e9 falsa se: ",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "P \u00e9 falsa e ~Q \u00e9 falsa; "
+            },
+            {
+                "id": 2,
+                "ques": "P \u00e9 falsa e Q \u00e9 falsa; "
+            },
+            {
+                "id": 3,
+                "ques": "P e Q s\u00e3o verdadeiras; "
+            },
+            {
+                "id": 4,
+                "ques": "P \u00e9 verdadeira e Q \u00e9 falsa; "
+            },
+            {
+                "id": 5,
+                "ques": "~P \u00e9 verdadeira e Q \u00e9 falsa."
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 4
+    },
+    {
+        "id": 5,
+        "title": "Em l\u00f3gica, denomina-se _________ de duas proposi\u00e7\u00f5es P e Q a proposi\u00e7\u00e3o representada por \u201dou P ou Q\u201d cujo valor l\u00f3gico \u00e9 a falsidade (F) quando os valores l\u00f3gicos das proposi\u00e7\u00f5es P e Q s\u00e3o ambos falsos ou ambos verdadeiros, e o valor l\u00f3gico \u00e9 a verdade (V) nos demais casos. Preenche corretamente o espa\u00e7o em branco, o seguinte conectivo: ",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "disjun\u00e7\u00e3o inclusiva; "
+            },
+            {
+                "id": 2,
+                "ques": "proposi\u00e7\u00e3o bicondicional; "
+            },
+            {
+                "id": 3,
+                "ques": "nega\u00e7\u00e3o; "
+            },
+            {
+                "id": 4,
+                "ques": "disjun\u00e7\u00e3o exclusiva; "
+            },
+            {
+                "id": 5,
+                "ques": "proposi\u00e7\u00e3o bidirecional."
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 4
+    },
+    {
+        "id": 6,
+        "title": "Na figura abaixo, p e q s\u00e3o proposi\u00e7\u00f5es simples.\r\nP\tQ\t?\r\nV\tV\tF\r\nV\tF\tV\r\n F\tV\tV\r\nF\tF\tF\r\nA proposi\u00e7\u00e3o composta que substitui correctamente o ponto de interroga\u00e7\u00e3o \u00e9:",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "p \u039b q"
+            },
+            {
+                "id": 2,
+                "ques": "p \u2192 q"
+            },
+            {
+                "id": 3,
+                "ques": "p \u2194 q"
+            },
+            {
+                "id": 4,
+                "ques": "p v q"
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 4
+    },
+    {
+        "id": 7,
+        "title": "Sabe-se que a ocorr\u00eancia de B \u00e9 condi\u00e7\u00e3o necess\u00e1ria para a ocorr\u00eancia de C e condi\u00e7\u00e3o suficiente para a ocorr\u00eancia de D. Sabe-se, tamb\u00e9m, que a ocorr\u00eancia de D \u00e9 condi\u00e7\u00e3o necess\u00e1ria e suficiente para a ocorr\u00eancia de A. Assim, quando C ocorre: ",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "D ocorre e B n\u00e3o ocorre; "
+            },
+            {
+                "id": 2,
+                "ques": "D n\u00e3o ocorre e A n\u00e3o ocorre; "
+            },
+            {
+                "id": 3,
+                "ques": "B e A ocorrem; "
+            },
+            {
+                "id": 4,
+                "ques": "nem B nem D ocorrem; "
+            },
+            {
+                "id": 5,
+                "ques": "B n\u00e3o ocorre ou A n\u00e3o ocorre."
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 8,
+        "title": "Dadas as proposi\u00e7\u00f5es simples p e q, tais que p \u00e9 verdadeira e q \u00e9 falsa, considere as seguintes proposi\u00e7\u00f5es compostas: \r\n(1) p \u039b q; \r\n(2) ~p \u2192 q; \r\n(3) ~(p V ~q); \r\n(4) ~(p \u2194 q). \r\nQuantas dessas proposi\u00e7\u00f5es compostas s\u00e3o verdadeiras? \r\n",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Nenhuma"
+            },
+            {
+                "id": 2,
+                "ques": "Uma "
+            },
+            {
+                "id": 3,
+                "ques": "Duas"
+            },
+            {
+                "id": 4,
+                "ques": "Tr\u00eas "
+            },
+            {
+                "id": 5,
+                "ques": "Quarto"
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 9,
+        "title": "Paloma fez as seguintes declara\u00e7\u00f5es: \r\n\u201cSou inteligente e n\u00e3o trabalho.\u201d \r\n\u201cSe n\u00e3o tiro f\u00e9rias, ent\u00e3o trabalho.\u201d \r\nSupondo que as duas declara\u00e7\u00f5es sejam verdadeiras, \u00e9 falso concluir que Paloma: \r\n",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "\u00c9 inteligente; "
+            },
+            {
+                "id": 2,
+                "ques": "Tira f\u00e9rias; "
+            },
+            {
+                "id": 3,
+                "ques": "Trabalha; "
+            },
+            {
+                "id": 4,
+                "ques": "N\u00e3o trabalha e tira f\u00e9rias; "
+            },
+            {
+                "id": 5,
+                "ques": "Trabalha ou \u00e9 inteligente."
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 4
+    },
+    {
+        "id": 10,
+        "title": "\r\nUma conjun\u00e7\u00e3o \u00e9 verdadeira se e somente se...\r\n",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "A segunda proposi\u00e7\u00e3o for verdadeira. "
+            },
+            {
+                "id": 2,
+                "ques": "As duas forem falsas."
+            },
+            {
+                "id": 3,
+                "ques": "A proposi\u00e7\u00e3o inicial for verdadeira. "
+            },
+            {
+                "id": 4,
+                "ques": "As duas proposi\u00e7\u00f5es forem verdadeiras."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 4
+    },
+    {
+        "id": 11,
+        "title": "A proposi\u00e7\u00e3o P \u2192 Q \u00e9 falsa",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Somente quando P e Q ambas s\u00e3o verdadeiras"
+            },
+            {
+                "id": 2,
+                "ques": "Somente quando P \u00e9 falsa e Q \u00e9 verdadeira"
+            },
+            {
+                "id": 3,
+                "ques": "Somente quando P e Q ambas s\u00e3o falsas"
+            },
+            {
+                "id": 4,
+                "ques": "Somente quando P \u00e9 verdadeira e Q \u00e9 falsa"
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 4
+    },
+    {
+        "id": 12,
+        "title": "Ao conjunto de ac\u00e7\u00f5es levadas a cabo pelos governantes com vista a resolver os problemas postos na vida social para garantir a paz, a harmonia e o bem-estar colectivo, chama-se...",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Direito"
+            },
+            {
+                "id": 2,
+                "ques": "Filosofia. "
+            },
+            {
+                "id": 3,
+                "ques": "Pol\u00edtica. "
+            },
+            {
+                "id": 4,
+                "ques": "Sociologia"
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 13,
+        "title": "A pol\u00edtica \u00e9 uma ci\u00eancia porque\u2026",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Apreende, manipula o significado humano da pol\u00edtica."
+            },
+            {
+                "id": 2,
+                "ques": "Descreve, analisa e prev\u00ea os factos pol\u00edticos."
+            },
+            {
+                "id": 3,
+                "ques": "Pretende descrever e questionar os fundamentos em geral."
+            },
+            {
+                "id": 4,
+                "ques": "Se preocupa com a observa\u00e7\u00e3o e experi\u00eancia pol\u00edtica"
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 2
+    },
+    {
+        "id": 14,
+        "title": "A rela\u00e7\u00e3o entre a pol\u00edtica e a filosofia \u00e9, por um lado, positiva e, por outro, pol\u00e9mica porque a...",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Atitude cr\u00edtica da filosofia perturba alguns pol\u00edticos."
+            },
+            {
+                "id": 2,
+                "ques": "Atitude cr\u00edtica da pol\u00edtica perturba alguns fil\u00f3sofos."
+            },
+            {
+                "id": 3,
+                "ques": "Filosofia subordina-se \u00e0 pol\u00edtica"
+            },
+            {
+                "id": 4,
+                "ques": "Pol\u00edtica subordina-se \u00e0 filosofia."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 1
+    },
+    {
+        "id": 15,
+        "title": "A pol\u00edtica tem como fun\u00e7\u00e3o principal:",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Afastar os soberanos da sociedade. "
+            },
+            {
+                "id": 2,
+                "ques": "Buscar a justi\u00e7a, harmonia e o bem social."
+            },
+            {
+                "id": 3,
+                "ques": "Buscar o bem dos cidad\u00e3os e dos dirigentes. "
+            },
+            {
+                "id": 4,
+                "ques": "Buscar a liberdade individual."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 2
+    },
+    {
+        "id": 16,
+        "title": "Qual \u00e9 o fim da \u00e9tica pol\u00edtica?",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Iluminar a articula\u00e7\u00e3o entre meios e fins, em prol do bem comum"
+            },
+            {
+                "id": 2,
+                "ques": "Iluminar a decis\u00e3o pol\u00edtica em fun\u00e7\u00e3o da economia"
+            },
+            {
+                "id": 3,
+                "ques": "Pressupor a moralidade como proibi\u00e7\u00e3o da justi\u00e7a numa sociedade"
+            },
+            {
+                "id": 4,
+                "ques": "Tornar compreens\u00edvel a decis\u00e3o moral da ac\u00e7\u00e3o injusta"
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 1
+    },
+    {
+        "id": 17,
+        "title": "A quest\u00e3o da \u00e9tica na pol\u00edtica fundamenta-se, ou sustenta-se por um agir que\u2026",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Constitui as condi\u00e7\u00f5es que devem ser satisfeitas."
+            },
+            {
+                "id": 2,
+                "ques": "Disp\u00f5e de meios e pensa nos fins em rela\u00e7\u00e3o aos meios."
+            },
+            {
+                "id": 3,
+                "ques": "Escolhe entre v\u00e1rias formas poss\u00edveis da ac\u00e7\u00e3o."
+            },
+            {
+                "id": 4,
+                "ques": "Toma decis\u00f5es que podem ser consideradas moralmente correctas."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 4
+    },
+    {
+        "id": 18,
+        "title": "A Constitui\u00e7\u00e3o de um pa\u00eds \u00e9 a estrutura...",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Criada nas comunidades locais. "
+            },
+            {
+                "id": 2,
+                "ques": "Daqueles que governam o pa\u00eds."
+            },
+            {
+                "id": 3,
+                "ques": "De uma comunidade pol\u00edtica organizada."
+            },
+            {
+                "id": 4,
+                "ques": "Que interv\u00eam nos assuntos pol\u00edticos."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 19,
+        "title": "A rep\u00fablica \u00e9 um regime em que a designa\u00e7\u00e3o do chefe do estado se faz por\u2026",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Armamento. "
+            },
+            {
+                "id": 2,
+                "ques": "Ditadura. "
+            },
+            {
+                "id": 3,
+                "ques": "Elei\u00e7\u00e3o. "
+            },
+            {
+                "id": 4,
+                "ques": "Heran\u00e7a."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 20,
+        "title": "\u00c9 fun\u00e7\u00e3o da constitui\u00e7\u00e3o da Rep\u00fablica:",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Fomentar conflitos entre os membros do Estado."
+            },
+            {
+                "id": 2,
+                "ques": "Produzir riqueza"
+            },
+            {
+                "id": 3,
+                "ques": "Gerir as rela\u00e7\u00f5es entre os membros do Estado"
+            },
+            {
+                "id": 4,
+                "ques": "Velar pela popula\u00e7\u00e3o do pa\u00eds."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 21,
+        "title": "A participa\u00e7\u00e3o pol\u00edtica visa:",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "influ\u00eancia sobre os actos dos governantes"
+            },
+            {
+                "id": 2,
+                "ques": "Exercer Ac\u00e7\u00e3o involunt\u00e1ria e inconsciente"
+            },
+            {
+                "id": 3,
+                "ques": "Criar condi\u00e7\u00f5es de distribui\u00e7\u00e3o igual dos bens na comunidade "
+            },
+            {
+                "id": 4,
+                "ques": "N\u00e3o tem necessidade de mover o p\u00fablico."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 22,
+        "title": "Nos pa\u00edses democr\u00e1ticos o poder pol\u00edtico legitima-se pela(o): ",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Campanha eleitoral "
+            },
+            {
+                "id": 2,
+                "ques": "Golpe de Estado "
+            },
+            {
+                "id": 3,
+                "ques": "Voto "
+            },
+            {
+                "id": 4,
+                "ques": "Fraude"
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 23,
+        "title": "A ess\u00eancia dos Direitos Humanos consiste na(o): ",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Participa\u00e7\u00e3o pol\u00edtica dos cidad\u00e3os "
+            },
+            {
+                "id": 2,
+                "ques": "Erradica\u00e7\u00e3o do analfabetismo. "
+            },
+            {
+                "id": 3,
+                "ques": "Denuncia e protec\u00e7\u00e3o da corrup\u00e7\u00e3o. "
+            },
+            {
+                "id": 4,
+                "ques": "Promo\u00e7\u00e3o da dignidade da pessoa humana."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 4
+    },
+    {
+        "id": 24,
+        "title": "'Cria\u00e7\u00e3o de condi\u00e7\u00f5es razo\u00e1veis equitativas para a exist\u00eancia humana em determinada sociedade'. A expressa identifica-se melhor com a ideia de: ",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Assimetrias regionais. "
+            },
+            {
+                "id": 2,
+                "ques": "Economia de mercado"
+            },
+            {
+                "id": 3,
+                "ques": "Justi\u00e7a social. "
+            },
+            {
+                "id": 4,
+                "ques": "Filosofia da Educa\u00e7\u00e3o."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 25,
+        "title": "O que caracteriza melhor o Estado de Direito? ",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Respeito pelos direitos fundamentais"
+            },
+            {
+                "id": 2,
+                "ques": "Planifica\u00e7\u00e3o centralizada"
+            },
+            {
+                "id": 3,
+                "ques": "Submiss\u00e3o da maior \u00e0 minoria"
+            },
+            {
+                "id": 4,
+                "ques": "Monopartidarismo"
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 1
+    },
+    {
+        "id": 26,
+        "title": "Para Plat\u00e3o a origem do Estado \u00e9\u2026",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Divina."
+            },
+            {
+                "id": 2,
+                "ques": "Contratual."
+            },
+            {
+                "id": 3,
+                "ques": "Convencional. "
+            },
+            {
+                "id": 4,
+                "ques": "Natural."
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 27,
+        "title": "Qual \u00e9 o governante ideal segundo Plat\u00e3o?",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "O fil\u00f3sofo "
+            },
+            {
+                "id": 2,
+                "ques": "O povo "
+            },
+            {
+                "id": 3,
+                "ques": "O rei-fil\u00f3sofo "
+            },
+            {
+                "id": 4,
+                "ques": "O rei-pol\u00edtico"
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 3
+    },
+    {
+        "id": 28,
+        "title": "Quais s\u00e3o as tr\u00eas classes sociais no seu estado ideal que Plat\u00e3o prop\u00f5e na perspectiva\r\npol\u00edtica?\r\n",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Governantes, comerciantes e guardas "
+            },
+            {
+                "id": 2,
+                "ques": "Trabalhadores, guardas e camponeses"
+            },
+            {
+                "id": 3,
+                "ques": "Guardas, comerciantes e trabalhadores "
+            },
+            {
+                "id": 4,
+                "ques": "Trabalhadores, guardas e governantes"
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 1
+    },
+    {
+        "id": 29,
+        "title": "Para Plat\u00e3o a melhor forma de governo \u00e9",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Oligarquia"
+            },
+            {
+                "id": 2,
+                "ques": "Democracia"
+            },
+            {
+                "id": 3,
+                "ques": "Tirania"
+            },
+            {
+                "id": 4,
+                "ques": "Monarquia"
+            },
+            {
+                "id": 5,
+                "ques": ""
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 4
+    },
+    {
+        "id": 30,
+        "title": "A pior forma de governo para Plat\u00e3o",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Democracia"
+            },
+            {
+                "id": 2,
+                "ques": "Demagogia"
+            },
+            {
+                "id": 3,
+                "ques": "Aristocracia"
+            },
+            {
+                "id": 4,
+                "ques": "Aristocracia"
+            },
+            {
+                "id": 5,
+                "ques": "Anarquia"
+            },
+            {
+                "id": 6,
+                "ques": ""
+            }
+        ],
+        "cotacao": 0.66,
+        "correcta": 1
+    }
+]

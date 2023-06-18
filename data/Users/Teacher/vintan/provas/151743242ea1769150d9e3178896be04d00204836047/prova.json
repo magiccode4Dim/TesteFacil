@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "title": "O que \u00e9 Polis?",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Bairro"
+            },
+            {
+                "id": 2,
+                "ques": "Quarteir\u00e3o"
+            },
+            {
+                "id": 3,
+                "ques": "Cidade"
+            }
+        ],
+        "cotacao": 2,
+        "correcta": 3
+    },
+    {
+        "id": 2,
+        "title": "Plat\u00e3o nasceu em:",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Palmeiras"
+            },
+            {
+                "id": 2,
+                "ques": "Boane"
+            },
+            {
+                "id": 3,
+                "ques": "Atenas"
+            }
+        ],
+        "cotacao": 2,
+        "correcta": 3
+    },
+    {
+        "id": 3,
+        "title": "Democr\u00e1cia \u00e9 um Governo de :",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Familias privilegiadas"
+            },
+            {
+                "id": 2,
+                "ques": "Povo"
+            },
+            {
+                "id": 3,
+                "ques": "Um individuo"
+            }
+        ],
+        "cotacao": 2,
+        "correcta": 2
+    },
+    {
+        "id": 4,
+        "title": "O Plat\u00e3o destigue:  ",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Tr\u00eas Classes Sociais"
+            },
+            {
+                "id": 2,
+                "ques": "Duas Classes Sociais"
+            },
+            {
+                "id": 3,
+                "ques": "Uma Classe Social"
+            }
+        ],
+        "cotacao": 2,
+        "correcta": 1
+    },
+    {
+        "id": 5,
+        "title": "Os Direitos Humanos Surgiram :",
+        "questions": [
+            {
+                "id": 1,
+                "ques": "Em 1946"
+            },
+            {
+                "id": 2,
+                "ques": "Em 1947"
+            },
+            {
+                "id": 3,
+                "ques": "Em 1948"
+            }
+        ],
+        "cotacao": 2,
+        "correcta": 3
+    }
+]

@@ -1,8 +1,9 @@
 [
     {
-        "userName": "vintano",
-        "email": "default@magiccode.com",
-        "fullname": "William Vintano",
-        "bio": "Professor de Filosofia"
+        "userName": "vintan",
+        "fullname": "William Vintan",
+        "email": "magiccodesoftware@gmail.com",
+        "isAdmin": 1,
+        "permissions": "CRUD"
     }
 ]

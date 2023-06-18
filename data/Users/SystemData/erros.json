@@ -1,3 +1,27 @@
 [
-   
+    {
+        "userName": "vintano",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/vintano/timeLine.json'",
+        "data": "06/18/23 - 10:56:21"
+    },
+    {
+        "userName": "vintano",
+        "descricao": "'password'",
+        "data": "06/18/23 - 11:00:18"
+    },
+    {
+        "userName": "nany",
+        "descricao": "local variable 'passw' referenced before assignment",
+        "data": "06/18/23 - 11:11:30"
+    },
+    {
+        "userName": "nany",
+        "descricao": "local variable 'passw' referenced before assignment",
+        "data": "06/18/23 - 11:13:12"
+    },
+    {
+        "userName": "vintano",
+        "descricao": "[Errno 2] No such file or directory: './data/Users/SimpleUser/vintano/availableTestes.json'",
+        "data": "06/18/23 - 11:24:12"
+    }
 ]

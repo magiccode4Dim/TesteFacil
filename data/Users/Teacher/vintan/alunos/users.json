@@ -1,5 +1,13 @@
 [
     {
+        "userName": "nany",
+        "fullname": "Narciso Albino Cadeado",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "magiccodesoftware@gmail.com",
+        "turma": "B2_12_Classe",
+        "isAproved": 1
+    },
+    {
         "userName": "Abelario",
         "fullname": "Abel\u00e1rio Fanuel Tsandzana",
         "password": "537a98ac73f6234db24fe9dd46a83f3d",
@@ -688,7 +696,7 @@
         "isAproved": 1
     },
     {
-        "userName": "Elio",
+        "userName": "\u00c9lio",
         "fullname": "\u00c9lio Eug\u00e9nio Massimbe",
         "password": "bce50faac2d1d58d2649caa567311544",
         "email": "default@magiccode.com",

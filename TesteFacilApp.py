@@ -389,7 +389,7 @@ def createTeste():
             per["questions"] =  questions
             #print(per["questions"])
             try:
-                per["cotacao"] = int(request.form.get('cota'+str(quest)))
+                per["cotacao"] = float(request.form.get('cota'+str(quest)))
                 per["correcta"] = int(request.form.get('per'+str(quest)+'_corr'))
             except Exception as e:
                     #se acontecer qualquer excessao na tentava de conversao
@@ -955,6 +955,7 @@ def updateInfor():
         if(s!=None): 
           try:
             user = getUserByUserName(s)
+            passw =  user['password']
             #Actualizando UserName ou Email
             att = ["fullname","email"]
             for at in att:
@@ -982,10 +983,12 @@ def updateInfor():
                     timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("UnConf","Actualização de Dados","O professor actualizou a BIO"),s)  
                     user['bio'] = request.form.get('bio')
                 user2 =  user
-                user2.pop("password")
+                passw = user2.pop("password")
                 updateUser(user2,'./data/Users/Teacher/teachers.json')
+            user['password'] =  passw
             updateUser(user,"./data/users.json")
-            timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("UnConf","Actualização de Dados ","O User Actualizou alguns dados do Perfil"),s)
+            if(not validation.isAdmin(user)):
+                timeLineSystem.addEventToUserTimeLine(timeLineSystem.createEvent("UnConf","Actualização de Dados ","O User Actualizou alguns dados do Perfil"),s)
             return redirect('/profile/'+s)
           except Exception as e:
                 timeLineSystem.addError(str(e),s)
@@ -1125,4 +1128,4 @@ def openNotification():
 
 
 if __name__== "__main__":
-    app.run(host="0.0.0.0",port=80,debug=True)
+    app.run(host="0.0.0.0",port=80)

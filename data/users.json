@@ -1,11 +1,17 @@
 [
     {
-        "userName": "vintano",
-        "fullname": "William Vintano",
-        "password": "d9a1a63c8fb86c79de83bbf75437a87b",
-        "email": "default@magiccode.com",
+        "userName": "nany",
+        "fullname": "Narciso Albino Cadeado",
+        "password": "d0fb963ff976f9c37fc81fe03c21ea7b",
+        "email": "magiccodesoftware@gmail.com"
+    },
+    {
+        "userName": "vintan",
+        "fullname": "William Vintan",
+        "email": "magiccodesoftware@gmail.com",
         "isAdmin": 1,
-        "permissions": "CRUD"
+        "permissions": "CRUD",
+        "password": "d9a1a63c8fb86c79de83bbf75437a87b"
     },
     {
         "userName": "Abelario",
@@ -524,7 +530,7 @@
         "email": "default@magiccode.com"
     },
     {
-        "userName": "Elio",
+        "userName": "\u00c9lio",
         "fullname": "\u00c9lio Eug\u00e9nio Massimbe",
         "password": "bce50faac2d1d58d2649caa567311544",
         "email": "default@magiccode.com"
