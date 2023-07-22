@@ -516,6 +516,9 @@ def incressarEmTurma(userName,teacherUserName, nomeTurma):
     )
     notificationSystem.addTeacherNotification("Pedido de Engresso","O utilizador "+str(userName)+" fez um pedido de engresso para Turma "+str(nomeTurma),teacherUserName,'/turma/'+str(teacherUserName)+"/"+str(nomeTurma))
     json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/requests.json",requestsIn)
+
+     
+    
 #remove request, remove o pedido de adesao a turma
 def removeRequest(userName,turma,teacherUserName):
     requestsIn = json_Save.getJSON('./data/Users/SimpleUser/'+userName+"/requests.json")
@@ -801,6 +804,27 @@ def generateStudents(path,professor,turma):
     os.remove(path)
     return errosList
 
+#marca a presenca de um aluno em um teste
+def marcarPresenca(userName, token, teacherUserName):
+    try:
+        presencas = json_Save.getJSON('./data/Users/SimpleUser/'+userName+"/presencas.json")
+    except Exception as e:
+        presencas = list()
+    if token not in presencas:
+        presencas.append(
+            token
+        )
+    json_Save.saveJSON('./data/Users/SimpleUser/'+userName+"/presencas.json",presencas)
+     
+    try:
+        presencasTeste = json_Save.getJSON('./data/Users/Teacher/'+teacherUserName+'/provas/'+token+'/presencas.json')
+    except Exception as e:
+        presencasTeste = list()
+    if userName not in presencasTeste:
+        presencasTeste.append(
+            userName
+        )
+    json_Save.saveJSON('./data/Users/Teacher/'+teacherUserName+'/provas/'+token+'/presencas.json',presencasTeste)
 
 
 if __name__ == "__main__":

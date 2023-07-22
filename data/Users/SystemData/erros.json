@@ -188,5 +188,55 @@
         "userName": "user",
         "descricao": "'bio'",
         "data": "06/18/23 - 18:47:41"
+    },
+    {
+        "userName": "vintan",
+        "descricao": "[Errno 2] No such file or directory: '/media/narciso/Ficheiros1/PROJECTS/TesteFacil/./data/Users/Teacher/vintan/provas/151743242ea1769150d9e3178896be04d00204776842/resultadosAlunos/nany.json'",
+        "data": "07/21/23 - 22:26:54"
+    },
+    {
+        "userName": "vintan",
+        "descricao": "[Errno 2] No such file or directory: '/media/narciso/Ficheiros1/PROJECTS/TesteFacil/./data/Users/Teacher/vintan/provas/151743242ea1769150d9e3178896be04d00204776842/resultadosAlunos/nany.json'",
+        "data": "07/21/23 - 22:30:33"
+    },
+    {
+        "userName": "nany",
+        "descricao": "expected token ':', got '}'",
+        "data": "07/21/23 - 23:24:39"
+    },
+    {
+        "userName": "desconhecido",
+        "descricao": "local variable 'presencas' referenced before assignment",
+        "data": "07/21/23 - 23:29:33"
+    },
+    {
+        "userName": "vintan",
+        "descricao": "[Errno 2] No such file or directory: '/media/narciso/Ficheiros1/PROJECTS/TesteFacil/./data/Users/Teacher/vintan/provas/151743242ea1769150d9e3178896be04d00204776842/resultadosAlunos/nany.json'",
+        "data": "07/21/23 - 23:31:22"
+    },
+    {
+        "userName": "desconhecido",
+        "descricao": "local variable 'presencas' referenced before assignment",
+        "data": "07/21/23 - 23:32:25"
+    },
+    {
+        "userName": "desconhecido",
+        "descricao": "local variable 'presencas' referenced before assignment",
+        "data": "07/21/23 - 23:33:19"
+    },
+    {
+        "userName": "desconhecido",
+        "descricao": "local variable 'presencas' referenced before assignment",
+        "data": "07/21/23 - 23:35:20"
+    },
+    {
+        "userName": "desconhecido",
+        "descricao": "local variable 'presencas' referenced before assignment",
+        "data": "07/21/23 - 23:35:36"
+    },
+    {
+        "userName": "desconhecido",
+        "descricao": "local variable 'presencas' referenced before assignment",
+        "data": "07/21/23 - 23:35:46"
     }
 ]

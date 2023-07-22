@@ -63,6 +63,35 @@
             {% endfor %}
         </div>
     <!--cards end-->
+    <!--Lista de Submisspes-->
+    <div class="pd-20 card-box mb-30">
+        <table class="table">
+            <thead>
+                <tr>
+                    
+                        <th scope="col">UserName</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Turma</th>
+                        <th scope="col">Resultado</th>
+                        <th scope="col">Marcar Presença</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in allusers %}
+                    <tr>
+                        <td>{{u["userName"]}}</td>
+                        <td>{{u["fullname"]}}</td>
+                        <td>{{u["turma"]}}</td>
+                        <td><a href='/downloadprova/{{dadosProva["token"]}}/{{u["userName"]}}' ><span class="badge badge-primary">Baixar</span></a></td>
+                        {% if u["userName"] not in presencas %}
+                            <td><a href='/presenca/{{dadosProva["token"]}}/{{u["userName"]}}' ><span class="badge badge-warning">Marcar</span></a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     
 
 {% endblock %}

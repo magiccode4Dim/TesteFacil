@@ -19,6 +19,11 @@
                             <h5 class="card-header weight-500">{{dadosProva['Professor']}} - {{dadosProva['teacher']}} </h5>
                             <div class="card-body">
                                 <h5 class="card-title">{{dadosProva['Titulo']}}</h5>
+                                {% if dadosProva['token'] in presencas %}
+                                    <p style="color: green; font-weight: bold;">
+                                        A sua Presença foi Confirmada Pelo Professor
+                                    </p>
+                                {% endif %}
                                 <p class="card-text">
                                     {{dadosProva["descri"]}}
                                 </p>

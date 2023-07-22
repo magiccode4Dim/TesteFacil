@@ -31,11 +31,15 @@ def index():
                     #retorna somente as provas que podem ser visiveis pelo user
                     availableTestes = apenasProvasDisponiveis(availableTestes)
                     turmas  = getAlTurmas(s,availableTestes)
+                    try:
+                      presencas =   json_Save.getJSON('./data/Users/SimpleUser/'+s+"/presencas.json")
+                    except Exception as e:
+                       presencas = list() 
                     if(len(availableTestes)==0):
-                        return render_template('dashboardUser.html',user=s, turmas = turmas, notifications = notificationSystem.getUserNotification(s))
+                        return render_template('dashboardUser.html',presencas=presencas ,user=s, turmas = turmas, notifications = notificationSystem.getUserNotification(s))
                     else:
                         #vai pegar todas as notas do aluno com base em dados do teste
-                        return render_template('dashboardUser.html',da=availableTestes,user=s , turmas = turmas, notifications = notificationSystem.getUserNotification(s))
+                        return render_template('dashboardUser.html',presencas=presencas ,da=availableTestes,user=s , turmas = turmas, notifications = notificationSystem.getUserNotification(s))
                 provasConf = getAllDadosProva(s)
                 t= getAllTurmasOfTeacher(s)
                 return render_template("dashboardAdmin.html", provas = provasConf, turmas = t, user =  s, notifications = notificationSystem.getProfNotification(s))
@@ -87,10 +91,14 @@ def autenticar():
                     #retorna somente as provas que podem ser visiveis pelo user
                     availableTestes = apenasProvasDisponiveis(availableTestes)
                     turmas  = getAlTurmas(request.form.get("username"),availableTestes)
+                    try:
+                      presencas =   json_Save.getJSON('./data/Users/SimpleUser/'+request.form.get("username")+"/presencas.json")
+                    except Exception as e:
+                       presencas = list() 
                     if(len(availableTestes)==0):
-                        resposta = make_response(render_template('dashboardUser.html',user=request.form.get("username"), turmas = turmas, notifications = notificationSystem.getUserNotification(request.form.get("username"))))
+                        resposta = make_response(render_template('dashboardUser.html',presencas=presencas,user=request.form.get("username"), turmas = turmas, notifications = notificationSystem.getUserNotification(request.form.get("username"))))
                     else:
-                        resposta = make_response(render_template('dashboardUser.html',da=availableTestes,user=request.form.get("username"), turmas = turmas, notifications = notificationSystem.getUserNotification(request.form.get("username"))))
+                        resposta = make_response(render_template('dashboardUser.html',presencas=presencas,da=availableTestes,user=request.form.get("username"), turmas = turmas, notifications = notificationSystem.getUserNotification(request.form.get("username"))))
                 else:
                     timeLineSystem.addEventToTeacherTimeLine(timeLineSystem.createEvent("Conf","Login","Novo Inicio de Sessão"),
                                                         request.form.get("username"))
@@ -182,10 +190,15 @@ def verProva(token):
                 p = json_Save.getJSON('./data/Users/Teacher/'+s+'/provas/'+token+"/prova.json")
                 dadosProva =  json_Save.getJSON('./data/Users/Teacher/'+s+'/provas/'+token+"/dadosProva.json")
                 t= getAllTurmasOfTeacher(s)
+                allUsers =  json_Save.getJSON('./data/Users/Teacher/'+s+'/alunos/users.json')
+                try:
+                    presencas = json_Save.getJSON('./data/Users/Teacher/'+s+'/provas/'+token+'/presencas.json')
+                except Exception as e:
+                    presencas = list()
             except Exception as e:
                 timeLineSystem.addError(str(e),s)
                 return render_template("Error.html",erro = "Erro do Sistema")
-            return render_template("verProva.html", messages= p, dadosProva = dadosProva, turmas = t, user = s,notifications = notificationSystem.getProfNotification(s))
+            return render_template("verProva.html",presencas=presencas, messages= p,allusers=allUsers, dadosProva = dadosProva, turmas = t, user = s,notifications = notificationSystem.getProfNotification(s))
     return redirect(url_for('index'))
 #Admin terminando prova
 #ADMIN
@@ -246,6 +259,21 @@ def apagaUmAluno(teacher,turma,aluno):
             return redirect('/turma/'+str(s)+'/'+str(turma))
     return redirect(url_for('index'))
 
+@app.route('/downloadprova/<token>/<username>')
+def downloadProvaAluno(token,username):
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            #verifica se a pessoa 'e admin
+            if(validation.isAdmin(getUserByUserName(s))==False):
+                return redirect(url_for('index'))
+            try:
+                return send_file('./data/Users/Teacher/'+s+'/provas/'+str(token)+"/resultadosAlunos/"+username+".json", as_attachment=True)
+            except Exception as e:
+                timeLineSystem.addError(str(e),s)
+                return redirect("/ver/"+str(token))
+    return redirect(url_for('login')) 
 
 #o ADmin faz download dos resultados da prova
 #ADMIN
@@ -674,6 +702,7 @@ def engressar(teacher,turma):
                 return render_template("Error.html",erro = "Ocorreu um erro ao tentar ingressar nesta Turma",emoji='gifs/no3.gif')
             return redirect('/turma/'+teacher+'/'+turma)
     return redirect(url_for('login'))
+
  #ABOUT
  #USER
 #sem alteracoes
@@ -1129,5 +1158,24 @@ def openNotification():
     return redirect(url_for('index'))
 
 
+#marcar a presenca do estudante no teste
+@app.route("/presenca/<token>/<username>",methods=['GET']) 
+def marcarpppres(token,username):
+    cookie = request.cookies.get('SessionID')
+    if(cookie!=None):
+        s = sessionsSystem.verfiySession(cookie)
+        if(s!=None):
+            #verifica se a pessoa 'e admin
+            if(validation.isAdmin(getUserByUserName(s))==False):
+                return redirect(url_for('index'))
+            #Deve verificar se a pessoa esta logada e tudo mais
+            try:
+                marcarPresenca(username,token,s)
+            except Exception as e:
+                #se acontecer qualquer excessao na tentava de conversao
+                timeLineSystem.addError(str(e),s)
+                return render_template("Error.html",erro = "erro")
+    return redirect("/ver/"+str(token))
+
 if __name__== "__main__":
-    app.run(host="0.0.0.0",port=80)
+    app.run(host="0.0.0.0",port=5000)
