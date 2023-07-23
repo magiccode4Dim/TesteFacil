@@ -395,7 +395,6 @@ def getTeacherByUserName(userName):
         if(t["userName"]==userName):
             return t
     return None
-
 #Usar o Token para um determinado professor
 def useTokenForTeacher(userName,token):
     tokensTeacher = json_Save.getJSON('./data/Users/Teacher/tokensTeacher.json')
@@ -848,4 +847,9 @@ if __name__ == "__main__":
     #print(validation.getSystemData())
      
     #print(validation.dataInInterval('10/05/2023|08:00 AM','10/05/2023|09:00 PM','11/05/2023|09:00 PM'))
-    print( validateUserToAluno("joao",estudantNumberRandom("professor1"),"professor1","B1"))
+    #print( validateUserToAluno("joao",estudantNumberRandom("professor1"),"professor1","B1"))
+    
+    #print(validation.getSystemData())
+    #23/07/2023|10:57 AM
+    if(not validation.dataInInterval("23/07/2023|10:38 AM","23/07/2023|19:30 PM",validation.getSystemData())):
+        print("Nao se enquada")

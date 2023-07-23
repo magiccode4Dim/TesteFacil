@@ -2,6 +2,45 @@
 
 {% block content %}
 
+    <script>
+
+      
+   
+        function startTimer() {
+            interval = setInterval(() => {
+            if (!isPaused) {
+                milliseconds += 10;
+                if (milliseconds === 1000) {
+                seconds++;
+                milliseconds = 0;
+                }
+                if (seconds === 60) {
+                minutes++;
+                seconds = 0;
+                }
+                minutesEl.innerHTML = formatTime(minutes);
+                secondsEl.innerHTML = formatTime(seconds);
+                millisecondsEl.innerHTML = formatMilliseconds(milliseconds);
+
+                const horaTerminoElement = document.getElementById('hora-termino');
+                const texto = horaTerminoElement.textContent;
+                
+
+                if(minutes==50){
+                    minutesEl.style.color='red'
+                    secondsEl.style.color='red'
+                    millisecondsEl.style.color='red'
+                }
+              
+            }
+            }, 10);
+            startBtn.style.display = "none";
+            pauseBtn.style.display = "inline-block";
+        }
+        
+    </script>  
+  
+
     <!--Cabeçalho do Teste-->
         <div class="page-header">
             <div class="row">
@@ -13,7 +52,14 @@
                         <b>Turma :</b> {{u['turma']}};
                         <b>Professor:</b> {{dadosProva['Professor']}};
                         <b>Data:</b> {{dadosProva['Data']}};
-                        <b>Hora do Termino :</b> {{dadosProva['fim']}}
+                        <b  >Hora do Termino :</b> <span id="hora-termino" >{{dadosProva['fim']}}</span>
+                        <br><b>Conometro :</b> 
+                        <div class="timer"><span class="time" id="minutes">00</span>
+                            <span class="separator">:</span>
+                            <span class="time" id="seconds">00</span>
+                            <span class="separator">:</span>
+                            <span class="time" id="milliseconds">000</span>
+                        </div>
                 </div>
             </div>
         </div>
@@ -27,6 +73,8 @@
                 </div>
             </div>
         </div>
+
+          
     <!--Cabeçalho do Teste end-->
     <!--cards-->
     <h4 class="h4 text-blue mb-30"> Perguntas </h4>
@@ -62,6 +110,9 @@
         </div>
     </form>
     <!--cards end-->
+    <script>
+        startTimer()
+    </script>
     
 
 {% endblock %}
