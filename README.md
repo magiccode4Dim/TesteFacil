@@ -1,5 +1,5 @@
 ## Sobre o TesteFacil
-![image](https://github.com/user-attachments/assets/57e1c3e6-31c4-486c-988f-7177a80643f7)
+![image](https://github.com/user-attachments/assets/49b4cd55-71fd-4514-9217-e0d94b2ee4df)
 O TesteFacil é um sistema desenvolvido para ser utilizado em instituições de ensino, cujo propósito é a realização provas de escolha múltipla com correção automática. O sistema tem um funcionamento simples, e pode se adequar facilmente para os modelos de ensino da maioria das instituições.
 No sistema, alunos e professores podem cadastrar-se em poucos passos. 
 O testeFacil é bastante optimizado, ágil e não precisa de um sistema de gestão de base de dados. O armazenamento dos dados é feito no sistema de ficheiro do servidor ou em um volume conectado a um Servidor FTP, utilizando a arquitetura de uma base de dados orientada a documentos. Este facto possibilita que o testefacil seja facilmente instalado em servidores pequenos, com pelo menos 1 núcleo de CPU e 500MB de memória RAM.
