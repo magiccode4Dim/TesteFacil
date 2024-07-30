@@ -827,29 +827,5 @@ def marcarPresenca(userName, token, teacherUserName):
 
 
 if __name__ == "__main__":
-    #print(createTeacher("pascoal","p@gmail.com","2001","NanyNilson","996198a8c84f17c43ee758e170a7de3d12d292"))
-    #updateToken("Nany","3930697a67c119686f8b5066f2b64f54f4040f")
-    #criarTurma("narciso","B","Povo no Partido")
-    #addAlunoToTurma("paxA","Nany","B1 12")
-    #generateTokenTeacher(numbers=10)
-    #incressarEmTurma("@nanilsin","romeu","A")
-    #print(validateUserToAluno("@nanilsin",3444,"romeu"))
-    #print(getAllDadosProva("romeu"))
-    #print(getAvaliableTesteForUser("pax"))
-    #a, b  = searchData("A")
+    generateTokenTeacher(numbers=10)
     
-    #print(a)
-    #user = getTeacherUserByUserName('bubufilho','romeu', turma='P122')
-    #print(user)
-    
-    #print(getAllQuantErradasCertasNRes('narciso'))
-    #print(validation.formatData("10 May 2023 08:55 pm"))
-    #print(validation.getSystemData())
-     
-    #print(validation.dataInInterval('10/05/2023|08:00 AM','10/05/2023|09:00 PM','11/05/2023|09:00 PM'))
-    #print( validateUserToAluno("joao",estudantNumberRandom("professor1"),"professor1","B1"))
-    
-    #print(validation.getSystemData())
-    #23/07/2023|10:57 AM
-    if(not validation.dataInInterval("23/07/2023|10:38 AM","23/07/2023|19:30 PM",validation.getSystemData())):
-        print("Nao se enquada")
