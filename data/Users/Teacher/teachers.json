@@ -1,16 +1,3 @@
 [
-    {
-        "userName": "vintan",
-        "fullname": "William Vintan",
-        "email": "magiccodesoftware@gmail.com",
-        "isAdmin": 1,
-        "permissions": "CRUD",
-        "bio": "Professor de Filosofia"
-    },
-    {
-        "userName": "marlon",
-        "email": "magiccodesoftware@gmail.com",
-        "fullname": "Marlon Marr",
-        "bio": "mar"
-    }
+   
 ]
