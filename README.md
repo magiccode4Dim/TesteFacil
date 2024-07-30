@@ -15,7 +15,10 @@ O testefacil foi desenvolvido em Python Flask, que é um framework bastante leve
 
 ## Configuração iniciais
 No directorio do projecto, existe o ficheiro dataManScript.py, que contém algumas funções para a execução de tarefas administrativas. Uma das tarefas administrativas que devem ser executadas, é a criação de tokens-chave para a abertura de contas para professores. Para criar 10 tokens, por exemplo, deve-se executar a seguinte função:
-
+```python
+if __name__ == "__main__":
+    generateTokenTeacher(numbers=10)
+```
 ## Screenshots
 1. Escolhendo o tipo de conta
 ![image](https://github.com/user-attachments/assets/6d0442ee-44ea-46f1-960a-b2e23502ee86)
