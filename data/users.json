@@ -1,3 +1,1270 @@
 [
-   
+    {
+        "userName": "vintan",
+        "fullname": "William Vintan",
+        "password": "2ce436fd42dcd629e0ba80c93854db64",
+        "email": "vintan@gmail.com",
+        "isAdmin": 1,
+        "permissions": "CRUD"
+    },
+    {
+        "userName": "joao",
+        "fullname": "joao pinho",
+        "password": "81dc9bdb52d04dc20036dbd8313ed055",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "feliz",
+        "fullname": "felizmina",
+        "password": "81dc9bdb52d04dc20036dbd8313ed055",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Abner",
+        "fullname": "Abner Julio Tsandzana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Albertina",
+        "fullname": "Albertina Alberto Manhi\u00e7a",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Alen",
+        "fullname": "Alen Vicente Chauque",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Angelancia",
+        "fullname": "Angelancia Carlos Macie",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Armando",
+        "fullname": "Armando Pedro Nhone",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Assucena",
+        "fullname": "Assucena Jose Mboane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Atalia",
+        "fullname": "At\u00e1lia Elias Matusse",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Aurora",
+        "fullname": "Aurora Ambrosio Matavele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Avelina",
+        "fullname": "Avelina Armando Timana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Benedito",
+        "fullname": "Benedito Belito Wapita",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Camilo",
+        "fullname": "Camilo Afonso Ahapeia",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Carla",
+        "fullname": "Carla Virg\u00edlio Conwana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Carolina",
+        "fullname": "Carolina Fernando Conwana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Catarina",
+        "fullname": "Catarina Jose Chilusse",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "CelesteElidio",
+        "fullname": "Celeste Elidio Vilanculos",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "CelesteElisa",
+        "fullname": "Celeste Elisa Joao Nungo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Celso",
+        "fullname": "Celso Alfredo Machavele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Cheron",
+        "fullname": "Cheron Samora Cossa",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Clara",
+        "fullname": "Clara Antonio xerinda",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Danilia",
+        "fullname": "Dan\u00edlia Feliciano Timana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Delfina",
+        "fullname": "Delfina Armando Mauelele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Delvio",
+        "fullname": "D\u00e9lvio Domingos Tsandzana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Dironicson",
+        "fullname": "Dironicson Eugenio Melembe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Donaldo",
+        "fullname": "Donaldo David Soto",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Edilson",
+        "fullname": "Edilson Aldito Bate",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Edinencia",
+        "fullname": "Edinencia Carlos Herchete Chivambo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Edson",
+        "fullname": "Edson Nelson Mawelele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Eliote",
+        "fullname": "Eliote Micas Timana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "ElisaAlberto",
+        "fullname": "Elisa Alberto Ndzeco",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "ElisaErnesto",
+        "fullname": "Elisa Ernesto Simbine",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Elton",
+        "fullname": "Elton Fernando Mawelele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Elvira",
+        "fullname": "Elvira Antonio Machava",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Enia",
+        "fullname": "Enia Quetino Mabai",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Ernesto",
+        "fullname": "Ernesto Cristiano Moiane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Ester",
+        "fullname": "Ester Jos\u00e9 Conwana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Eunicia",
+        "fullname": "Eunicia Armando Sambo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Felizarda",
+        "fullname": "Felizarda Armando Chauque",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Figencia",
+        "fullname": "Figencia Emilio Chembene",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Filomena",
+        "fullname": "Filomena Ozias Guilengue",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "France",
+        "fullname": "France Americo Malamule",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "FranciscoDionisio",
+        "fullname": "Francisco Dionisio Massimbe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "FranciscoJaime",
+        "fullname": "Francisco Jaime Timana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Frenque",
+        "fullname": "Frenque Raimundo Managuana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Gabriel",
+        "fullname": "Gabriel Dicson Sitoe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Genifa",
+        "fullname": "Genifa Jacinto Timana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Gercia",
+        "fullname": "Gercia Fernando Melembe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Helia",
+        "fullname": "Helia Leandro Melembe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Helio",
+        "fullname": "Helio Alberto Pel\u00e9",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Ildo",
+        "fullname": "Ildo Tomas Zevule",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Isabel",
+        "fullname": "Isabel Rafael Chachuaio",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Isilda",
+        "fullname": "Isilda Ant\u00f3nio Sambo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Ivan",
+        "fullname": "Ivan Amos Antonio Chivambo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Ivanildo",
+        "fullname": "Ivanildo Erasmo Chiau",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Ivo",
+        "fullname": "Ivo Amilcar Rui Timba",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Joana",
+        "fullname": "Joana Bernardo Sumbana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Julieta",
+        "fullname": "Julieta Ernesto Sambo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Large",
+        "fullname": "Large Marcos Moiana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Letica",
+        "fullname": "Letica Daniel Chilaule",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Let\u00edcia",
+        "fullname": "Let\u00edcia Severiano Nhabanga",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Lurdes",
+        "fullname": "Lurdes Albino Machave",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Maira",
+        "fullname": "Maira Obasanjo Nhantumbo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Marcelia",
+        "fullname": "Marcelia  Carlos Machavele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Marcia",
+        "fullname": "Marcia Joaneta Cossa",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Maria",
+        "fullname": "Maria Carlos Tsucana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Marisa",
+        "fullname": "Marisa Alfredo Mucocana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Maura",
+        "fullname": "Maura Dinis Tsandzana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Mercia",
+        "fullname": "Mercia Mario Simbine",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Neida",
+        "fullname": "Neida Sozinho Ndzeco",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Neusia",
+        "fullname": "Neusia Richete Chivure",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Paulina",
+        "fullname": "Paulina Jose Ndzuvane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Rute",
+        "fullname": "Rute Augusto Timana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Salomao",
+        "fullname": "Salomao Elidio Bazima",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Sencao",
+        "fullname": "Sencao Paulo Hunguana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Silvestre",
+        "fullname": "Silvestre Joao Cuiane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Yurica",
+        "fullname": "Yurica Paulo Cossa",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Amelia",
+        "fullname": "Amelia Eliote Bila",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Americo",
+        "fullname": "Americo Alfredo Sitoe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Ana",
+        "fullname": "Ana Mauricio Chitlango",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "ArmandoAlexandre",
+        "fullname": "Armando Alexandre Melembe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "ArmandoAugusto",
+        "fullname": "Armando Augusto Tsucana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Cristeza",
+        "fullname": "Cristeza da Anast\u00e2ncia Sumbana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Delio",
+        "fullname": "Delio Julio Munetua",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Dercia",
+        "fullname": "D\u00e9rcia Carlito Nhantumbo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Dineu",
+        "fullname": "Dineu Quinino Francisco Cutana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Eduardo",
+        "fullname": "Eduardo Alexandre Simango",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "ElisaSalvador",
+        "fullname": "Elisa Salvador Manhica",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "ElisioArlindo",
+        "fullname": "Elisio Arlindo Matsinhe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "ElisioJoao",
+        "fullname": "Elisio Joao Macave",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "EltonPaulo",
+        "fullname": "Elton Paulo Congolo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Ercilio",
+        "fullname": "Ercilio Armindo Matavele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Eusia",
+        "fullname": "Eusia Alberto Timana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Falsina",
+        "fullname": "Falsina Justino Tovela",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Fatucha",
+        "fullname": "Fatucha  Jacinto Tui",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Feliza",
+        "fullname": "Feliza Tomas Nuvunga",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Gloria",
+        "fullname": "Gloria Julio Muchongo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Guilherme",
+        "fullname": "Guilherme Cesar Antonio",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "HelioCandido",
+        "fullname": "Helio Candido Pateguane Magalo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "HelioDamiao",
+        "fullname": "Helio Damiao Chongo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "HelioSalomao",
+        "fullname": "Helio Salomao Timana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Hermerinda",
+        "fullname": "Hermerinda David Sitoe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Humberto",
+        "fullname": "Humberto Azarias Mabunda",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Inocencio",
+        "fullname": "Inocencio Graca Mucavele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Isalia",
+        "fullname": "Is\u00e1lia Fernando Matsimbe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Izeita",
+        "fullname": "Izeita Samson Massingue",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Jercia",
+        "fullname": "Jercia Arlindo Mawelele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Joice",
+        "fullname": "Joice Jornal Tovela",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Jorcio",
+        "fullname": "Jorcio Raimundo Massimbe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Jorge",
+        "fullname": "Jorge Julio Chengane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Jovenaldo",
+        "fullname": "Jovenaldo Baptista Hobjane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Judite",
+        "fullname": "Judite Rafael Chiziane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Justino",
+        "fullname": "Justino Carlos Nuvunga",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "LauraAdriano",
+        "fullname": "Laura Adriano Manhica",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "LauraAlberto",
+        "fullname": "Laura Alberto Matuca",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "LauraEzequias",
+        "fullname": "Laura Ezequias Chavango",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "LauraFernando",
+        "fullname": "Laura Fernando Macuacua",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Laurinda",
+        "fullname": "Laurinda Antonio Manguana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Lorca",
+        "fullname": "Lorca Matias Mulungo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Lucas",
+        "fullname": "Lucas Orlando Maiuana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Luis",
+        "fullname": "Luis Virgilio Mabai",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Luisa",
+        "fullname": "Luisa Olimpio Cossa",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Maine",
+        "fullname": "Maine Eugenio Melembe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Marcela",
+        "fullname": "Marcela Mario Bila",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "MarioGelsio",
+        "fullname": "Mario Gelsio Timana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "MarioPires",
+        "fullname": "M\u00e1rio Pires Melembe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Marlene",
+        "fullname": "Marlene Segio Zimba",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Marnisa",
+        "fullname": "Marnisa Castigo Mazanga",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Meriamo",
+        "fullname": "Meriamo Francisco Sitoe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Neli",
+        "fullname": "Neli Armando Chiau",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Nelio",
+        "fullname": "Nelio Fernando Mawelele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Neyma",
+        "fullname": "Neyma Sebastiao Macamo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Nilza",
+        "fullname": "Nilza Fernando Hobjane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Onoria",
+        "fullname": "Onoria Bernardo Macuvele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Rafael",
+        "fullname": "Rafael Jo\u00e3o Macamo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Reginaldo",
+        "fullname": "Reginaldo Jaime Bila",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Rosalia",
+        "fullname": "Ros\u00e1lia Jos\u00e9 Ndzeco",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Rosangela",
+        "fullname": "Rosangela Antonio Nuvunga",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Rosita",
+        "fullname": "Rosita Orlando Nhabanga",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Samuel",
+        "fullname": "Samuel Nunes Ndzuvane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Sergio",
+        "fullname": "Sergio Francisco Mussana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "StelioAlberto",
+        "fullname": "Stelio Alberto Cossa",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "StelioSergio",
+        "fullname": "Stelio Sergio Matsinhe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Suzete",
+        "fullname": "Suzete Carlos Dzimba",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "AdelaideArtur",
+        "fullname": "Adelaide Artur Ritsure",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "AdelaideNuro",
+        "fullname": "Adelaide Nuro Munetua",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Agostinho",
+        "fullname": "Agostinho Jeremias Bazima",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Alberto",
+        "fullname": "Alberto Lourenco Mabunda",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Alcidio",
+        "fullname": "Alcidio Erasmo Chavango",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Alex",
+        "fullname": "Alex Jaime Jeco",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Almeida",
+        "fullname": "Almeida Antonio Macamo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Alzira",
+        "fullname": "Alzira Sergio Cossa",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Ancia",
+        "fullname": "Ancia Am\u00e9rico Ubisse",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Antonio",
+        "fullname": "Antonio Armando Mareleco",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Augusto",
+        "fullname": "Augusto Castigo Fulane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Calucha",
+        "fullname": "Calucha Fernando Ubisse",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Celestino",
+        "fullname": "Celestino Benedito Machava",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Claudio",
+        "fullname": "Claudio Zelio Mawelele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Clesia",
+        "fullname": "Cl\u00e9sia Mois\u00e9s Maluleque",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Edio",
+        "fullname": "Edio Paulo Jose Timane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Egnencia",
+        "fullname": "Egnencia Santos Ngoma",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "EliasAntonio",
+        "fullname": "Elias Antonio Tsandzane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "ElisaSantos",
+        "fullname": "Elisa Santos Tembe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Elisio",
+        "fullname": "Elisio Joao Macave",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Eunice",
+        "fullname": "Eunice Nelson Hunguana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "FatimaJulio",
+        "fullname": "Fatima Julio Manganhele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "FatimaVasco",
+        "fullname": "Fatima Vasco Moiane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Felex",
+        "fullname": "Felex Abrahamo Changule",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Francisco",
+        "fullname": "Francisco Jose Conwana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Geraldo",
+        "fullname": "Geraldo Manuel Mazivila",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Helena",
+        "fullname": "Helena Jose Rimela",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Helton",
+        "fullname": "Helton Eug\u00e9nio Cutana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Horacio",
+        "fullname": "Horacio Julio Macuiana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "IsabelCarlos",
+        "fullname": "Isabel Carlos Matuca",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "IsabelRamos",
+        "fullname": "Isabel Ramos Timbe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Isaura",
+        "fullname": "Isaura Alberto Macamo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Itromena",
+        "fullname": "Itromena Angelina Simango",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Jeronimo",
+        "fullname": "Jer\u00f3nimo Jaime Macane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Jessica",
+        "fullname": "Jessica Jorge Chiau",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Joao",
+        "fullname": "Jo\u00e3o Armindo Sumbane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Johnson",
+        "fullname": "Johnson Jose Bila",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Jose",
+        "fullname": "Jos\u00e9 Ernesto Timane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Julio",
+        "fullname": "Julio Carlos Timbe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Junior",
+        "fullname": "Junior Lourenco Mabunda",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Lopito",
+        "fullname": "Lopito Armando Mboana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Melucha",
+        "fullname": "Melucha Nelson Mazive",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Mendi",
+        "fullname": "Mendi Tomas Massingue",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Milton",
+        "fullname": "Milton Nuro Munetua",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Moises",
+        "fullname": "Moises Armando Hobjana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Neima",
+        "fullname": "Neima Artur Timana",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Nivalda",
+        "fullname": "Nivalda Americo Matsolo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Novidade",
+        "fullname": "Novidade Felex Guelengue",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Odilio",
+        "fullname": "Od\u00edlio Abel Mabjeque",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Otilio",
+        "fullname": "Otilio Manuel Baloi",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Paulo",
+        "fullname": "Paulo Jacinto Psungo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Petrosse",
+        "fullname": "Petrosse Raimundo Manhica",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Ralina",
+        "fullname": "Ralina Albino Chila\u00fale",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "RosaCandido",
+        "fullname": "Rosa Candido Dimande",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "RosaCremildo",
+        "fullname": "Rosa Cremildo Macuacua",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "RosaFrance",
+        "fullname": "Rosa France Bondzela",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "SandraCarlos",
+        "fullname": "Sandra Carlos Mawelele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "SandraZacarias",
+        "fullname": "Sandra Zacarias Xirindza",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Santos",
+        "fullname": "Santos Olimpio Cossa",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Cheila",
+        "fullname": "Cheila Fernando Mondlane",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Shelsa",
+        "fullname": "Shelsa da Rosa Ubisse",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Vanda",
+        "fullname": "Vanda Silva Melembe",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Vania",
+        "fullname": "Vania Paulo Malamule",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Vasco",
+        "fullname": "Vasco Francisco Machavele",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Yuri",
+        "fullname": "Yuri Pinal Djedje",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    },
+    {
+        "userName": "Zeca",
+        "fullname": "Zeca Marcos Sambo",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "default@magiccode.com"
+    }
 ]

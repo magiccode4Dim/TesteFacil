@@ -1,0 +1,26 @@
+[
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "10/03/24 - 19:58:31"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Log Out",
+        "descricao": "O User Saiu do Sistema",
+        "data": "10/03/24 - 19:59:52"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "10/03/24 - 19:59:59"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Log Out",
+        "descricao": "O User Saiu do Sistema",
+        "data": "10/03/24 - 20:00:11"
+    }
+]

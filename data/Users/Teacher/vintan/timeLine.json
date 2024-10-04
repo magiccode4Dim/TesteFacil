@@ -1,0 +1,1310 @@
+[
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "10/03/24 - 19:52:11"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno joao",
+        "descricao": ",Na TurmaB1",
+        "data": "10/03/24 - 19:57:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno feliz",
+        "descricao": ",Na TurmaB1",
+        "data": "10/03/24 - 19:57:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Apagou o Aluno joao",
+        "descricao": "O professor apagou um Aluno",
+        "data": "10/03/24 - 19:59:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Apagou o Aluno feliz",
+        "descricao": "O professor apagou um Aluno",
+        "data": "10/03/24 - 19:59:21"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Abner",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Albertina",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Alen",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Angelancia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Armando",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Assucena",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Atalia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Aurora",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Avelina",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Benedito",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Camilo",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Carla",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Carolina",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Catarina",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno CelesteElidio",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno CelesteElisa",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Celso",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Cheron",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Clara",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Danilia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Delfina",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Delvio",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Dironicson",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:28"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Donaldo",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Edilson",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Edinencia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Edson",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Eliote",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno ElisaAlberto",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno ElisaErnesto",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Elton",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Elvira",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Enia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Ernesto",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Ester",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Eunicia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Felizarda",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Figencia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Filomena",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno France",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno FranciscoDionisio",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno FranciscoJaime",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Frenque",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Gabriel",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Genifa",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Gercia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Helia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Helio",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Ildo",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Isabel",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Isilda",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Ivan",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Ivanildo",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Ivo",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Joana",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Julieta",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Large",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Letica",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Let\u00edcia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Lurdes",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Maira",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Marcelia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Marcia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Maria",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Marisa",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Maura",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Mercia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Neida",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Neusia",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Paulina",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Rute",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Salomao",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Sencao",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Silvestre",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Yurica",
+        "descricao": ",Na Turma12B1",
+        "data": "10/04/24 - 12:37:29"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Amelia",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:16"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Americo",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Ana",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno ArmandoAlexandre",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno ArmandoAugusto",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Cristeza",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Delio",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Dercia",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Dineu",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Eduardo",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno ElisaSalvador",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno ElisioArlindo",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno ElisioJoao",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno EltonPaulo",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Ercilio",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Eusia",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Falsina",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Fatucha",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Feliza",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Gloria",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Guilherme",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno HelioCandido",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno HelioDamiao",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno HelioSalomao",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Hermerinda",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Humberto",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Inocencio",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Isalia",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Izeita",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Jercia",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Joice",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Jorcio",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Jorge",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Jovenaldo",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Judite",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Justino",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno LauraAdriano",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno LauraAlberto",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno LauraEzequias",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno LauraFernando",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Laurinda",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Lorca",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Lucas",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Luis",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Luisa",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Maine",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Marcela",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno MarioGelsio",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno MarioPires",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Marlene",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Marnisa",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Meriamo",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Neli",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Nelio",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Neyma",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Nilza",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Onoria",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Rafael",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Reginaldo",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:17"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Rosalia",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:18"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Rosangela",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:18"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Rosita",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:18"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Samuel",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:18"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Sergio",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:18"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno StelioAlberto",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:18"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno StelioSergio",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:18"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Suzete",
+        "descricao": ",Na Turma12B2",
+        "data": "10/04/24 - 12:38:18"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno AdelaideArtur",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno AdelaideNuro",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Agostinho",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Alberto",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Alcidio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Alex",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Almeida",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Alzira",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Ancia",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Antonio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Augusto",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Calucha",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Celestino",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Claudio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Clesia",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Edio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Egnencia",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno EliasAntonio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno ElisaSantos",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Elisio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Eunice",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:36"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno FatimaJulio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno FatimaVasco",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Felex",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Francisco",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Geraldo",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Helena",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Helton",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Horacio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno IsabelCarlos",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno IsabelRamos",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Isaura",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Itromena",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Jeronimo",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Jessica",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Joao",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Johnson",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Jose",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Julio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Junior",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Lopito",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Melucha",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Mendi",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Milton",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Moises",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Neima",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Nivalda",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Novidade",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Odilio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Otilio",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Paulo",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Petrosse",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Ralina",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno RosaCandido",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno RosaCremildo",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno RosaFrance",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno SandraCarlos",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno SandraZacarias",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Santos",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Cheila",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Shelsa",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Vanda",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Vania",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Vasco",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Yuri",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Adicionou o Aluno Zeca",
+        "descricao": ",Na Turma12B3",
+        "data": "10/04/24 - 12:38:37"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Log Out",
+        "descricao": "O User Saiu do Sistema",
+        "data": "10/04/24 - 12:42:48"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "10/04/24 - 12:43:24"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Log Out",
+        "descricao": "O User Saiu do Sistema",
+        "data": "10/04/24 - 12:43:33"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Login",
+        "descricao": "Novo Inicio de Sess\u00e3o",
+        "data": "10/04/24 - 12:43:48"
+    },
+    {
+        "nivel": "Conf",
+        "titulo": "Log Out",
+        "descricao": "O User Saiu do Sistema",
+        "data": "10/04/24 - 12:45:05"
+    }
+]
